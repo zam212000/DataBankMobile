@@ -10,6 +10,7 @@ namespace MyBodyTemperature.Droid
               ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        App formsApp;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -18,6 +19,10 @@ namespace MyBodyTemperature.Droid
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
+
+            formsApp = new App(new AndroidInitializer());
             LoadApplication(new App(new AndroidInitializer()));
         }
 
@@ -26,6 +31,13 @@ namespace MyBodyTemperature.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        [Java.Interop.Export("UITestBackdoorScan")]
+        public Java.Lang.String UITestBackdoorScan(string param)
+        {
+            formsApp.UITestBackdoorScan(param);
+            return new Java.Lang.String();
         }
     }
 
