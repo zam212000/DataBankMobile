@@ -11,6 +11,8 @@ public class MonoPackageManager_Resources {
 		"Prism.dll",
 		"Prism.DryIoc.Forms.dll",
 		"Prism.Forms.dll",
+		"Rg.Plugins.Popup.dll",
+		"System.Reactive.dll",
 		"Xamarin.Android.Support.Annotations.dll",
 		"Xamarin.Android.Support.Compat.dll",
 		"Xamarin.Android.Support.Core.UI.dll",

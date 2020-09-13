@@ -2,10 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyBodyTemperature.Views.MainPage"
+         BackgroundColor="White"
              Title="{Binding Title}">
+   
+    <ContentPage.Content>
+        <StackLayout>
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+            <Image Margin="0,100,0,15" WidthRequest="250" HeightRequest="250" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <On Platform="iOS, Android" Value="noun_Thermometer_2144891.png" />
+                    </OnPlatform>
+                </Image.Source>
+            </Image>
+
+            <StackLayout Margin="50,20,50,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Button Text="READ TEMPERATURE" Command="{Binding ReadTemperatureCommand}" BackgroundColor="#C7DA3C" HeightRequest="70" Margin="0,0,0,5"  TextColor="#ffffff"  FontAttributes="Bold" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

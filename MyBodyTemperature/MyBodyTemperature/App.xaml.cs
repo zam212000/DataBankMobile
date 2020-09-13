@@ -9,6 +9,9 @@ using MyBodyTemperature.Forms;
 using ZXing.Net.Mobile.Forms;
 using System.Collections.Generic;
 using System;
+using BarcodeScanner;
+using Rg.Plugins.Popup.Services;
+using Rg.Plugins.Popup.Contracts;
 
 namespace MyBodyTemperature
 {
@@ -24,16 +27,21 @@ namespace MyBodyTemperature
             InitializeComponent();
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/HomePage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.RegisterForNavigation<HomePage>();
-            containerRegistry.RegisterForNavigation<NavigationPage>();
+			containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-        }
+			containerRegistry.RegisterForNavigation<ResultOverviewPage, ResultOverviewViewModel>();
+
+			containerRegistry.Register<IBarcodeScannerService, ContentPageBarcodeScannerService>();
+
+
+		}
 
 		public void UITestBackdoorScan(string param)
 		{

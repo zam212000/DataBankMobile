@@ -18,6 +18,7 @@ namespace MyBodyTemperature.Droid
 
             base.OnCreate(savedInstanceState);
 
+           // Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -33,12 +34,12 @@ namespace MyBodyTemperature.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        [Java.Interop.Export("UITestBackdoorScan")]
-        public Java.Lang.String UITestBackdoorScan(string param)
-        {
-            formsApp.UITestBackdoorScan(param);
-            return new Java.Lang.String();
-        }
+        //[Java.Interop.Export("UITestBackdoorScan")]
+        //public Java.Lang.String UITestBackdoorScan(string param)
+        //{
+        //    formsApp.UITestBackdoorScan(param);
+        //    return new Java.Lang.String();
+        //}
     }
 
     public class AndroidInitializer : IPlatformInitializer
