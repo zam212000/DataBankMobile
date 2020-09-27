@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyBodyTemperature.Views.CreateProfilePage">
+    <ContentPage.Content>
+
+        <StackLayout Margin="0,25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Image HorizontalOptions="CenterAndExpand">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <On Platform="iOS, Android" Value="covidIcon.png" />
+                    </OnPlatform>
+                </Image.Source>
+            </Image>
+
+
+            <StackLayout Margin="40,10,40,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <Entry x:Name="emailaddress"  Text="{Binding EmailAddress}" Placeholder="Email address" HorizontalTextAlignment="Center" Keyboard="Email" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,0,5">
+                </Entry>
+                <Entry x:Name="firstname"  Text="{Binding FirstName}" Placeholder="First Name" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                </Entry>
+                <Entry x:Name="lastname"  Text="{Binding LastName}" Placeholder="Last Name" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                </Entry>
+                <Entry x:Name="cellphonenumber"  Text="{Binding CellPhoneNumber}" Placeholder="Cellphone Number" Keyboard="Numeric" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                </Entry>
+
+                <Button Text="NEXT >>" Command="{Binding NextProfileCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                </Button>
+
+            </StackLayout>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

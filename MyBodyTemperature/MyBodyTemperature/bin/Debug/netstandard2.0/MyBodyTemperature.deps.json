@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "MyBodyTemperature/1.0.0": {
         "dependencies": {
+          "Acr.UserDialogs": "7.1.0.454",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.3",
           "Prism.DryIoc.Forms": "7.2.0.1422",
@@ -16,10 +17,20 @@
           "System.Reactive": "4.4.1",
           "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials.Interfaces": "1.5.3.2",
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
           "Xamarin.Forms": "4.7.0.1239"
         },
         "runtime": {
           "MyBodyTemperature.dll": {}
+        }
+      },
+      "Acr.UserDialogs/7.1.0.454": {
+        "runtime": {
+          "lib/netstandard2.0/Acr.UserDialogs.dll": {
+            "assemblyVersion": "7.1.0.454",
+            "fileVersion": "7.1.0.454"
+          }
         }
       },
       "DryIoc.dll/4.0.7": {
@@ -250,6 +261,30 @@
           }
         }
       },
+      "Xamarin.FFImageLoading/2.4.11.982": {
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Platform.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          },
+          "lib/netstandard1.0/FFImageLoading.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.Forms": "4.7.0.1239"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Forms.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
       "Xamarin.Forms/4.7.0.1239": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
@@ -273,6 +308,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Acr.UserDialogs/7.1.0.454": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A7NdvgpX1tE5tDj4gNQgrQOZ2xZF2PidNhuy5ydfM5rJdvN9CqjVxjoKEu3rDiMUs7ek/m+EiVkYVC5DVwfI0A==",
+      "path": "acr.userdialogs/7.1.0.454",
+      "hashPath": "acr.userdialogs.7.1.0.454.nupkg.sha512"
     },
     "DryIoc.dll/4.0.7": {
       "type": "package",
@@ -448,6 +490,20 @@
       "sha512": "sha512-TfMF7sbc+2FT3PpU0CosSVSvOh6nzB1N4D3iTrZRg9/9DZejXWUCgmR+3iU3I7ydwRhiohKTPa4Gkw5WZEfQyQ==",
       "path": "xamarin.essentials.interfaces/1.5.3.2",
       "hashPath": "xamarin.essentials.interfaces.1.5.3.2.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M0sNIQgUPs+le6C2TS4RmZQAURnzaRVizRtnZIZ6/1//qGcEAtEXAGt/tBJz6I1zlP6XlMxq8io6b4sjFP5N9Q==",
+      "path": "xamarin.ffimageloading/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.2.4.11.982.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7X4t3J1wJj0/0o8+vd91hzSYlrqEeMFC7Mj+0T8O+fcbRSHo/c+QbWscEQiT4AaKCwyO709xq+7aY2XXbK/H7g==",
+      "path": "xamarin.ffimageloading.forms/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512"
     },
     "Xamarin.Forms/4.7.0.1239": {
       "type": "package",

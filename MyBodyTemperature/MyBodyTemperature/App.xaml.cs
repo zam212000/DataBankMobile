@@ -34,6 +34,8 @@ namespace MyBodyTemperature
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>();
+            containerRegistry.RegisterForNavigation<CreateProfilePage, CreateProfileViewModel>();
+            containerRegistry.RegisterForNavigation<CreateProfilePasswordPage, CreateProfilePasswordViewModel>();
 
             //SERVICES
             containerRegistry.Register<IAnalyticsService, AppCenterAnalyticsService>();

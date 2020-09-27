@@ -1,26 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyBodyTemperature.Views.MainPage"
-         BackgroundColor="White"
-             Title="{Binding Title}">
-   
-    <ContentPage.Content>
-        <StackLayout>
+              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+            MasterBehavior="Popover"
+             xmlns:pages="clr-namespace:MyBodyTemperature.Views"
+             xmlns:templates1="clr-namespace:MyBodyTemperature.Views.Templates" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    
+    <MasterDetailPage.Master>
 
-            <Image Margin="0,100,0,15" WidthRequest="250" HeightRequest="250" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="iOS, Android" Value="noun_Thermometer_2144891.png" />
-                    </OnPlatform>
-                </Image.Source>
-            </Image>
+        <ContentPage Title="Master">
 
-            <StackLayout Margin="50,20,50,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Button Text="READ TEMPERATURE" Command="{Binding ReadTemperatureCommand}" BackgroundColor="#C7DA3C" HeightRequest="70" Margin="0,0,0,5"  TextColor="#ffffff"  FontAttributes="Bold" />
-            </StackLayout>
+            <ContentPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="ic_menu" />
+                </OnPlatform>
+            </ContentPage.Icon>
+            <ContentPage.Resources>
+                <ResourceDictionary>
 
-        </StackLayout>
-    </ContentPage.Content>
+                    <Style x:Key="UsernamePanelStyle" TargetType="StackLayout">
+                        <Setter Property="Orientation" Value="Vertical" />
+                        <Setter Property="VerticalOptions" Value="End" />
+                    </Style>
 
-</ContentPage>
+                    <Style x:Key="HelloTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource PoppinsRegularLabelStyle}">
+                        <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                        <Setter Property="FontSize" Value="{StaticResource LargeSize}" />
+                        <Setter Property="VerticalOptions" Value="End" />
+                    </Style>
+
+                    <Style x:Key="UsernameTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource HelloTextStyle}">
+                        <Setter Property="FontSize" Value="{StaticResource LargerSize}" />
+                        <Setter Property="LineBreakMode" Value="TailTruncation" />
+                    </Style>
+
+                </ResourceDictionary>
+            </ContentPage.Resources>
+            <ContentPage.Content>
+                <Grid
+            RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25*" />
+                        <RowDefinition Height="75*" />
+                    </Grid.RowDefinitions>
+                    <Grid 
+                Grid.Row="0">
+                        <ffimageloading:CachedImage
+                    Aspect="AspectFill"
+                    Source="{Binding UserAvatar}"
+                    CacheType="Disk"
+                    CacheDuration="30">
+                            <ffimageloading:CachedImage.LoadingPlaceholder>
+                                <OnPlatform x:TypeArguments="ImageSource">
+                                    <On Platform="Android, iOS" Value="avatar" />
+                                </OnPlatform>
+                            </ffimageloading:CachedImage.LoadingPlaceholder>
+                        </ffimageloading:CachedImage>
+                        <Grid 
+                    BackgroundColor="#293849"
+                    Opacity="0.6"/>
+                        <StackLayout 
+                    Padding="44, 0, 0, 10"
+                    Spacing="0"
+                    Style="{StaticResource UsernamePanelStyle}">
+                            <Label   
+                        Text="Hello"  
+                        Style="{StaticResource HelloTextStyle}"/>
+                            <Label 
+                        Text="{Binding UserName}"
+                        Style="{StaticResource UsernameTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid
+                Grid.Row="1">
+                        <ListView 
+                    AutomationId="menu"
+                    ItemsSource="{Binding MenuItems}" 
+                    CachingStrategy="RecycleElement"
+                    SeparatorVisibility="None"
+                    HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <templates1:MenuItemTemplate />
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.Behaviors>
+                                <b:EventToCommandBehavior EventName="ItemTapped" 
+                                                      Command="{Binding MenuItemSelectedCommand}" />
+                            </ListView.Behaviors>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </ContentPage.Content>
+        </ContentPage>
+
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <pages:HomePage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+
+</MasterDetailPage>

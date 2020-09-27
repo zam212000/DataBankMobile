@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+BgNgs7Xwocor+4vugv0QbtlJWILEETOzGbRfwddZQ+Umb1cuRg9qYOROA2jbc/7EvbWhOcQgsmjzNHSoDCTng==",
+  "dgSpecHash": "NBeqP+PiadgIa4MYXrzoAPbZwSFoZQu4DC9XIyg2hbv6VcpyrqXHmz/2rFffrGdOK+rNhNKJE6W6JMFm4B7Sww==",
   "success": true,
   "projectFilePath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kwazi\\.nuget\\packages\\acr.userdialogs\\7.1.0.454\\acr.userdialogs.7.1.0.454.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\dryioc.dll\\4.0.7\\dryioc.dll.4.0.7.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
@@ -29,6 +30,8 @@
     "C:\\Users\\Kwazi\\.nuget\\packages\\xam.plugins.settings\\3.1.1\\xam.plugins.settings.3.1.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.essentials.interfaces\\1.5.3.2\\xamarin.essentials.interfaces.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.forms\\4.7.0.1239\\xamarin.forms.4.7.0.1239.nupkg.sha512"
   ],
   "logs": []

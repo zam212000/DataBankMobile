@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Prism;
@@ -21,6 +22,7 @@ namespace MyBodyTemperature.Droid
            // Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            UserDialogs.Init(this);
 
             formsApp = new App(new AndroidInitializer());
             LoadApplication(new App(new AndroidInitializer()));

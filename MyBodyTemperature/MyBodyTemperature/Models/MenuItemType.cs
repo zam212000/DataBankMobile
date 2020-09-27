@@ -3,8 +3,8 @@
     public enum MenuItemType
     {
         Home,
-        BookVehicle,
-        MyBookings,
+        OurVisitors,
+        OurEmployees,
         Suggestions,
         Concierge,
         Logout

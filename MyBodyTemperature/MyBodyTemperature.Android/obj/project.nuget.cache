@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ga29/6kxAER3U8ETK27WUZ3QQNFryXMLf4Wwxf9QHrd7VmdIIHm4H2vw1kEK2gOMYTIYlkG7eD+dAT1FS3/QzQ==",
+  "dgSpecHash": "FJ8hEMxPAfKWYui7LfXF6CvRYsokSt7VWEGESEJqgY55ZhwhGYP3Lw5MX9Z4RvQq9e6oPk21iAlpvGWoNvs6LA==",
   "success": true,
   "projectFilePath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kwazi\\.nuget\\packages\\acr.userdialogs\\7.1.0.454\\acr.userdialogs.7.1.0.454.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\andhud\\1.4.2\\andhud.1.4.2.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\dryioc.dll\\4.0.7\\dryioc.dll.4.0.7.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\prism.core\\7.2.0.1422\\prism.core.7.2.0.1422.nupkg.sha512",
@@ -58,6 +60,8 @@
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.androidx.viewpager\\1.0.0.1\\xamarin.androidx.viewpager.1.0.0.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.essentials.interfaces\\1.5.3.2\\xamarin.essentials.interfaces.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.forms\\4.7.0.1239\\xamarin.forms.4.7.0.1239.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.google.android.material\\1.0.0.1\\xamarin.google.android.material.1.0.0.1.nupkg.sha512"
   ],
