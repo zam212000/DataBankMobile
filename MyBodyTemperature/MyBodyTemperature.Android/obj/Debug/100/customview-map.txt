@@ -33,8 +33,6 @@ external-path;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\
 foreground;obj\Debug\100\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\100\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\layout\bottomtablayout.xml
-FrameLayout;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\49\jl\res\layout\zxingscanneractivitylayout.xml
-FrameLayout;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\49\jl\res\layout\zxingscannerfragmentlayout.xml
 item;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\values\styles.xml
 item;obj\Debug\100\res\drawable\splash_screen.xml
 item;obj\Debug\100\res\values\styles.xml
@@ -43,7 +41,6 @@ LinearLayout;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\D
 paths;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\44\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\values\attrs.xml
 resources;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\values\styles.xml
-resources;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\48\jl\res\values\strings.xml
 resources;obj\Debug\100\res\values\colors.xml
 resources;obj\Debug\100\res\values\strings.xml
 resources;obj\Debug\100\res\values\styles.xml
@@ -51,7 +48,6 @@ set;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\
 set;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\anim\enterfromright.xml
 set;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\anim\exittoleft.xml
 set;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\anim\exittoright.xml
-string;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\48\jl\res\values\strings.xml
 string;obj\Debug\100\res\values\strings.xml
 style;C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\45\jl\res\values\styles.xml
 style;obj\Debug\100\res\values\styles.xml

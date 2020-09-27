@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="MyBodyTemperature.Views.LogInPage">
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="{Binding Title}" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20" Margin="0, 0, 20, 0" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="0,25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Image HorizontalOptions="CenterAndExpand">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <On Platform="iOS, Android" Value="covidIcon.png" />
+                    </OnPlatform>
+                </Image.Source>
+            </Image>
+
+            <StackLayout Margin="-25,-25,0,0"  HorizontalOptions="CenterAndExpand">
+                <Label TextColor="#242E5B" FontSize="12" Text="Covid-19 Management in your palms" LineBreakMode="WordWrap"/>
+            </StackLayout>
+
+
+            <StackLayout Margin="40,20,40,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <Entry x:Name="username"  Text="{Binding UserName}" Placeholder="Username" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,0,5">
+                </Entry>
+
+                <Entry x:Name="password" Text="{Binding Password}" Placeholder="password" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" IsPassword="True" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,10" >
+                </Entry>
+
+                <Button Text="LOGIN" Command="{Binding LogInCommand}" BackgroundColor="#242E5B"  HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="#ffffff">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference username},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                <BindingCondition Binding="{Binding Source={x:Reference password},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextColor"  Value="#000000" />
+                            <Setter Property="IsEnabled" Value="True" />
+
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="16" FontAttributes="Bold" Text="Signup" Margin="0,30,0,5" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+
+                <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="16" FontAttributes="Bold" Text="Forgot Password?" Margin="0,5,0,5" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

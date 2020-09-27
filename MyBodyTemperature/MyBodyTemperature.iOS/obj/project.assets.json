@@ -14,6 +14,15 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1422": {
         "type": "package",
         "compile": {
@@ -100,6 +109,17 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugins.Settings/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
         }
       },
       "Xamarin.Essentials/1.5.3.2": {
@@ -248,45 +268,17 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "ZXing.Net.Mobile/2.4.1": {
-        "type": "package",
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        }
-      },
-      "ZXing.Net.Mobile.Forms/2.4.1": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "2.5.0.122203",
-          "ZXing.Net.Mobile": "2.4.1"
-        },
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        }
-      },
       "MyBodyTemperature/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
           "Prism.DryIoc.Forms": "7.2.0.1422",
           "Rg.Plugins.Popup": "2.0.0.5",
           "System.Reactive": "4.4.1",
+          "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials.Interfaces": "1.5.3.2",
-          "Xamarin.Forms": "4.7.0.1239",
-          "ZXing.Net.Mobile": "2.4.1",
-          "ZXing.Net.Mobile.Forms": "2.4.1"
+          "Xamarin.Forms": "4.7.0.1239"
         },
         "compile": {
           "bin/placeholder/MyBodyTemperature.dll": {}
@@ -309,6 +301,15 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1422": {
         "type": "package",
         "compile": {
@@ -395,6 +396,17 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugins.Settings/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
         }
       },
       "Xamarin.Essentials/1.5.3.2": {
@@ -543,45 +555,17 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "ZXing.Net.Mobile/2.4.1": {
-        "type": "package",
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        }
-      },
-      "ZXing.Net.Mobile.Forms/2.4.1": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "2.5.0.122203",
-          "ZXing.Net.Mobile": "2.4.1"
-        },
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        }
-      },
       "MyBodyTemperature/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
           "Prism.DryIoc.Forms": "7.2.0.1422",
           "Rg.Plugins.Popup": "2.0.0.5",
           "System.Reactive": "4.4.1",
+          "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials.Interfaces": "1.5.3.2",
-          "Xamarin.Forms": "4.7.0.1239",
-          "ZXing.Net.Mobile": "2.4.1",
-          "ZXing.Net.Mobile.Forms": "2.4.1"
+          "Xamarin.Forms": "4.7.0.1239"
         },
         "compile": {
           "bin/placeholder/MyBodyTemperature.dll": {}
@@ -604,6 +588,15 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1422": {
         "type": "package",
         "compile": {
@@ -690,6 +683,17 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugins.Settings/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
         }
       },
       "Xamarin.Essentials/1.5.3.2": {
@@ -838,45 +842,17 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "ZXing.Net.Mobile/2.4.1": {
-        "type": "package",
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        }
-      },
-      "ZXing.Net.Mobile.Forms/2.4.1": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "2.5.0.122203",
-          "ZXing.Net.Mobile": "2.4.1"
-        },
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        }
-      },
       "MyBodyTemperature/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
           "Prism.DryIoc.Forms": "7.2.0.1422",
           "Rg.Plugins.Popup": "2.0.0.5",
           "System.Reactive": "4.4.1",
+          "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials.Interfaces": "1.5.3.2",
-          "Xamarin.Forms": "4.7.0.1239",
-          "ZXing.Net.Mobile": "2.4.1",
-          "ZXing.Net.Mobile.Forms": "2.4.1"
+          "Xamarin.Forms": "4.7.0.1239"
         },
         "compile": {
           "bin/placeholder/MyBodyTemperature.dll": {}
@@ -899,6 +875,15 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1422": {
         "type": "package",
         "compile": {
@@ -985,6 +970,17 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugins.Settings/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll": {},
+          "lib/Xamarin.iOS10/Plugin.Settings.dll": {}
         }
       },
       "Xamarin.Essentials/1.5.3.2": {
@@ -1133,45 +1129,17 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "ZXing.Net.Mobile/2.4.1": {
-        "type": "package",
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll": {},
-          "lib/Xamarin.iOS10/ZXingNetMobile.dll": {},
-          "lib/Xamarin.iOS10/zxing.portable.dll": {}
-        }
-      },
-      "ZXing.Net.Mobile.Forms/2.4.1": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "2.5.0.122203",
-          "ZXing.Net.Mobile": "2.4.1"
-        },
-        "compile": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll": {},
-          "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll": {}
-        }
-      },
       "MyBodyTemperature/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
           "Prism.DryIoc.Forms": "7.2.0.1422",
           "Rg.Plugins.Popup": "2.0.0.5",
           "System.Reactive": "4.4.1",
+          "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials.Interfaces": "1.5.3.2",
-          "Xamarin.Forms": "4.7.0.1239",
-          "ZXing.Net.Mobile": "2.4.1",
-          "ZXing.Net.Mobile.Forms": "2.4.1"
+          "Xamarin.Forms": "4.7.0.1239"
         },
         "compile": {
           "bin/placeholder/MyBodyTemperature.dll": {}
@@ -1210,6 +1178,37 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/DryIoc.xml",
         "lib/portable-net45+win8+wp8+wpa81/DryIoc.dll",
         "lib/portable-net45+win8+wp8+wpa81/DryIoc.xml"
+      ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "Prism.Core/7.2.0.1422": {
@@ -1482,6 +1481,76 @@
         "system.threading.tasks.extensions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Xam.Plugins.Settings/3.1.1": {
+      "sha512": "EQEYQJ64ZLqui5GWkLMavgqitHxwUHZHryTzUD1021UBuz1XwDSjPL45W0K4pPXjz9oKbg7YpRXKPR1luPr/5Q==",
+      "type": "package",
+      "path": "xam.plugins.settings/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/MonoAndroid10/Helpers/Settings.cs.pp",
+        "content/UAP10/Helpers/Settings.cs.pp",
+        "content/Xamarin.Mac20/Helpers/Settings.cs.pp",
+        "content/Xamarin.iOS10/Helpers/Settings.cs.pp",
+        "content/net45/Helpers/Settings.cs.pp",
+        "content/netstandard1.0/Helpers/Settings.cs.pp",
+        "content/xamarintvOS/Helpers/Settings.cs.pp",
+        "content/xamarinwatchOS/Helpers/Settings.cs.pp",
+        "lib/MonoAndroid10/Plugin.Settings.Abstractions.dll",
+        "lib/MonoAndroid10/Plugin.Settings.Abstractions.dll.mdb",
+        "lib/MonoAndroid10/Plugin.Settings.Abstractions.pdb",
+        "lib/MonoAndroid10/Plugin.Settings.Abstractions.xml",
+        "lib/MonoAndroid10/Plugin.Settings.dll",
+        "lib/MonoAndroid10/Plugin.Settings.dll.mdb",
+        "lib/MonoAndroid10/Plugin.Settings.pdb",
+        "lib/MonoAndroid10/Plugin.Settings.xml",
+        "lib/UAP10/Plugin.Settings.Abstractions.dll",
+        "lib/UAP10/Plugin.Settings.Abstractions.pdb",
+        "lib/UAP10/Plugin.Settings.Abstractions.xml",
+        "lib/UAP10/Plugin.Settings.XML",
+        "lib/UAP10/Plugin.Settings.dll",
+        "lib/UAP10/Plugin.Settings.pdb",
+        "lib/UAP10/Plugin.Settings.pri",
+        "lib/Xamarin.Mac20/Plugin.Settings.Abstractions.dll",
+        "lib/Xamarin.Mac20/Plugin.Settings.Abstractions.pdb",
+        "lib/Xamarin.Mac20/Plugin.Settings.Abstractions.xml",
+        "lib/Xamarin.Mac20/Plugin.Settings.XML",
+        "lib/Xamarin.Mac20/Plugin.Settings.dll",
+        "lib/Xamarin.Mac20/Plugin.Settings.pdb",
+        "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.dll",
+        "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.pdb",
+        "lib/Xamarin.iOS10/Plugin.Settings.Abstractions.xml",
+        "lib/Xamarin.iOS10/Plugin.Settings.dll",
+        "lib/Xamarin.iOS10/Plugin.Settings.xml",
+        "lib/net45/Plugin.Settings.Abstractions.dll",
+        "lib/net45/Plugin.Settings.Abstractions.pdb",
+        "lib/net45/Plugin.Settings.Abstractions.xml",
+        "lib/net45/Plugin.Settings.XML",
+        "lib/net45/Plugin.Settings.dll",
+        "lib/net45/Plugin.Settings.pdb",
+        "lib/netstandard1.0/Plugin.Settings.Abstractions.dll",
+        "lib/netstandard1.0/Plugin.Settings.Abstractions.pdb",
+        "lib/netstandard1.0/Plugin.Settings.Abstractions.xml",
+        "lib/netstandard1.0/Plugin.Settings.deps.json",
+        "lib/netstandard1.0/Plugin.Settings.dll",
+        "lib/netstandard1.0/Plugin.Settings.xml",
+        "lib/xamarintvOS/Plugin.Settings.Abstractions.dll",
+        "lib/xamarintvOS/Plugin.Settings.Abstractions.pdb",
+        "lib/xamarintvOS/Plugin.Settings.Abstractions.xml",
+        "lib/xamarintvOS/Plugin.Settings.dll",
+        "lib/xamarintvOS/Plugin.Settings.pdb",
+        "lib/xamarintvOS/Plugin.Settings.xml",
+        "lib/xamarinwatchOS/Plugin.Settings.Abstractions.dll",
+        "lib/xamarinwatchOS/Plugin.Settings.Abstractions.pdb",
+        "lib/xamarinwatchOS/Plugin.Settings.Abstractions.xml",
+        "lib/xamarinwatchOS/Plugin.Settings.dll",
+        "lib/xamarinwatchOS/Plugin.Settings.pdb",
+        "lib/xamarinwatchOS/Plugin.Settings.xml",
+        "readme.txt",
+        "xam.plugins.settings.3.1.1.nupkg.sha512",
+        "xam.plugins.settings.nuspec"
       ]
     },
     "Xamarin.Essentials/1.5.3.2": {
@@ -1858,50 +1927,6 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "ZXing.Net.Mobile/2.4.1": {
-      "sha512": "iCL2WcqOyUnC1iFFdzXijk0EXfoLMDqW88MyhoTZigSyhJZM2C5hKgSZVyfx9E35tgkde/IZwHkk8cVDnbQlYg==",
-      "type": "package",
-      "path": "zxing.net.mobile/2.4.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MonoAndroid71/ZXing.Net.Mobile.Core.dll",
-        "lib/MonoAndroid71/ZXingNetMobile.dll",
-        "lib/MonoAndroid71/zxing.portable.dll",
-        "lib/UAP10/ZXing.Net.Mobile.Core.dll",
-        "lib/UAP10/ZXingNetMobile.dll",
-        "lib/UAP10/ZXingNetMobile.pri",
-        "lib/UAP10/ZXingNetMobile/ZXingNetMobile.xr.xml",
-        "lib/UAP10/zxing.portable.dll",
-        "lib/Xamarin.iOS10/ZXing.Net.Mobile.Core.dll",
-        "lib/Xamarin.iOS10/ZXingNetMobile.dll",
-        "lib/Xamarin.iOS10/zxing.portable.dll",
-        "lib/netstandard1.0/ZXing.Net.Mobile.Core.dll",
-        "lib/netstandard1.0/ZXingNetMobile.dll",
-        "lib/netstandard1.0/zxing.portable.dll",
-        "zxing.net.mobile.2.4.1.nupkg.sha512",
-        "zxing.net.mobile.nuspec"
-      ]
-    },
-    "ZXing.Net.Mobile.Forms/2.4.1": {
-      "sha512": "7z+MfL8TbfE36s1GGvrnlkhLUOV5dgdn1gYhUb3GU2W6YXzpfF39k6EqkmFsyNm1O07evTaKFgh7UTOqcWub3g==",
-      "type": "package",
-      "path": "zxing.net.mobile.forms/2.4.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MonoAndroid71/ZXing.Net.Mobile.Forms.Android.dll",
-        "lib/MonoAndroid71/ZXing.Net.Mobile.Forms.dll",
-        "lib/UAP10/ZXing.Net.Mobile.Forms.WindowsUniversal.dll",
-        "lib/UAP10/ZXing.Net.Mobile.Forms.WindowsUniversal.pri",
-        "lib/UAP10/ZXing.Net.Mobile.Forms.dll",
-        "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.dll",
-        "lib/Xamarin.iOS10/ZXing.Net.Mobile.Forms.iOS.dll",
-        "lib/netstandard1.0/ZXing.Net.Mobile.Forms.dll",
-        "zxing.net.mobile.forms.2.4.1.nupkg.sha512",
-        "zxing.net.mobile.forms.nuspec"
-      ]
-    },
     "MyBodyTemperature/1.0.0": {
       "type": "project",
       "path": "../MyBodyTemperature/MyBodyTemperature.csproj",
@@ -1911,13 +1936,13 @@
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
       "MyBodyTemperature >= 1.0.0",
+      "Newtonsoft.Json >= 12.0.3",
       "Prism.DryIoc.Forms >= 7.2.0.1422",
       "Rg.Plugins.Popup >= 2.0.0.5",
       "System.Reactive >= 4.4.1",
+      "Xam.Plugins.Settings >= 3.1.1",
       "Xamarin.Essentials.Interfaces >= 1.5.3.2",
-      "Xamarin.Forms >= 4.7.0.1239",
-      "ZXing.Net.Mobile >= 2.4.1",
-      "ZXing.Net.Mobile.Forms >= 2.4.1"
+      "Xamarin.Forms >= 4.7.0.1239"
     ]
   },
   "packageFolders": {
@@ -1962,6 +1987,10 @@
     "frameworks": {
       "xamarinios10": {
         "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          },
           "Prism.DryIoc.Forms": {
             "target": "Package",
             "version": "[7.2.0.1422, )"
@@ -1974,6 +2003,10 @@
             "target": "Package",
             "version": "[4.4.1, )"
           },
+          "Xam.Plugins.Settings": {
+            "target": "Package",
+            "version": "[3.1.1, )"
+          },
           "Xamarin.Essentials.Interfaces": {
             "target": "Package",
             "version": "[1.5.3.2, )"
@@ -1981,14 +2014,6 @@
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[4.7.0.1239, )"
-          },
-          "ZXing.Net.Mobile": {
-            "target": "Package",
-            "version": "[2.4.1, )"
-          },
-          "ZXing.Net.Mobile.Forms": {
-            "target": "Package",
-            "version": "[2.4.1, )"
           }
         }
       }

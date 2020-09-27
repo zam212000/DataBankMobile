@@ -1,5 +1,5 @@
-FastAndroidCamera
 FormsViewGroup
+Plugin.Settings
 Prism.Forms
 Rg.Plugins.Popup
 Xamarin.AndroidX.Activity
@@ -46,8 +46,6 @@ Xamarin.Essentials
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Google.Android.Material
-ZXing.Net.Mobile.Forms.Android
-ZXingNetMobile
 androidx.versionedparcelable.versionedparcelable
 androidx.lifecycle.lifecycle-runtime
 androidx.core.core

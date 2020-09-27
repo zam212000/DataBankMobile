@@ -21,7 +21,6 @@ namespace MyBodyTemperature.Droid
            // Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             formsApp = new App(new AndroidInitializer());
             LoadApplication(new App(new AndroidInitializer()));
@@ -30,16 +29,9 @@ namespace MyBodyTemperature.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        //[Java.Interop.Export("UITestBackdoorScan")]
-        //public Java.Lang.String UITestBackdoorScan(string param)
-        //{
-        //    formsApp.UITestBackdoorScan(param);
-        //    return new Java.Lang.String();
-        //}
     }
 
     public class AndroidInitializer : IPlatformInitializer
