@@ -613,3 +613,11 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\ic_logout.png
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\ic_fitness_centre.png
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\illustratrion_bot.png
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\SQLite-net.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\SQLitePCLRaw.batteries_v2.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\SQLitePCLRaw.core.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\SQLitePCLRaw.lib.e_sqlite3.android.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\System.Buffers.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\System.Memory.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\System.Runtime.CompilerServices.Unsafe.dll

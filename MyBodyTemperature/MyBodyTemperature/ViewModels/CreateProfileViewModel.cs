@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using MyBodyTemperature.Models;
+using MyBodyTemperature.Services;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -8,8 +10,10 @@ namespace MyBodyTemperature.ViewModels
 {
     public class CreateProfileViewModel : BaseViewModel
     {
-        public CreateProfileViewModel(INavigationService navigationService) : base(navigationService)
+        private readonly IDbService _dbService;
+        public CreateProfileViewModel(INavigationService navigationService, IDbService dbService) : base(navigationService)
         {
+            _dbService = dbService;
             NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
         }
 
@@ -59,7 +63,14 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
-                await NavigationService.NavigateAsync("CreateProfilePasswordPage");
+                var userProfile = new UserProfile();
+                userProfile.EmailAddress = EmailAddress;
+                userProfile.PhoneNumber = CellPhoneNumber;
+                userProfile.Surname = LastName;
+                userProfile.FirstNames = FirstName;
+                var result=  await _dbService.InsertItemAsync(userProfile);
+
+               // await NavigationService.NavigateAsync("CreateProfilePasswordPage");
             }
             catch (Exception e)
             {
@@ -68,7 +79,7 @@ namespace MyBodyTemperature.ViewModels
 
             finally
             {
-               // IsBusy = false;
+                // IsBusy = false;
             }
 
         }

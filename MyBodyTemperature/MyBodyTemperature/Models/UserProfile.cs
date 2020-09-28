@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,8 @@ namespace MyBodyTemperature.Models
 {
     public class UserProfile
     {
+        [PrimaryKey]
+        [AutoIncrement]
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string FirstNames { get; set; }

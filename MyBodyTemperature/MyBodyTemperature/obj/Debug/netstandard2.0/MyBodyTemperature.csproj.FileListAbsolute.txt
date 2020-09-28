@@ -6,12 +6,14 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\V
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.AssemblyInfoInputs.cache
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.AssemblyInfo.cs
-C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.csproj.CoreCompileInputs.cache
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\Views\Templates\MenuItemTemplate.xaml.g.cs
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.dll
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.pdb
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\bin\Debug\netstandard2.0\MyBodyTemperature.deps.json
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\bin\Debug\netstandard2.0\MyBodyTemperature.dll
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\bin\Debug\netstandard2.0\MyBodyTemperature.pdb
-C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\XamlC.stamp
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.csprojAssemblyReference.cache
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\Views\MaintainPersonnel.xaml.g.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\Views\PersonnelList.xaml.g.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\MyBodyTemperature.csproj.CoreCompileInputs.cache
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.0\XamlC.stamp

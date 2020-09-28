@@ -51,15 +51,15 @@ namespace MyBodyTemperature.ViewModels
                 Title = "Our Visitors",
                 MenuItemType = MenuItemType.OurVisitors,
                 //PageName = nameof(BookingPage),
-                IsEnabled = true
+                IsEnabled = false
             });
 
             MenuItems.Add(new MenuItem
             {
                 Title = "Our Employees",
                 MenuItemType = MenuItemType.OurEmployees,
-                IsEnabled = false
-                //PageName = nameof(MyBookingsPage),
+                IsEnabled = true,
+                PageName = "PersonnelList",
                 // IsEnabled = AppSettings.HasBooking
             });
 
@@ -67,7 +67,7 @@ namespace MyBodyTemperature.ViewModels
             {
                 Title = "Suggestions",
                 MenuItemType = MenuItemType.Suggestions,
-                //PageName = nameof(SuggestionsPage),
+                PageName = "CreateProfilePage",
                 //  ViewModelType = typeof(SuggestionsViewModel),
                 IsEnabled = true
             });
@@ -76,7 +76,7 @@ namespace MyBodyTemperature.ViewModels
             {
                 Title = "Logout",
                 MenuItemType = MenuItemType.Logout,
-                // PageName = nameof(LogInPage),
+                PageName = "LogInPage",
                 IsEnabled = true,
                 AfterNavigationAction = RemoveUserCredentials
             });
@@ -84,11 +84,11 @@ namespace MyBodyTemperature.ViewModels
 
         private async void OnSelectMenuItem(MenuItem item)
         {
-            //if (item.IsEnabled && item.ViewModelType != null)
+            //if (item.IsEnabled)
             //{
             //    item.AfterNavigationAction?.Invoke();
-            //    await NavigationService.NavigateToAsync(item.ViewModelType, item);
-            //}
+            await NavigationService.NavigateAsync("PersonnelList");
+            //  }
         }
 
 

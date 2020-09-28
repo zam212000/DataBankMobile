@@ -7,6 +7,7 @@ namespace MyBodyTemperature.Models
     public class MenuItem : BindableObject
     {
         string title;
+        string pageName;
         MenuItemType menuItemType;
         Type viewModelType;
         bool isEnabled;
@@ -18,6 +19,17 @@ namespace MyBodyTemperature.Models
             set
             {
                 title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string PageName
+        {
+            get => pageName;
+
+            set
+            {
+                pageName = value;
                 OnPropertyChanged();
             }
         }

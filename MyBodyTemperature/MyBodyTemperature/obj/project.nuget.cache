@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NBeqP+PiadgIa4MYXrzoAPbZwSFoZQu4DC9XIyg2hbv6VcpyrqXHmz/2rFffrGdOK+rNhNKJE6W6JMFm4B7Sww==",
+  "dgSpecHash": "0INspIGIP2j7E77ddik5H9+jwlJlC6Rq0QihTy4R1SLFjvdiXkBXf5Aw/OJxr0vgOlTRjzl4XH3df7iWRWb0pw==",
   "success": true,
   "projectFilePath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj",
   "expectedPackageFiles": [
@@ -14,7 +14,14 @@
     "C:\\Users\\Kwazi\\.nuget\\packages\\prism.dryioc.forms\\7.2.0.1422\\prism.dryioc.forms.7.2.0.1422.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\prism.forms\\7.2.0.1422\\prism.forms.7.2.0.1422.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\rg.plugins.popup\\2.0.0.5\\rg.plugins.popup.2.0.0.5.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.3\\sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.3\\sqlitepclraw.lib.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.3\\sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.reactive\\4.4.1\\system.reactive.4.4.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
