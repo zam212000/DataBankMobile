@@ -3,7 +3,7 @@
 	.section	.rodata.env.str.1,"aMS",@progbits,1
 	.type	.L.env.str.1, @object
 .L.env.str.1:
-	.asciz	"com.runnersProject.appname"
+	.asciz	"com.ngenaaccess.controlapp"
 	.size	.L.env.str.1, 27
 	.section	.data.application_config,"aw",@progbits
 	.type	application_config, @object
@@ -73,7 +73,7 @@ mono_aot_mode_name:
 	.section	.rodata.env.str.8,"aMS",@progbits,1
 	.type	.L.env.str.8, @object
 .L.env.str.8:
-	.asciz	"6b1d90c7-95cb-477b-b82c-ee6b8f25c96b"
+	.asciz	"9dab3bbf-1abd-4543-afeb-30e54542e042"
 	.size	.L.env.str.8, 37
 	.section	.rodata.env.str.9,"aMS",@progbits,1
 	.type	.L.env.str.9, @object

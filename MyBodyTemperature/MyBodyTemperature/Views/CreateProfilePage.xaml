@@ -1,34 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
              BackgroundColor="White"
              Title="Add Personnel"
              x:Class="MyBodyTemperature.Views.CreateProfilePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-
+        
+       
         <StackLayout Margin="0,25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-            <Image HorizontalOptions="CenterAndExpand">
+            <!--<Image HorizontalOptions="CenterAndExpand">
                 <Image.Source>
                     <OnPlatform x:TypeArguments="ImageSource">
                         <On Platform="iOS, Android" Value="illustratrion_bot.png" />
                     </OnPlatform>
                 </Image.Source>
-            </Image>
+            </Image>-->
 
 
             <StackLayout Margin="40,10,40,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <Entry x:Name="emailaddress"  Text="{Binding EmailAddress}" Placeholder="Email address" HorizontalTextAlignment="Center" Keyboard="Email" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,0,5">
+                <Entry x:Name="firstname"  Text="{Binding FirstName}" Placeholder="Name" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                 </Entry>
-                <Entry x:Name="firstname"  Text="{Binding FirstName}" Placeholder="First Name" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
-                </Entry>
-                <Entry x:Name="lastname"  Text="{Binding LastName}" Placeholder="Last Name" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
-                </Entry>
+
                 <Entry x:Name="cellphonenumber"  Text="{Binding CellPhoneNumber}" Placeholder="Cellphone Number" Keyboard="Numeric" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                 </Entry>
 
-                <Button Text="Save" Command="{Binding NextProfileCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                </Entry>
+
+                <Button Text="TAKE A PHOTO" Command="{Binding TakePhotoCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="0,0,0,20" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference firstname},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                <BindingCondition Binding="{Binding Source={x:Reference cellphonenumber},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                <BindingCondition Binding="{Binding Source={x:Reference temperature},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextColor"  Value="White" />
+                            <Setter Property="IsEnabled" Value="True" />
+
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button Text="SAVE USER" Command="{Binding NextProfileCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="20,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference firstname},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                <BindingCondition Binding="{Binding Source={x:Reference cellphonenumber},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                <BindingCondition Binding="{Binding Source={x:Reference temperature},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextColor"  Value="White" />
+                            <Setter Property="IsEnabled" Value="True" />
+
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="CANCEL"  BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
                 </Button>
 
             </StackLayout>

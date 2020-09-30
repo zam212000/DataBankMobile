@@ -5,6 +5,7 @@ using Android.OS;
 using Prism;
 using Prism.Ioc;
 
+
 namespace MyBodyTemperature.Droid
 {
     [Activity(Theme = "@style/MainTheme",

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "hDm6okr36xsqddH406deQcd9FnTFnGP1Xi2EhiC45zdfU9v2xRn0g0R8XQQ6687azp1OqnAqOK0UKNLpJ/MmXA==",
+  "dgSpecHash": "wELkRGVi4jsiroggBuB1M6z5Rqjtdhx4PH7fGXzsOk4CxVQ+KbXrN2riH5BD182msViKk/+zXP2a0nD0Bn8UCA==",
   "success": true,
   "projectFilePath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kwazi\\.nuget\\packages\\acr.userdialogs\\7.1.0.454\\acr.userdialogs.7.1.0.454.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\andhud\\1.4.2\\andhud.1.4.2.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\asyncawaitbestpractices\\4.3.0\\asyncawaitbestpractices.4.3.0.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\asyncawaitbestpractices.mvvm\\4.3.0\\asyncawaitbestpractices.mvvm.4.3.0.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\dryioc.dll\\4.0.7\\dryioc.dll.4.0.7.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\prism.core\\7.2.0.1422\\prism.core.7.2.0.1422.nupkg.sha512",
@@ -24,6 +26,7 @@
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xam.plugin.media\\5.0.1\\xam.plugin.media.5.0.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xam.plugins.settings\\3.1.1\\xam.plugins.settings.3.1.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.androidx.activity\\1.0.0.1\\xamarin.androidx.activity.1.0.0.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.androidx.annotation\\1.1.0.1\\xamarin.androidx.annotation.1.1.0.1.nupkg.sha512",

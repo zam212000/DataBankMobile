@@ -1,7 +1,9 @@
-﻿using MyBodyTemperature.Models;
+﻿using Acr.UserDialogs;
+using MyBodyTemperature.Models;
 using MyBodyTemperature.Services;
 using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,23 +13,18 @@ namespace MyBodyTemperature.ViewModels
     public class CreateProfileViewModel : BaseViewModel
     {
         private readonly IDbService _dbService;
-        public CreateProfileViewModel(INavigationService navigationService, IDbService dbService) : base(navigationService)
+        private readonly IPageDialogService _pageDialogService;
+        public CreateProfileViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService) : base(navigationService)
         {
             _dbService = dbService;
+            _pageDialogService = dialogService;
             NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
+            TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted);
         }
 
         public DelegateCommand NextProfileCommand { get; }
+        public DelegateCommand TakePhotoCommand { get; }
 
-        private string _emailAddress = string.Empty;
-        public string EmailAddress
-        {
-            get => _emailAddress;
-            set
-            {
-                SetProperty(ref _emailAddress, value);
-            }
-        }
 
         private string _firstName = string.Empty;
         public string FirstName
@@ -39,13 +36,13 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
-        private string _lastName = string.Empty;
-        public string LastName
+        private string _temperature = string.Empty;
+        public string Temperature
         {
-            get => _lastName;
+            get => _temperature;
             set
             {
-                SetProperty(ref _lastName, value);
+                SetProperty(ref _temperature, value);
             }
         }
 
@@ -59,18 +56,32 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private async void OnPhotoTakenCommandExecuted()
+        {
+            var mediaFile = await MediaService.GetMediaFileFromCamera(FirstName).ConfigureAwait(false);
+
+            if (mediaFile is null)
+            {
+                await _pageDialogService.DisplayAlertAsync("Photo failed", "Failed to take the photo", "Ok");
+            }
+            else
+            {
+               
+            }
+        }
+
         private async void OnNextProfileCommandExecuted()
         {
             try
             {
                 var userProfile = new UserProfile();
-                userProfile.EmailAddress = EmailAddress;
+                // userProfile.EmailAddress = EmailAddress;
                 userProfile.PhoneNumber = CellPhoneNumber;
-                userProfile.Surname = LastName;
+                // userProfile.Surname = LastName;
                 userProfile.FirstNames = FirstName;
-                var result=  await _dbService.InsertItemAsync(userProfile);
+                var result = await _dbService.InsertItemAsync(userProfile);
 
-               // await NavigationService.NavigateAsync("CreateProfilePasswordPage");
+                // await NavigationService.NavigateAsync("CreateProfilePasswordPage");
             }
             catch (Exception e)
             {
