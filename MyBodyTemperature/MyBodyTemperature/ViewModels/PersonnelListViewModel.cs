@@ -5,7 +5,10 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace MyBodyTemperature.ViewModels
 {
@@ -20,6 +23,17 @@ namespace MyBodyTemperature.ViewModels
             ItemAddedCommand = new DelegateCommand(AddNewItem);
             _dbService = dbService;
             //NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
+
+            //ImageSource streamImage = ImageSource.FromStream(() =>
+            //{
+            //    // Before returning you must convert a image to stream
+            //    var stream = file.GetStream();
+            //    file.Dispose();
+            //    return stream;
+            //});
+
+            //// The allocation works but no image is displayed
+            //Image = streamImage;
         }
 
 
@@ -33,6 +47,14 @@ namespace MyBodyTemperature.ViewModels
             {
                 SetProperty(ref _emailAddress, value);
             }
+        }
+
+        private ImageSource _imageProperty;
+
+        public ImageSource ImageProperty
+        {
+            get { return _imageProperty; }
+            set { SetProperty(ref _imageProperty, value); }
         }
 
         private UserProfile _selectedItem;
@@ -71,17 +93,38 @@ namespace MyBodyTemperature.ViewModels
                 if (!Equals(res, null))
                 {
                     UserProfiles = new ObservableCollection<UserProfile>(res);
+                    //var imageContent = UserProfiles.FirstOrDefault().ImageContent;
+
+                    // ImageProperty = ImageSource.FromStream(() => new MemoryStream(imageContent));
+
+                    //var byteContent = BytesToStream(imageContent);
+                    //Image = ImageSource.FromStream(() =>
+                    //    {
+                    //        var result = byteContent;
+                    //        return result;
+                    //    });
+
+                    foreach (var item in UserProfiles)
+                    {
+                        item.ImageProperty = ImageSource.FromStream(() => new MemoryStream(item.ImageContent));
+                    }
                 }
             }
             catch (Exception ex)
             {
-               // await _dialogService.DisplayAlertAsync("Error", ex.Message, "OK");
+                // await _dialogService.DisplayAlertAsync("Error", ex.Message, "OK");
             }
         }
 
         private async void AddNewItem()
         {
             await NavigationService.NavigateAsync("CreateProfilePage");
+        }
+
+        public Stream BytesToStream(byte[] bytes)
+        {
+            Stream stream = new MemoryStream(bytes);
+            return stream;
         }
 
         private ObservableCollection<UserProfile> _userProfiles;

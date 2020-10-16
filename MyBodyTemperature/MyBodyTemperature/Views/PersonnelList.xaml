@@ -21,14 +21,29 @@
         </ListView.Behaviors>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding FirstNames}" Detail="{Binding Surname}"/>
+                <ViewCell>
+                    <StackLayout Padding="10">
+                        <Image Source="{Binding ImageProperty}" VerticalOptions="Fill"></Image>
+                    </StackLayout>
+                </ViewCell>
+                <!--<StackLayout>-->
+                <!--<TextCell Text="{Binding FirstNames}" Detail="{Binding Surname}"/>-->
+                <!--<Image Source="{Binding Path=ImageProperty}" />-->
+                <!--<Image Source="{Binding Image, Mode=TwoWay}"
+                               Aspect="AspectFill" BackgroundColor="Blue" 
+                               HeightRequest="500" WidthRequest="500"/>-->
+                <!--</StackLayout>-->
+            </DataTemplate>
+            
+            <!--<DataTemplate>
+                <TextCell Text="{Binding FirstNames}" Detail="{Binding Surname}"/>-->
                 <!--<ViewCell>
           <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
             <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
             <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
           </StackLayout>
         </ViewCell>-->
-            </DataTemplate>
+            <!--</DataTemplate>-->
         </ListView.ItemTemplate>
     </ListView>
 

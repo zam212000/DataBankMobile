@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace MyBodyTemperature.Models
 {
@@ -17,6 +18,9 @@ namespace MyBodyTemperature.Models
         public bool EmailConfirmed { get; set; }
         public string PhoneNumber { get; set; }
         public string AvatarUrl { get; set; }
+        [Ignore]
+        public ImageSource ImageProperty { get; set; }
+        public byte[] ImageContent { get; set; }
         public bool PhoneNumberConfirmed { get; set; } 
         public string Token { get; set; }
         public string Password { get; set; }

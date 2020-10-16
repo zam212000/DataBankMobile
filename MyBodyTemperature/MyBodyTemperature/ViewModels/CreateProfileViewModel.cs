@@ -6,6 +6,7 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace MyBodyTemperature.ViewModels
@@ -56,6 +57,37 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private string _imageUrl = string.Empty;
+        public string ImageUrl
+        {
+            get => _imageUrl;
+            set
+            {
+                SetProperty(ref _imageUrl, value);
+            }
+        }
+
+        private string _photoName = string.Empty;
+        public string PhotoName
+        {
+            get => _photoName;
+            set
+            {
+                SetProperty(ref _photoName, value);
+            }
+        }
+
+        private byte[] _imageContent;
+        public byte[] ImageContent
+        {
+            get => _imageContent;
+            set
+            {
+                SetProperty(ref _imageContent, value);
+            }
+        }
+
+
         private async void OnPhotoTakenCommandExecuted()
         {
             var mediaFile = await MediaService.GetMediaFileFromCamera(FirstName).ConfigureAwait(false);
@@ -66,7 +98,8 @@ namespace MyBodyTemperature.ViewModels
             }
             else
             {
-               
+                ImageUrl = mediaFile.Path;
+                ImageContent = GetImageBytes(mediaFile.GetStream());
             }
         }
 
@@ -79,6 +112,10 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.PhoneNumber = CellPhoneNumber;
                 // userProfile.Surname = LastName;
                 userProfile.FirstNames = FirstName;
+                userProfile.ImageContent = ImageContent;
+                userProfile.AvatarUrl = ImageUrl;
+  
+
                 var result = await _dbService.InsertItemAsync(userProfile);
 
                 // await NavigationService.NavigateAsync("CreateProfilePasswordPage");
@@ -94,5 +131,23 @@ namespace MyBodyTemperature.ViewModels
             }
 
         }
+
+        private byte[] GetImageBytes(Stream stream)
+        {
+            byte[] ImageBytes;
+            using (var memoryStream = new System.IO.MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                ImageBytes = memoryStream.ToArray();
+            }
+            return ImageBytes;
+        }
+
+        public Stream BytesToStream(byte[] bytes)
+        {
+            Stream stream = new MemoryStream(bytes);
+            return stream;
+        }
+
     }
 }
