@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QAdNdYwt7RGytYWoJYaiOGOgtQWNHIGaLptrAdGJxaxKjamNhYCRhN4jbzyeqwAdvICBU4QuJd/oSqz2GirHEg==",
+  "dgSpecHash": "CJtnDUKiLPeaY+ck0aA8zCwlv8pR1x8tIATobRM3g/WBcdOFMxeNIsnq1DWejDKsIw1ftai8cPrdPoJvn2hd0Q==",
   "success": true,
   "projectFilePath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.iOS\\MyBodyTemperature.iOS.csproj",
   "expectedPackageFiles": [
@@ -27,11 +27,13 @@
     "C:\\Users\\Kwazi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\webp.touch\\1.0.8\\webp.touch.1.0.8.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xam.plugin.media\\5.0.1\\xam.plugin.media.5.0.1.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xam.plugins.forms.imagecircle\\3.0.0.5\\xam.plugins.forms.imagecircle.3.0.0.5.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xam.plugins.settings\\3.1.1\\xam.plugins.settings.3.1.1.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.essentials.interfaces\\1.5.3.2\\xamarin.essentials.interfaces.1.5.3.2.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.ffimageloading.transformations\\2.4.11.982\\xamarin.ffimageloading.transformations.2.4.11.982.nupkg.sha512",
     "C:\\Users\\Kwazi\\.nuget\\packages\\xamarin.forms\\4.7.0.1239\\xamarin.forms.4.7.0.1239.nupkg.sha512"
   ],
   "logs": []

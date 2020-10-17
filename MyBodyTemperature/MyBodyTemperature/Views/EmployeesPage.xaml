@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:b="http://prismlibrary.com" xmlns:template="clr-namespace:MyBodyTemperature.Views.Templates"
+             x:Class="MyBodyTemperature.Views.EmployeesPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Command="{Binding ItemAddedCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, UWP" Value="plus.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10,5,5,0">
+
+            <ListView ItemsSource="{Binding Path=UserProfiles}"
+
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="False"
+                    RowHeight="75"
+                    SelectionMode="None"
+                    SeparatorColor="Gray"
+                    SeparatorVisibility="None">
+
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior Command="{Binding ItemSelectedCommand}" 
+                                    EventName="ItemTapped" EventArgsParameterPath="Item" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <template:PersonnelTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+
+
+
+</ContentPage>

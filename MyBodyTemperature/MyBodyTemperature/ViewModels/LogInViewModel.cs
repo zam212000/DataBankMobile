@@ -62,7 +62,7 @@ namespace MyBodyTemperature.ViewModels
 
                 Settings.User = userProfile;
 
-                await NavigationService.NavigateAsync("/MainPage");
+                await NavigationService.NavigateAsync("/MainTabbedPage");
 
                 //var authUser = await _loginApiDataService.AuthenticateUserAsync(UserName, Password);
                 //if (!authUser)

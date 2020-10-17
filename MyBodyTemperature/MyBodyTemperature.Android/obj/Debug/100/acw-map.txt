@@ -73,6 +73,9 @@ ffimageloading.cross.MvxCachedImageView;ffimageloading.cross.MvxCachedImageView
 FFImageLoading.Cache.LRUCache, FFImageLoading.Platform;crc64b75d9ddab39d6c30.LRUCache
 FFImageLoading.Cache.LRUCache;crc64b75d9ddab39d6c30.LRUCache
 ffimageloading.cache.LRUCache;crc64b75d9ddab39d6c30.LRUCache
+ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer, ImageCircle.Forms.Plugin;crc6436929b8ad3b40f6f.ImageCircleRenderer
+ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer;crc6436929b8ad3b40f6f.ImageCircleRenderer
+imagecircle.forms.plugin.droid.ImageCircleRenderer;crc6436929b8ad3b40f6f.ImageCircleRenderer
 Plugin.Media.MediaPickerActivity, Plugin.Media;crc646957603ea1820544.MediaPickerActivity
 Plugin.Media.MediaPickerActivity;crc646957603ea1820544.MediaPickerActivity
 plugin.media.MediaPickerActivity;crc646957603ea1820544.MediaPickerActivity

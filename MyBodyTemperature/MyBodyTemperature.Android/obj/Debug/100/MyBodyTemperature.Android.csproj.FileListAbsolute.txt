@@ -629,3 +629,7 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\andr
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.controlapp.apks
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\xml\file_paths.xml
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\src\com\ngenaaccess\controlapp\R.java
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\FFImageLoading.Transformations.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\FFImageLoading.Transformations.pdb
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\assets\ImageCircle.Forms.Plugin.dll
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\src\crc6436929b8ad3b40f6f\ImageCircleRenderer.java

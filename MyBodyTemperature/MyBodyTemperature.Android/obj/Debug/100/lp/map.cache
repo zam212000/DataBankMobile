@@ -2,7 +2,9 @@ Acr.UserDialogs
 AndHUD
 FFImageLoading.Forms.Platform
 FFImageLoading.Platform
+FFImageLoading.Transformations
 FormsViewGroup
+ImageCircle.Forms.Plugin
 Plugin.Media
 Plugin.Settings
 Prism.Forms
