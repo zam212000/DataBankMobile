@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
+using Plugin.CurrentActivity;
 using Prism;
 using Prism.Ioc;
 using Rg.Plugins.Popup;
@@ -25,7 +26,8 @@ namespace MyBodyTemperature.Droid
 
             base.OnCreate(savedInstanceState);
 
-           // Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             UserDialogs.Init(this);

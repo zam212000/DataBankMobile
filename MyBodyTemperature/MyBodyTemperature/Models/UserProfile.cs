@@ -8,14 +8,6 @@ namespace MyBodyTemperature.Models
 {
     public class UserProfile
     {
-        public UserProfile()
-        {
-            new CovidMetadata
-            {
-                Temperature = "37c",
-                TemperatureDate = "2020/03/20"
-            };
-        }
         [PrimaryKey]
         [AutoIncrement]
         public int UserId { get; set; }
@@ -25,7 +17,6 @@ namespace MyBodyTemperature.Models
         public string EmailAddress { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PhoneNumber { get; set; }
-
         public string FullName { get; set; } 
         public string AvatarUrl { get; set; }
         [Ignore]
@@ -38,5 +29,7 @@ namespace MyBodyTemperature.Models
         public int VerificationMethod { get; set; } = 1;
         [Ignore]
         public CovidMetadata CovidMetadata { get; set; }
+        public double Temperature { get; set; }
+        public DateTime TemperatureDate { get; set; }
     }
 }

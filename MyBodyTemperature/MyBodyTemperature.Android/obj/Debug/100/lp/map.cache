@@ -5,6 +5,7 @@ FFImageLoading.Platform
 FFImageLoading.Transformations
 FormsViewGroup
 ImageCircle.Forms.Plugin
+Plugin.CurrentActivity
 Plugin.Media
 Plugin.Settings
 Prism.Forms

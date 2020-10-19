@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[12.0.3, )"
             },
+            "Plugin.CurrentActivity": {
+              "target": "Package",
+              "version": "[2.1.0.4, )"
+            },
             "Prism.DryIoc.Forms": {
               "target": "Package",
               "version": "[7.2.0.1422, )"
@@ -77,6 +81,10 @@
             "Xam.Plugins.Settings": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Xamarin.Android.Support.v7.AppCompat": {
+              "target": "Package",
+              "version": "[28.0.0.3, )"
             },
             "Xamarin.Essentials.Interfaces": {
               "target": "Package",

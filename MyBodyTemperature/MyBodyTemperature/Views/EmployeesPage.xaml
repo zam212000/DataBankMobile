@@ -3,15 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:b="http://prismlibrary.com" xmlns:template="clr-namespace:MyBodyTemperature.Views.Templates"
              x:Class="MyBodyTemperature.Views.EmployeesPage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Command="{Binding ItemAddedCommand}">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android, UWP" Value="plus.png" />
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
+    <NavigationPage.TitleView>
+        <Grid RowSpacing="0"  Padding="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Padding="0" Grid.Column="1" 
+                   CornerRadius     ="10"
+                   IsClippedToBounds="true">
+                <Entry Grid.Column="1" Text="{Binding SearchKeyword, Mode=TwoWay}" BackgroundColor="White" FontSize="16" TextColor="#000000" Placeholder="Search..." >
+                    <Entry.Behaviors>
+                        <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding TextChangedCommand}"/>
+                    </Entry.Behaviors>
+                </Entry>
+            </Frame>
+        </Grid>
+    </NavigationPage.TitleView>
 
     <ContentPage.Content>
         <StackLayout Margin="10,5,5,0">
@@ -39,10 +47,5 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
-
-
-
-
 
 </ContentPage>

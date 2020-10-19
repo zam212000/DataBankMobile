@@ -9,10 +9,10 @@ namespace WhatsApp.PopupPages
 	public partial class ChatProfileSelectionPopupView : PopupPage
 	{
         private ChatProfileSelectionPopupViewModel viewModel;
-        public ChatProfileSelectionPopupView (ImageSource imageSource)
+        public ChatProfileSelectionPopupView (ImageSource imageSource, string contact)
 		{
 			InitializeComponent ();
-            BindingContext = viewModel = new ChatProfileSelectionPopupViewModel(imageSource);
+            BindingContext = viewModel = new ChatProfileSelectionPopupViewModel(imageSource, contact);
 		}
  
     }

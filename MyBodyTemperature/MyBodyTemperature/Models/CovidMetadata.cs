@@ -8,5 +8,6 @@ namespace MyBodyTemperature.Models
     {
         public string Temperature { get; set; }
         public string TemperatureDate { get; set; }
+        public string HighFever { get; set; }
     }
 }

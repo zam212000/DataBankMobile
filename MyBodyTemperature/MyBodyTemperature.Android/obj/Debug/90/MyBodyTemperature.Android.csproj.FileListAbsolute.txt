@@ -1,0 +1,10 @@
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\build.props
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\adb.props
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\MyBodyTemperature.Android.csprojAssemblyReference.cache
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\res.flag
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\R.txt
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\R.cs.flag
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\90\MyBodyTemperature.Android.csproj.CoreCompileInputs.cache

@@ -5,10 +5,20 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             android:TabbedPage.BarItemColor="Black"
             android:TabbedPage.BarSelectedItemColor="Red"
-              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
+            Title="Amazon Co."
             x:Class="MyBodyTemperature.Views.MainTabbedPage">
-  <!--Pages can be added as references or inline-->
+
+    <TabbedPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </TabbedPage.Padding>
+    <TabbedPage.ToolbarItems>
+
+        <ToolbarItem  Icon="search.png" />
+        <ToolbarItem Command="{Binding ItemAddedCommand}" Icon="Menu_employee.png">
+        </ToolbarItem>
+    </TabbedPage.ToolbarItems>
+
+
     <NavigationPage Title="Home" IconImageSource="ic_home.png">
         <x:Arguments>
             <local:EmployeesPage />
@@ -36,5 +46,5 @@
             <local:MessagesPage />
         </x:Arguments>
     </NavigationPage>
-    <local:VisitorsPage />
+
 </TabbedPage>

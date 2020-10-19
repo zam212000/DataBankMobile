@@ -23,12 +23,10 @@ namespace MyBodyTemperature.PopupPages
 
 
 
-        public ChatProfileSelectionPopupViewModel(ImageSource source)
+        public ChatProfileSelectionPopupViewModel(ImageSource source, string contact)
         {
             SelectedProfileImage = source;
-            // FileName to contact name; Example: Rita.jpg => Rita
-            var fileName = source.ToString().Remove(0, 6);
-            Contact = fileName.Remove(fileName.Length - 4, 4);
+            Contact = contact;
         }
     }
 }

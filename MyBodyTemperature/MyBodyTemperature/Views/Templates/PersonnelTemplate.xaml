@@ -32,7 +32,7 @@
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal"
                     VerticalOptions="Center">
-                    <Label
+                    <Label x:Name="TxtFullName"
                         Margin="0,0,0,0"
                         FontSize="17"
                         HorizontalOptions="Start"
@@ -51,22 +51,27 @@
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal"
                     VerticalOptions="Center">
-                    <!--<Image
-                        HeightRequest="15"
-                        HorizontalOptions="Start"
-                        IsVisible="{Binding ChatMetaData.MessageIsFromMe}"
-                        Source="tick.png" />-->
                     <Label
                         FontSize="15"
                         HorizontalOptions="Start"
                         Text="{Binding PhoneNumber}"
                         TextColor="Gray"
                         XAlign="Start" />
-                    <Image
-                        HeightRequest="20"
-                        HorizontalOptions="EndAndExpand"
-                        Source="ic_beach.png"
-                        WidthRequest="20" />
+                    <Label
+                        FontSize="15"
+                          HorizontalOptions="EndAndExpand"
+                       Text="{Binding CovidMetadata.Temperature}"
+                        XAlign="Start">
+
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding CovidMetadata.HighFever}" Value="Yes">
+                                <Setter Property="TextColor" Value="#B22222" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Label" Binding="{Binding CovidMetadata.HighFever}" Value="No">
+                                <Setter Property="TextColor" Value="#3CB371" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
                 </StackLayout>
                 <StackLayout
                     Margin="0,0,10,0"

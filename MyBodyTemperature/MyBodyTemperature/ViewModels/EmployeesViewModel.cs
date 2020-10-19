@@ -6,8 +6,12 @@ using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MyBodyTemperature.ViewModels
@@ -16,14 +20,15 @@ namespace MyBodyTemperature.ViewModels
     {
         private readonly IDbService _dbService;
         public DelegateCommand ItemAddedCommand { get; set; }
+        public DelegateCommand TextChangedCommand { get; }
 
         public DelegateCommand<UserProfile> ItemSelectedCommand => new DelegateCommand<UserProfile>(OnItemSelectedCommand);
         public EmployeesViewModel(INavigationService navigationService, IDbService dbService) : base(navigationService)
         {
             ItemAddedCommand = new DelegateCommand(AddNewItem);
+            TextChangedCommand = new DelegateCommand(TextChanged);
             _dbService = dbService;
         }
-
 
         public DelegateCommand NextProfileCommand { get; }
 
@@ -62,6 +67,15 @@ namespace MyBodyTemperature.ViewModels
             get { return _isItemSelected; }
             set { SetProperty(ref _isItemSelected, value); }
         }
+
+        private string _searchKeyword;
+        public string SearchKeyword
+        {
+            get { return _searchKeyword; }
+            set { SetProperty(ref _searchKeyword, value); }
+        }
+
+
         private async void OnItemSelectedCommand(UserProfile senditem)
         {
             var p = new NavigationParameters();
@@ -76,27 +90,72 @@ namespace MyBodyTemperature.ViewModels
             {
                 SelectedItem = null;
 
-                var res = await _dbService.GetItemsAsync();
-
-                if (!Equals(res, null))
-                {
-                    UserProfiles = new ObservableCollection<UserProfile>(res);
-
-                    foreach (var item in UserProfiles)
-                    {
-                        item.FullName = $"{item.FirstNames} {item.Surname}";
-                        item.CovidMetadata = new CovidMetadata
-                        {
-                            Temperature = "37c",
-                            TemperatureDate = "2020/03/20"
-                        };
-                        item.ImageProperty = ImageSource.FromStream(() => new MemoryStream(item.ImageContent));
-                    }
-                }
+                await LoadAllItems();
             }
             catch (Exception ex)
             {
                 // await _dialogService.DisplayAlertAsync("Error", ex.Message, "OK");
+            }
+        }
+
+        private async Task LoadAllItems()
+        {
+            var res = await _dbService.GetItemsAsync();
+
+            if (!Equals(res, null))
+            {
+                UserProfiles = new ObservableCollection<UserProfile>(res);
+
+                foreach (var item in UserProfiles)
+                {
+                    item.FullName = $"{item.FirstNames} {item.Surname}";
+                    string dateString = string.Empty;
+                    if(item.TemperatureDate.Day == DateTime.Now.Day)
+                    {
+                        dateString = "Today";
+                    }
+                    else if(item.TemperatureDate.Day  == DateTime.Now.Day - 1)
+                    {
+                        dateString = "Yesterday";
+                    }
+                    else
+                    {
+                        dateString = item.TemperatureDate.ToString("yyyy/MM/dd");
+                    }
+
+                    item.CovidMetadata = new CovidMetadata
+                    {
+                        HighFever = item.Temperature > 37.5 ? "Yes" : "No",
+                        Temperature =    $"{item.Temperature }°C",
+                        TemperatureDate = dateString
+                    };
+
+                    item.ImageProperty = ImageSource.FromStream(() => new MemoryStream(item.ImageContent));
+                }
+
+                OriginalItems = UserProfiles;
+            }
+        }
+
+        public async void TextChanged()
+        {
+            try
+            {
+                if (SearchKeyword?.Length > 0)
+                {
+
+                    var items = OriginalItems.Where(x => x.FullName.ToLower().Contains(SearchKeyword.ToLower()));
+                    UserProfiles = new ObservableCollection<UserProfile>(items);
+                }
+
+                else if (SearchKeyword?.Length == 0)
+                {
+                    await LoadAllItems();
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -118,7 +177,7 @@ namespace MyBodyTemperature.ViewModels
             set { SetProperty(ref _userProfiles, value); }
         }
 
-        public ObservableCollection<UserProfile> userProfiles;
+        public ObservableCollection<UserProfile> OriginalItems;
 
     }
 }

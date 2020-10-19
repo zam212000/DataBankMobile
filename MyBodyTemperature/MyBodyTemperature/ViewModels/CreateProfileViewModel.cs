@@ -108,17 +108,17 @@ namespace MyBodyTemperature.ViewModels
             try
             {
                 var userProfile = new UserProfile();
-                // userProfile.EmailAddress = EmailAddress;
                 userProfile.PhoneNumber = CellPhoneNumber;
-                // userProfile.Surname = LastName;
                 userProfile.FirstNames = FirstName;
                 userProfile.ImageContent = ImageContent;
                 userProfile.AvatarUrl = ImageUrl;
-  
+                userProfile.Temperature = double.Parse(Temperature);
+                userProfile.TemperatureDate = DateTime.Today.AddDays(-1);
 
                 var result = await _dbService.InsertItemAsync(userProfile);
 
-                // await NavigationService.NavigateAsync("CreateProfilePasswordPage");
+                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
+
             }
             catch (Exception e)
             {

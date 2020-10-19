@@ -22,7 +22,7 @@ namespace MyBodyTemperature.Views.Templates
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var imageSender = (CachedImage)sender;
-            await Navigation.PushPopupAsync(new ChatProfileSelectionPopupView(imageSender.Source));
+            await Navigation.PushPopupAsync(new ChatProfileSelectionPopupView(imageSender.Source, TxtFullName.Text));
 
         }
     }
