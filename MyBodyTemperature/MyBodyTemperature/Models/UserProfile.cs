@@ -17,6 +17,7 @@ namespace MyBodyTemperature.Models
         public string EmailAddress { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PhoneNumber { get; set; }
+        public string IDNumber { get; set; }
         public string FullName { get; set; } 
         public string AvatarUrl { get; set; }
         [Ignore]

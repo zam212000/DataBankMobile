@@ -113,7 +113,8 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.ImageContent = ImageContent;
                 userProfile.AvatarUrl = ImageUrl;
                 userProfile.Temperature = double.Parse(Temperature);
-                userProfile.TemperatureDate = DateTime.Today.AddDays(-1);
+                userProfile.TemperatureDate = DateTime.Now;
+                    //DateTime.Today.AddDays(-1);
 
                 var result = await _dbService.InsertItemAsync(userProfile);
 

@@ -76,12 +76,11 @@ namespace MyBodyTemperature.ViewModels
         }
 
 
-        private async void OnItemSelectedCommand(UserProfile senditem)
+        private async void OnItemSelectedCommand(UserProfile userProfile)
         {
-            var p = new NavigationParameters();
-            p.Add("item", senditem);
-
-            await NavigationService.NavigateAsync("TodoItemPage", p);
+            var param = new NavigationParameters();
+            param.Add("UserProfileParam", userProfile);
+            await NavigationService.NavigateAsync("EmployeeDetailPage", param, true, true);
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)
@@ -110,11 +109,11 @@ namespace MyBodyTemperature.ViewModels
                 {
                     item.FullName = $"{item.FirstNames} {item.Surname}";
                     string dateString = string.Empty;
-                    if(item.TemperatureDate.Day == DateTime.Now.Day)
+                    if (item.TemperatureDate.Day == DateTime.Now.Day)
                     {
                         dateString = "Today";
                     }
-                    else if(item.TemperatureDate.Day  == DateTime.Now.Day - 1)
+                    else if (item.TemperatureDate.Day == DateTime.Now.Day - 1)
                     {
                         dateString = "Yesterday";
                     }
@@ -126,7 +125,7 @@ namespace MyBodyTemperature.ViewModels
                     item.CovidMetadata = new CovidMetadata
                     {
                         HighFever = item.Temperature > 37.5 ? "Yes" : "No",
-                        Temperature =    $"{item.Temperature }°C",
+                        Temperature = $"{item.Temperature }°C",
                         TemperatureDate = dateString
                     };
 
@@ -162,12 +161,6 @@ namespace MyBodyTemperature.ViewModels
         private async void AddNewItem()
         {
             await NavigationService.NavigateAsync("CreateProfilePage");
-        }
-
-        public Stream BytesToStream(byte[] bytes)
-        {
-            Stream stream = new MemoryStream(bytes);
-            return stream;
         }
 
         private ObservableCollection<UserProfile> _userProfiles;

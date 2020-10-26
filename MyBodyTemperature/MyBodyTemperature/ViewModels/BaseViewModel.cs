@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace MyBodyTemperature.ViewModels
@@ -41,6 +42,23 @@ namespace MyBodyTemperature.ViewModels
         public virtual void Destroy()
         {
 
+        }
+
+        public byte[] GetImageBytes(Stream stream)
+        {
+            byte[] ImageBytes;
+            using (var memoryStream = new System.IO.MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                ImageBytes = memoryStream.ToArray();
+            }
+            return ImageBytes;
+        }
+
+        public Stream BytesToStream(byte[] bytes)
+        {
+            Stream stream = new MemoryStream(bytes);
+            return stream;
         }
     }
 }

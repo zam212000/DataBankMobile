@@ -5,11 +5,15 @@ FFImageLoading.Platform
 FFImageLoading.Transformations
 FormsViewGroup
 ImageCircle.Forms.Plugin
+Microcharts.Droid
 Plugin.CurrentActivity
 Plugin.Media
 Plugin.Settings
 Prism.Forms
 Rg.Plugins.Popup
+SkiaSharp
+SkiaSharp.Views.Android
+SkiaSharp.Views.Forms
 SQLitePCLRaw.lib.e_sqlite3.android
 Xamarin.AndroidX.Activity
 Xamarin.AndroidX.Annotation
