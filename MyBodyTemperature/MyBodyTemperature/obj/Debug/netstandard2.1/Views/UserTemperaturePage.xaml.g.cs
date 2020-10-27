@@ -8,32 +8,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MyBodyTemperature.Views.CreateProfilePage.xaml", "Views/CreateProfilePage.xaml", typeof(global::MyBodyTemperature.Views.CreateProfilePage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MyBodyTemperature.Views.UserTemperaturePage.xaml", "Views/UserTemperaturePage.xaml", typeof(global::MyBodyTemperature.Views.UserTemperaturePage))]
 
 namespace MyBodyTemperature.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\CreateProfilePage.xaml")]
-    public partial class CreateProfilePage : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\UserTemperaturePage.xaml")]
+    public partial class UserTemperaturePage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Entry firstname;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry cellphonenumber;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry iDNumber;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Entry temperature;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(CreateProfilePage));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(UserTemperaturePage));
             firstname = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "firstname");
-            cellphonenumber = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "cellphonenumber");
-            iDNumber = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "iDNumber");
             temperature = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "temperature");
         }
     }

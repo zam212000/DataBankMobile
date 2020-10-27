@@ -56,6 +56,17 @@ namespace MyBodyTemperature.ViewModels
                 SetProperty(ref _cellPhoneNumber, value);
             }
         }
+        private string _idNumber = string.Empty;
+        public string IDNumber
+        {
+            get => _idNumber;
+            set
+            {
+                SetProperty(ref _idNumber, value);
+            }
+        }
+
+        
 
         private string _imageUrl = string.Empty;
         public string ImageUrl
@@ -114,9 +125,19 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.AvatarUrl = ImageUrl;
                 userProfile.Temperature = double.Parse(Temperature);
                 userProfile.TemperatureDate = DateTime.Now;
-                    //DateTime.Today.AddDays(-1);
+                userProfile.IDNumber = IDNumber;
 
-                var result = await _dbService.InsertItemAsync(userProfile);
+                var _userId = await _dbService.InsertItemAsync(userProfile);
+                if(_userId > 0)
+                {
+                    var historyTemp = new UserTemperature
+                    {
+                        Temperature = userProfile.Temperature,
+                        TemperatureDate = userProfile.TemperatureDate,
+                        UserId = _userId
+                    };
+                  await _dbService.InsertUserTemperatureAsync(historyTemp);
+                }
 
                 await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
 
@@ -131,23 +152,6 @@ namespace MyBodyTemperature.ViewModels
                 // IsBusy = false;
             }
 
-        }
-
-        private byte[] GetImageBytes(Stream stream)
-        {
-            byte[] ImageBytes;
-            using (var memoryStream = new System.IO.MemoryStream())
-            {
-                stream.CopyTo(memoryStream);
-                ImageBytes = memoryStream.ToArray();
-            }
-            return ImageBytes;
-        }
-
-        public Stream BytesToStream(byte[] bytes)
-        {
-            Stream stream = new MemoryStream(bytes);
-            return stream;
         }
 
     }

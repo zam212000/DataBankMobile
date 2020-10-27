@@ -28,6 +28,8 @@ namespace MyBodyTemperature.Services
                 if (!initialized)
                 {
                     database.CreateTableAsync<Models.UserProfile>().Wait();
+                    database.CreateTableAsync<UserTemperature>().Wait();
+                    
                     initialized = true;
                 }
             }
@@ -42,22 +44,8 @@ namespace MyBodyTemperature.Services
             return database.Table<Models.UserProfile>().ToListAsync();
         }
 
-        public Task<List<Models.UserProfile>> GetItemsNotDoneAsync()
-        {
-            return database.QueryAsync<Models.UserProfile>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-            // SQLite does not have a separate Boolean storage class. 
-            // Instead, Boolean values are stored as integers 0 (false) and 1 (true).
-        }
-
-        public Task<List<Models.UserProfile>> GetItemsDoneAsync()
-        {
-            // SQL
-            return database.QueryAsync<Models.UserProfile>("SELECT * FROM [UserProfile] WHERE [Done] = 1");
-        }
-
         public Task<Models.UserProfile> GetItemAsync(int id)
         {
-            // not used?
             return database.Table<Models.UserProfile>().Where(i => i.UserId == id).FirstOrDefaultAsync();
         }
 
@@ -74,6 +62,36 @@ namespace MyBodyTemperature.Services
         public Task<int> DeleteItemAsync(Models.UserProfile item)
         {
             return database.DeleteAsync(item);
+        }
+
+        public Task<int> InsertUserTemperatureAsync(UserTemperature item)
+        {
+            return database.InsertAsync(item);
+        }
+
+        public Task<int> UpdateUserTemperatureAsync(UserTemperature item)
+        {
+            return database.UpdateAsync(item);
+        }
+
+        public Task<int> DeleteUserTemperatureAsync(UserTemperature item)
+        {
+            return database.DeleteAsync(item);
+        }
+
+        public async Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId)
+        {
+            try
+            {
+                var results = await database.Table<UserTemperature>().ToListAsync();
+               // var results = await database.Table<UserTemperature>().Where(i => i.UserId == userId).ToListAsync();
+                return results;
+            }
+            catch (Exception e)
+            {
+
+            }
+            return await Task.FromResult(new List<UserTemperature>());
         }
     }
 }

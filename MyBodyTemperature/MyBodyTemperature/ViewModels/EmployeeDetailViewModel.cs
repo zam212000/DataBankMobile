@@ -26,13 +26,16 @@ namespace MyBodyTemperature.ViewModels
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
-            NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
+            UpdateProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted);
-            EntryData = GetItems();
+            AddTemperatureCommand = new DelegateCommand(OnAddTemperatureCommandExecuted);
+            //EntryData = GetItems();
         }
 
         public event EventHandler IsActiveChanged;
-        public DelegateCommand NextProfileCommand { get; }
+        public DelegateCommand UpdateProfileCommand { get; }
+        public DelegateCommand AddTemperatureCommand { get; }
+        
         public DelegateCommand TakePhotoCommand { get; }
 
         public Chart ChartBar => new BarChart() { Entries = EntryData, BackgroundColor = SKColors.White };
@@ -132,6 +135,13 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private async void OnAddTemperatureCommandExecuted()
+        {
+            var param = new NavigationParameters();
+            param.Add("UserProfileParam", CurrentUserProfile);
+            await NavigationService.NavigateAsync("UserTemperaturePage", param, true, true);
+        }
+
         private async void OnNextProfileCommandExecuted()
         {
             try
@@ -143,9 +153,10 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.AvatarUrl = ImageUrl;
                 userProfile.Temperature = double.Parse(Temperature);
                 userProfile.TemperatureDate = DateTime.Now;
-                //DateTime.Today.AddDays(-1);
+                userProfile.UserId = CurrentUserProfile.UserId;
+                var result = await _dbService.UpdateItemAsync(userProfile);
 
-                var result = await _dbService.InsertItemAsync(userProfile);
+                //TODO - Update user temp
 
                 await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
 
@@ -168,7 +179,7 @@ namespace MyBodyTemperature.ViewModels
             {
                 CurrentUserProfile = parameters["UserProfileParam"] as UserProfile;
 
-                CurrentUserProfile.FullName = $"{CurrentUserProfile.FirstNames} Nxumalo";
+                CurrentUserProfile.FullName = $"{CurrentUserProfile.FirstNames} {CurrentUserProfile.Surname}";
                 string dateString = string.Empty;
                 if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day)
                 {
@@ -182,7 +193,6 @@ namespace MyBodyTemperature.ViewModels
                 {
                     dateString = CurrentUserProfile.TemperatureDate.ToString("yyyy/MM/dd");
                 }
-                CurrentUserProfile.IDNumber = "7803214495085";
 
                 CurrentUserProfile.CovidMetadata = new CovidMetadata
                 {
@@ -192,6 +202,8 @@ namespace MyBodyTemperature.ViewModels
                 };
 
                 CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+
+                EntryData = GetItems();
             }
         }
 
@@ -213,23 +225,33 @@ namespace MyBodyTemperature.ViewModels
 
         private async Task<Microcharts.Entry[]> GetItemData(bool forceRefresh)
         {
-            var items = new[]
-            {
-                new Microcharts.Entry(34) { Color = GreenColor, Label = "12 Oct", ValueLabel = "34°C", },
-                new Microcharts.Entry(35) { Color = GreenColor, Label = "13 Oct", ValueLabel = "35°C" },
-                new Microcharts.Entry(38) { Color = RedColor, Label = "14 Oct", ValueLabel = "38°C" },
-                new Microcharts.Entry(39) { Color = RedColor, Label = "15 Oct", ValueLabel = "39°C" },
-                new Microcharts.Entry(34) { Color = GreenColor, Label = "16 Oct", ValueLabel = "34°C", },
-                new Microcharts.Entry(40) { Color = RedColor, Label = "17 Oct", ValueLabel = "40°C" },
-                new Microcharts.Entry(35) { Color = GreenColor, Label = "18 Oct", ValueLabel = "35°C" },
-                new Microcharts.Entry(36) { Color = GreenColor, Label = "19 Oct", ValueLabel = "36°C" },
-                new Microcharts.Entry(38) { Color = RedColor, Label = "20 Oct", ValueLabel = "38°C", },
-                new Microcharts.Entry(35) { Color = GreenColor, Label = "21 Octc", ValueLabel = "35°C" },
-                new Microcharts.Entry(34) { Color = GreenColor, Label = "22 Oct", ValueLabel = "34°C" },
-                new Microcharts.Entry(39) { Color = RedColor, Label = "23 Oct", ValueLabel = "39°C" }
-            };
 
-            return await Task.FromResult(items);
+            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(CurrentUserProfile.UserId);
+            var items = new List<Microcharts.Entry>();
+
+            foreach (var item in userTempHistory)
+            {
+                var color = item.Temperature > 37.5 ? RedColor : GreenColor;
+                items.Add(new Microcharts.Entry((float)item.Temperature) { Color = color, Label = item.TemperatureDate.ToString("MMMM dd"), ValueLabel = $"{item.Temperature}°C", });
+            }
+
+            //var items = new[]
+            //{
+            //    new Microcharts.Entry(34) { Color = GreenColor, Label = "12 Oct", ValueLabel = "34°C", },
+            //    new Microcharts.Entry(35) { Color = GreenColor, Label = "13 Oct", ValueLabel = "35°C" },
+            //    new Microcharts.Entry(38) { Color = RedColor, Label = "14 Oct", ValueLabel = "38°C" },
+            //    new Microcharts.Entry(39) { Color = RedColor, Label = "15 Oct", ValueLabel = "39°C" },
+            //    new Microcharts.Entry(34) { Color = GreenColor, Label = "16 Oct", ValueLabel = "34°C", },
+            //    new Microcharts.Entry(40) { Color = RedColor, Label = "17 Oct", ValueLabel = "40°C" },
+            //    new Microcharts.Entry(35) { Color = GreenColor, Label = "18 Oct", ValueLabel = "35°C" },
+            //    new Microcharts.Entry(36) { Color = GreenColor, Label = "19 Oct", ValueLabel = "36°C" },
+            //    new Microcharts.Entry(38) { Color = RedColor, Label = "20 Oct", ValueLabel = "38°C", },
+            //    new Microcharts.Entry(35) { Color = GreenColor, Label = "21 Octc", ValueLabel = "35°C" },
+            //    new Microcharts.Entry(34) { Color = GreenColor, Label = "22 Oct", ValueLabel = "34°C" },
+            //    new Microcharts.Entry(39) { Color = RedColor, Label = "23 Oct", ValueLabel = "39°C" }
+            //};
+
+            return await Task.FromResult(items.ToArray());
         }
 
         private static readonly SKColor GreenColor = SKColor.Parse("#006400");
