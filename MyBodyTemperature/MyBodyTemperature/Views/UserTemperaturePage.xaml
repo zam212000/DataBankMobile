@@ -2,8 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyBodyTemperature.Views.UserTemperaturePage"
-            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-              prism:ViewModelLocator.AutowireViewModel="True">
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
+             prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
 
 
@@ -18,7 +24,7 @@
 
                 <Button Text="Submit" Command="{Binding AddTemperatureCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="20,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
 
-                    <!--<Button.Triggers>
+                    <Button.Triggers>
                         <MultiTrigger TargetType="Button">
                             <MultiTrigger.Conditions>
 
@@ -33,16 +39,10 @@
                             <Setter Property="IsEnabled" Value="True" />
 
                         </MultiTrigger>
-                    </Button.Triggers>-->
-
-                    <!--<Button.Triggers>
-                    <DataTrigger TargetType="Button"  Binding="{Binding Source={x:Reference operatorID}, Path=Text.Length}" Value="13">
-                        <Setter Property="IsEnabled" Value="True" />
-                    </DataTrigger>
-                </Button.Triggers>-->
+                    </Button.Triggers>
 
                 </Button>
-                <Button Text="CANCEL"   BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="20,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
+                <Button Text="CANCEL"   Command="{Binding CancelCommand}"  BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="20,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
                 </Button>
 
             </StackLayout>

@@ -19,14 +19,16 @@ namespace MyBodyTemperature.ViewModels
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
-            NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
-            TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted);
+            NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted, () => false);
+            TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted,() => false);
+            CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
         }
 
         public DelegateCommand NextProfileCommand { get; }
+        public DelegateCommand CancelCommand { get; }
         public DelegateCommand TakePhotoCommand { get; }
 
-
+        
         private string _firstName = string.Empty;
         public string FirstName
         {
@@ -98,6 +100,10 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private async void OnCancelCommandExecuted()
+        {
+            await NavigationService.GoBackAsync();
+        }
 
         private async void OnPhotoTakenCommandExecuted()
         {

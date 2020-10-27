@@ -113,11 +113,11 @@ namespace MyBodyTemperature.ViewModels
                     string dateString = string.Empty;
                     if (item.TemperatureDate.Day == DateTime.Now.Day)
                     {
-                        dateString = "Today";
+                        dateString = $"Today {item.TemperatureDate.ToShortTimeString()}";
                     }
                     else if (item.TemperatureDate.Day == DateTime.Now.Day - 1)
                     {
-                        dateString = "Yesterday";
+                        dateString = $"Yesterday {item.TemperatureDate.ToShortTimeString()}";
                     }
                     else
                     {

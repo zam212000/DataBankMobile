@@ -9,7 +9,7 @@
             <helpers:MultiTriggerConverter x:Key="dataHasBeenEntered" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
 
         <Frame Margin="20" >
@@ -35,7 +35,7 @@
                     <Entry x:Name="iDNumber"  Text="{Binding IDNumber}" Placeholder="ID Number" Keyboard="Numeric" MaxLength="13" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                     </Entry>
 
-                    <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                    <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" MaxLength="2" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                     </Entry>
 
                     <Button Text="TAKE A PHOTO" Command="{Binding TakePhotoCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="0,0,0,20" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
@@ -93,7 +93,7 @@
                             </MultiTrigger>
                         </Button.Triggers>
                     </Button>
-                    <Button Text="CANCEL"  BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
+                    <Button Text="CANCEL"  Command="{Binding CancelCommand}" BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
                     </Button>
 
                 </StackLayout>

@@ -27,16 +27,17 @@ namespace MyBodyTemperature.ViewModels
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
-            UpdateProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted);
             AddTemperatureCommand = new DelegateCommand(OnAddTemperatureCommandExecuted);
             RemoveUserCommand = new DelegateCommand(OnRemoveUserCommandExecuted);
+            UpdateUserCommand = new DelegateCommand(OnUpdateUserCommandExecuted);
         }
 
         public event EventHandler IsActiveChanged;
         public DelegateCommand UpdateProfileCommand { get; }
         public DelegateCommand AddTemperatureCommand { get; }
         public DelegateCommand RemoveUserCommand { get; }
+        public DelegateCommand UpdateUserCommand { get; }
 
         public DelegateCommand TakePhotoCommand { get; }
 
@@ -155,14 +156,22 @@ namespace MyBodyTemperature.ViewModels
             await NavigationService.NavigateAsync("UserTemperaturePage", param, true, true);
         }
 
+        private async void OnUpdateUserCommandExecuted()
+        {
+            var param = new NavigationParameters();
+            param.Add("UserProfileParam", CurrentUserProfile);
+            await NavigationService.NavigateAsync("UpdateUserProfilePage", param, true, true);
+        }
+
+        
         private async void OnRemoveUserCommandExecuted()
         {
             var confirm = await _pageDialogService.DisplayAlertAsync("Delete User", "Are you sure you want to permanently delete this user", "Yes", "Cancel");
             if (confirm)
             {
                 await _dbService.DeleteItemAsync(CurrentUserProfile);
+                await NavigationService.NavigateAsync("EmployeesPage");
             }
-            await NavigationService.NavigateAsync("EmployeesPage");
         }
 
 
@@ -207,11 +216,11 @@ namespace MyBodyTemperature.ViewModels
                 string dateString = string.Empty;
                 if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day)
                 {
-                    dateString = "Today";
+                    dateString = $"Today {CurrentUserProfile.TemperatureDate.ToShortTimeString()}";
                 }
                 else if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day - 1)
                 {
-                    dateString = "Yesterday";
+                    dateString = $"Yesterday {CurrentUserProfile.TemperatureDate.ToShortTimeString()}";
                 }
                 else
                 {
@@ -261,11 +270,11 @@ namespace MyBodyTemperature.ViewModels
                     string dateString = string.Empty;
                     if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day)
                     {
-                        dateString = "Today";
+                        dateString = $"Today {CurrentUserProfile.TemperatureDate.ToShortTimeString()}";
                     }
                     else if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day - 1)
                     {
-                        dateString = "Yesterday";
+                        dateString = $"Yesterday {CurrentUserProfile.TemperatureDate.ToShortTimeString()}";
                     }
                     else
                     {

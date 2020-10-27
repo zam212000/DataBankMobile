@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
+             x:Class="MyBodyTemperature.Views.UpdateUserProfilePage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Frame Margin="20" >
+            <StackLayout Margin="0,25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout Margin="40,10,40,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <Entry x:Name="firstname"  Text="{Binding CurrentUserProfile.FirstNames}" Placeholder="Full Names" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                    </Entry>
+
+                    <Entry x:Name="cellphonenumber"  Text="{Binding CurrentUserProfile.PhoneNumber}" Placeholder="Cellphone Number" Keyboard="Numeric" MaxLength="10" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                    </Entry>
+
+                    <Entry x:Name="iDNumber"  Text="{Binding CurrentUserProfile.IDNumber}" Placeholder="ID Number" Keyboard="Numeric" MaxLength="13" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                    </Entry>
+
+                    <Button Text="UPDATE USER" Command="{Binding UpdateUserCommand}" BackgroundColor="#242E5B" IsEnabled="False" HorizontalOptions="FillAndExpand" Margin="20,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                        <Button.Triggers>
+                            <MultiTrigger TargetType="Button">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Source={x:Reference firstname},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                    <BindingCondition Binding="{Binding Source={x:Reference cellphonenumber},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                </MultiTrigger.Conditions>
+
+                                <Setter Property="TextColor"  Value="White" />
+                                <Setter Property="IsEnabled" Value="True" />
+
+                            </MultiTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Text="CANCEL"  Command="{Binding CancelCommand}" BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
+                    </Button>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

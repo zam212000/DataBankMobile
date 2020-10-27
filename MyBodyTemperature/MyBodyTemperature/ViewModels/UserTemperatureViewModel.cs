@@ -17,10 +17,12 @@ namespace MyBodyTemperature.ViewModels
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
-            AddTemperatureCommand = new DelegateCommand(OnTemperatureCommandExecuted);
+            AddTemperatureCommand = new DelegateCommand(OnTemperatureCommandExecuted, () => false);
+            CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
         }
 
         public DelegateCommand AddTemperatureCommand { get; }
+        public DelegateCommand CancelCommand { get; }
 
         private string _temperature = string.Empty;
         public string Temperature
@@ -42,14 +44,19 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private async void OnCancelCommandExecuted()
+        {
+            await NavigationService.GoBackAsync();
+        }
         private async void OnTemperatureCommandExecuted()
         {
             try
             {
-                //var userProfile = new UserProfile();
-                //userProfile.Temperature = double.Parse(Temperature);
-                //userProfile.TemperatureDate = DateTime.Now;
-                //userProfile.UserId = CurrentUserProfile.UserId;
+                if (!int.TryParse(Temperature, out var temp))
+                {
+                    await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
+                    return;
+                }
 
                 CurrentUserProfile.Temperature = double.Parse(Temperature);
                 CurrentUserProfile.TemperatureDate = DateTime.Now;
@@ -65,6 +72,8 @@ namespace MyBodyTemperature.ViewModels
                 await _dbService.InsertUserTemperatureAsync(historyTemp);
 
                 await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added user temperature", "Ok");
+
+                OnCancelCommandExecuted();
 
             }
             catch (Exception e)

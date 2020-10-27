@@ -57,32 +57,17 @@
                         Text="{Binding PhoneNumber}"
                         TextColor="Gray"
                         XAlign="Start" />
-                    <!--<Label
-                        FontSize="15"
-                          HorizontalOptions="EndAndExpand"
-                       Text="{Binding CovidMetadata.Temperature}"
-                        XAlign="Start">-->
 
-                     <Button WidthRequest="100" FontSize="15" HeightRequest="38" HorizontalOptions="EndAndExpand" CornerRadius="50" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CovidMetadata.Temperature}">
-                            <Button.Triggers>
-                                <DataTrigger TargetType="Button" Binding="{Binding CovidMetadata.HighFever}" Value="Yes">
-                                    <Setter Property="BackgroundColor" Value="#B22222" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Button" Binding="{Binding CovidMetadata.HighFever}" Value="No">
-                                    <Setter Property="BackgroundColor" Value="#006400" />
-                                </DataTrigger>
-                            </Button.Triggers>
-                        </Button>
-
-                        <!--<Label.Triggers>
-                            <DataTrigger TargetType="Label" Binding="{Binding CovidMetadata.HighFever}" Value="Yes">
-                                <Setter Property="TextColor" Value="#B22222" />
+                    <Button WidthRequest="100" FontSize="15" HeightRequest="38" HorizontalOptions="EndAndExpand" CornerRadius="50" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CovidMetadata.Temperature}">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding CovidMetadata.HighFever}" Value="Yes">
+                                <Setter Property="BackgroundColor" Value="#B22222" />
                             </DataTrigger>
-                            <DataTrigger TargetType="Label" Binding="{Binding CovidMetadata.HighFever}" Value="No">
-                                <Setter Property="TextColor" Value="#3CB371" />
+                            <DataTrigger TargetType="Button" Binding="{Binding CovidMetadata.HighFever}" Value="No">
+                                <Setter Property="BackgroundColor" Value="#006400" />
                             </DataTrigger>
-                        </Label.Triggers>
-                    </Label>-->
+                        </Button.Triggers>
+                    </Button>
                 </StackLayout>
                 <StackLayout
                     Margin="0,0,10,0"
