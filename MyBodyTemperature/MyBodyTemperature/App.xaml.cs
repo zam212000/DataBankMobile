@@ -45,7 +45,10 @@ namespace MyBodyTemperature
             containerRegistry.RegisterForNavigation<EmployeesPage, EmployeesViewModel>();
             containerRegistry.RegisterForNavigation<EmployeeDetailPage, EmployeeDetailViewModel>();
             containerRegistry.RegisterForNavigation<UserTemperaturePage, UserTemperatureViewModel>();
+            containerRegistry.RegisterForNavigation<SettingsPage, SettingsViewModel>();
+
             
+
 
             //containerRegistry.RegisterForNavigation<VisitorsPage, VisitorsViewModel>();
             //containerRegistry.RegisterForNavigation<VisitorsPage, VisitorsViewModel>();

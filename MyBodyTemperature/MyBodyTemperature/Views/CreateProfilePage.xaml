@@ -29,10 +29,10 @@
                     <Entry x:Name="firstname"  Text="{Binding FirstName}" Placeholder="Name" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                     </Entry>
 
-                    <Entry x:Name="cellphonenumber"  Text="{Binding CellPhoneNumber}" Placeholder="Cellphone Number" Keyboard="Numeric" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                    <Entry x:Name="cellphonenumber"  Text="{Binding CellPhoneNumber}" Placeholder="Cellphone Number" Keyboard="Numeric" MaxLength="10" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                     </Entry>
 
-                    <Entry x:Name="iDNumber"  Text="{Binding IDNumber}" Placeholder="Cellphone Number" Keyboard="Numeric" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
+                    <Entry x:Name="iDNumber"  Text="{Binding IDNumber}" Placeholder="ID Number" Keyboard="Numeric" MaxLength="13" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                     </Entry>
 
                     <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">

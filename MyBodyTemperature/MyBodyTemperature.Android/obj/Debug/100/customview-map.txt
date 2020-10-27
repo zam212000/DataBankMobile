@@ -31,6 +31,7 @@ com.google.android.material.tabs.TabLayout;C:\LearnGIT\MyBodyTemperature\MyBodyT
 com.google.android.material.tabs.TabLayout;obj\Debug\100\res\layout\tabbar.xml
 corners;C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\1\jl\res\drawable\roundedbg.xml
 corners;C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\1\jl\res\drawable\roundedbgdark.xml
+crc64720bb2db43a66fe9.FormsViewPager;C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\58\jl\res\layout\rootlayout.xml
 declare-styleable;C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\1\jl\res\values\attrs.xml
 declare-styleable;C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\58\jl\res\values\attrs.xml
 external-cache-path;C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\lp\57\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml

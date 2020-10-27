@@ -43,7 +43,7 @@
     </NavigationPage>
     <NavigationPage Title="Settings" IconImageSource="illustratrion_bot.png">
         <x:Arguments>
-            <local:MessagesPage />
+            <local:SettingsPage />
         </x:Arguments>
     </NavigationPage>
 
