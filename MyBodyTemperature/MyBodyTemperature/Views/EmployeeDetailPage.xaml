@@ -44,11 +44,11 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="0" Grid.Column="1" Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label  FontSize="Medium" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CurrentUserProfile.FullName , Mode=OneWay} "/>
-                        <Label FontSize="Medium" TextColor="#242E5B" Text="{Binding CurrentUserProfile.PhoneNumber , Mode=OneWay}"/>
-                        <Label FontSize="Medium" TextColor="#242E5B" Text="{Binding CurrentUserProfile.IDNumber , Mode=OneWay}"/>
-                        <Label FontSize="Medium" TextColor="#242E5B" Text="{Binding CurrentUserProfile.CovidMetadata.TemperatureDate , Mode=OneWay}"/>
-                        <Button FontSize="Medium" WidthRequest="150" CornerRadius="50" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CurrentUserProfile.CovidMetadata.Temperature , Mode=OneWay}">
+                            <Label  FontSize="Medium" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CurrentUserProfile.FullName , Mode=TwoWay} "/>
+                            <Label FontSize="Medium" TextColor="#242E5B" Text="{Binding CurrentUserProfile.PhoneNumber , Mode=TwoWay}"/>
+                            <Label FontSize="Medium" TextColor="#242E5B" Text="{Binding CurrentUserProfile.IDNumber , Mode=TwoWay}"/>
+                            <Label FontSize="Medium" TextColor="#242E5B" Text="{Binding CurrentUserProfile.CovidMetadata.TemperatureDate , Mode=TwoWay}"/>
+                        <Button FontSize="Medium" WidthRequest="150" CornerRadius="50" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CurrentUserProfile.CovidMetadata.Temperature , Mode=TwoWay}">
                             <Button.Triggers>
                                 <DataTrigger TargetType="Button" Binding="{Binding CurrentUserProfile.CovidMetadata.HighFever}" Value="Yes">
                                     <Setter Property="BackgroundColor" Value="#B22222" />
@@ -62,7 +62,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="2" Margin="10" Spacing="10">
-                        <Button Text="Add Temperature" BackgroundColor="#242E5B" TextColor="White" Image="noun_Thermometer_2144891"></Button>
+                            <Button Text="Add Temperature" BackgroundColor="#242E5B" TextColor="White" Command="{Binding AddTemperatureCommand}" Image="noun_Thermometer_2144891"></Button>
                         <StackLayout VerticalOptions="CenterAndExpand">
                         <Label  HorizontalOptions="EndAndExpand" TextColor="#384898" FontSize="Medium" FontAttributes="Bold" Text="Update Details">
                             <Label.GestureRecognizers>
@@ -72,13 +72,11 @@
 
                         <Label  HorizontalOptions="EndAndExpand" TextColor="#384898" FontSize="Medium" FontAttributes="Bold" Text="Delete">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
+                                        <TapGestureRecognizer Command="{Binding RemoveUserCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
                         </StackLayout>
 
-                        <!--<Button VerticalOptions="CenterAndExpand" Text="Update" BackgroundColor="#242E5B" TextColor="White" Image="btnicon"></Button>
-                        <Button  Text="Delete" BackgroundColor="#242E5B" TextColor="White"  Image="btnicon"></Button>-->
                     </StackLayout>
                 </StackLayout>
                 </Frame>
@@ -89,7 +87,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Spacing="10">
-                    <forms:ChartView Chart="{Binding ChartBar}"  HeightRequest="600" />
+                    <forms:ChartView x:Name="chartTempHistory" HeightRequest="600" />
                 </StackLayout>
 
 

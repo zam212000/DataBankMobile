@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using SkiaSharp.Views.Forms;
 using SkiaSharp;
 using Xamarin.Forms;
+using MyBodyTemperature.Helpers;
 
 namespace MyBodyTemperature.ViewModels
 {
@@ -29,16 +30,17 @@ namespace MyBodyTemperature.ViewModels
             UpdateProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted);
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted);
             AddTemperatureCommand = new DelegateCommand(OnAddTemperatureCommandExecuted);
-            //EntryData = GetItems();
+            RemoveUserCommand = new DelegateCommand(OnRemoveUserCommandExecuted);
         }
 
         public event EventHandler IsActiveChanged;
         public DelegateCommand UpdateProfileCommand { get; }
         public DelegateCommand AddTemperatureCommand { get; }
-        
+        public DelegateCommand RemoveUserCommand { get; }
+
         public DelegateCommand TakePhotoCommand { get; }
 
-        public Chart ChartBar => new BarChart() { Entries = EntryData, BackgroundColor = SKColors.White };
+        public Chart ChartBar => new BarChart() { Entries = EntryDataCollection, BackgroundColor = SKColors.White };
 
         private string _firstName = string.Empty;
         public string FirstName
@@ -111,11 +113,22 @@ namespace MyBodyTemperature.ViewModels
         }
 
 
-        private ObservableCollection<CovidMetadata> _historyCovidMetadata;
-        public ObservableCollection<CovidMetadata> HistoryCovidMetadata
+        private Microcharts.Entry[] _entryData;
+        public Microcharts.Entry[] EntryData
         {
-            get { return _historyCovidMetadata; }
-            set { SetProperty(ref _historyCovidMetadata, value); }
+            get => _entryData;
+            set
+            {
+                _entryData = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Microcharts.Entry> _entryDataCollection;
+        public ObservableCollection<Microcharts.Entry> EntryDataCollection
+        {
+            get { return _entryDataCollection; }
+            set { SetProperty(ref _entryDataCollection, value); }
         }
 
 
@@ -141,6 +154,17 @@ namespace MyBodyTemperature.ViewModels
             param.Add("UserProfileParam", CurrentUserProfile);
             await NavigationService.NavigateAsync("UserTemperaturePage", param, true, true);
         }
+
+        private async void OnRemoveUserCommandExecuted()
+        {
+            var confirm = await _pageDialogService.DisplayAlertAsync("Delete User", "Are you sure you want to permanently delete this user", "Yes", "Cancel");
+            if (confirm)
+            {
+                await _dbService.DeleteItemAsync(CurrentUserProfile);
+            }
+            await NavigationService.NavigateAsync("EmployeesPage");
+        }
+
 
         private async void OnNextProfileCommandExecuted()
         {
@@ -203,7 +227,7 @@ namespace MyBodyTemperature.ViewModels
 
                 CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
 
-                EntryData = GetItems();
+                // await AssignChartEntries();
             }
         }
 
@@ -213,20 +237,10 @@ namespace MyBodyTemperature.ViewModels
             IsActiveChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        public Microcharts.Entry[] GetItems(bool forceRefresh = false)
+        public async Task<Microcharts.Entry[]> GetChartEntriesData()
         {
-            return GetItemData(forceRefresh).Result;
-        }
-
-        public async Task<Microcharts.Entry[]> GetItemsAsync(bool forceRefresh = false)
-        {
-            return await GetItemData(forceRefresh);
-        }
-
-        private async Task<Microcharts.Entry[]> GetItemData(bool forceRefresh)
-        {
-
-            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(CurrentUserProfile.UserId);
+            //CurrentUserProfile.UserId
+            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(Settings.CurrentUserId);
             var items = new List<Microcharts.Entry>();
 
             foreach (var item in userTempHistory)
@@ -235,38 +249,58 @@ namespace MyBodyTemperature.ViewModels
                 items.Add(new Microcharts.Entry((float)item.Temperature) { Color = color, Label = item.TemperatureDate.ToString("MMMM dd"), ValueLabel = $"{item.Temperature}°C", });
             }
 
-            //var items = new[]
-            //{
-            //    new Microcharts.Entry(34) { Color = GreenColor, Label = "12 Oct", ValueLabel = "34°C", },
-            //    new Microcharts.Entry(35) { Color = GreenColor, Label = "13 Oct", ValueLabel = "35°C" },
-            //    new Microcharts.Entry(38) { Color = RedColor, Label = "14 Oct", ValueLabel = "38°C" },
-            //    new Microcharts.Entry(39) { Color = RedColor, Label = "15 Oct", ValueLabel = "39°C" },
-            //    new Microcharts.Entry(34) { Color = GreenColor, Label = "16 Oct", ValueLabel = "34°C", },
-            //    new Microcharts.Entry(40) { Color = RedColor, Label = "17 Oct", ValueLabel = "40°C" },
-            //    new Microcharts.Entry(35) { Color = GreenColor, Label = "18 Oct", ValueLabel = "35°C" },
-            //    new Microcharts.Entry(36) { Color = GreenColor, Label = "19 Oct", ValueLabel = "36°C" },
-            //    new Microcharts.Entry(38) { Color = RedColor, Label = "20 Oct", ValueLabel = "38°C", },
-            //    new Microcharts.Entry(35) { Color = GreenColor, Label = "21 Octc", ValueLabel = "35°C" },
-            //    new Microcharts.Entry(34) { Color = GreenColor, Label = "22 Oct", ValueLabel = "34°C" },
-            //    new Microcharts.Entry(39) { Color = RedColor, Label = "23 Oct", ValueLabel = "39°C" }
-            //};
+            // Always assign date to latest...
+            if (userTempHistory.Any() && CurrentUserProfile != null)
+            {
+                var latestRecord = userTempHistory.OrderByDescending(x => x.TemperatureDate)?.FirstOrDefault();
+                if (latestRecord != null)
+                {
+                    CurrentUserProfile.Temperature = latestRecord.Temperature;
+                    CurrentUserProfile.TemperatureDate = latestRecord.TemperatureDate;
 
-            return await Task.FromResult(items.ToArray());
+                    string dateString = string.Empty;
+                    if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day)
+                    {
+                        dateString = "Today";
+                    }
+                    else if (CurrentUserProfile.TemperatureDate.Day == DateTime.Now.Day - 1)
+                    {
+                        dateString = "Yesterday";
+                    }
+                    else
+                    {
+                        dateString = CurrentUserProfile.TemperatureDate.ToString("yyyy/MM/dd");
+                    }
+
+                    CurrentUserProfile.CovidMetadata = new CovidMetadata
+                    {
+                        HighFever = CurrentUserProfile.Temperature > 37.5 ? "Yes" : "No",
+                        Temperature = $"{CurrentUserProfile.Temperature }°C",
+                        TemperatureDate = dateString
+                    };
+                }
+            }
+            return items.ToArray();
+        }
+
+
+        private async void AssignData()
+        {
+
+            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(1);
+            var items = new List<Microcharts.Entry>();
+
+            foreach (var item in userTempHistory)
+            {
+                var color = item.Temperature > 37.5 ? RedColor : GreenColor;
+                items.Add(new Microcharts.Entry((float)item.Temperature) { Color = color, Label = item.TemperatureDate.ToString("MMMM dd"), ValueLabel = $"{item.Temperature}°C", });
+            }
+
+            EntryData = items.ToArray();
         }
 
         private static readonly SKColor GreenColor = SKColor.Parse("#006400");
         private static readonly SKColor RedColor = SKColor.Parse("#B22222");
-
-        private Microcharts.Entry[] _entryData;
-        public Microcharts.Entry[] EntryData
-        {
-            get => _entryData;
-            set
-            {
-                _entryData = value;
-                RaisePropertyChanged();
-            }
-        }
 
     }
 }

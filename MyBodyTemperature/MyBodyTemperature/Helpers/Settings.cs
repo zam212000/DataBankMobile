@@ -18,6 +18,7 @@ namespace MyBodyTemperature.Helpers
         private const string IdLongitude = "longitude";
         private static readonly double FakeLatitudeDefault = 0;
         private static readonly double FakeLongitudeDefault = 0;
+        private static readonly int CurrentUserIdDefault = 0;
 
         public static double Latitude
         {
@@ -35,6 +36,12 @@ namespace MyBodyTemperature.Helpers
         {
             get => AppSettings.GetValueOrDefault(ApiAuthTokenKey, AuthTokenDefault);
             set => AppSettings.AddOrUpdateValue(ApiAuthTokenKey, value);
+        }
+
+        public static int CurrentUserId
+        {
+            get => AppSettings.GetValueOrDefault(nameof(CurrentUserIdDefault), CurrentUserIdDefault);
+            set => AppSettings.AddOrUpdateValue(nameof(CurrentUserIdDefault), value);
         }
 
         public static UserProfile User

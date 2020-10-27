@@ -1,4 +1,5 @@
-﻿using MyBodyTemperature.Models;
+﻿using MyBodyTemperature.Helpers;
+using MyBodyTemperature.Models;
 using MyBodyTemperature.Services;
 using Prism.Commands;
 using Prism.Navigation;
@@ -78,6 +79,7 @@ namespace MyBodyTemperature.ViewModels
 
         private async void OnItemSelectedCommand(UserProfile userProfile)
         {
+            Settings.CurrentUserId = userProfile.UserId;
             var param = new NavigationParameters();
             param.Add("UserProfileParam", userProfile);
             await NavigationService.NavigateAsync("EmployeeDetailPage", param, true, true);

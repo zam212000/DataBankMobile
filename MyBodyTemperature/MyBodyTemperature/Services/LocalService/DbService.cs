@@ -29,7 +29,7 @@ namespace MyBodyTemperature.Services
                 {
                     database.CreateTableAsync<Models.UserProfile>().Wait();
                     database.CreateTableAsync<UserTemperature>().Wait();
-                    
+
                     initialized = true;
                 }
             }
@@ -49,9 +49,11 @@ namespace MyBodyTemperature.Services
             return database.Table<Models.UserProfile>().Where(i => i.UserId == id).FirstOrDefaultAsync();
         }
 
-        public Task<int> InsertItemAsync(Models.UserProfile item)
+        public async Task<int> InsertItemAsync(Models.UserProfile item)
         {
-            return database.InsertAsync(item);
+            var result = await database.InsertAsync(item);
+            return result;
+
         }
 
         public Task<int> UpdateItemAsync(Models.UserProfile item)
@@ -79,19 +81,9 @@ namespace MyBodyTemperature.Services
             return database.DeleteAsync(item);
         }
 
-        public async Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId)
+        public Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId)
         {
-            try
-            {
-                var results = await database.Table<UserTemperature>().ToListAsync();
-               // var results = await database.Table<UserTemperature>().Where(i => i.UserId == userId).ToListAsync();
-                return results;
-            }
-            catch (Exception e)
-            {
-
-            }
-            return await Task.FromResult(new List<UserTemperature>());
+           return database.Table<UserTemperature>().Where(i => i.UserId == userId).ToListAsync();
         }
     }
 }

@@ -15,9 +15,9 @@ namespace MyBodyTemperature.ViewModels
         private readonly IPageDialogService _pageDialogService;
         public UserTemperatureViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService) : base(navigationService)
         {
-            AddTemperatureCommand = new DelegateCommand(OnTemperatureCommandExecuted);
             _dbService = dbService;
             _pageDialogService = dialogService;
+            AddTemperatureCommand = new DelegateCommand(OnTemperatureCommandExecuted);
         }
 
         public DelegateCommand AddTemperatureCommand { get; }
@@ -46,18 +46,20 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
-                var userProfile = new UserProfile();
-                userProfile.Temperature = double.Parse(Temperature);
-                userProfile.TemperatureDate = DateTime.Now;
-                userProfile.UserId = CurrentUserProfile.UserId;
+                //var userProfile = new UserProfile();
+                //userProfile.Temperature = double.Parse(Temperature);
+                //userProfile.TemperatureDate = DateTime.Now;
+                //userProfile.UserId = CurrentUserProfile.UserId;
 
-                var result = await _dbService.UpdateItemAsync(userProfile);
+                CurrentUserProfile.Temperature = double.Parse(Temperature);
+                CurrentUserProfile.TemperatureDate = DateTime.Now;
+                var result = await _dbService.UpdateItemAsync(CurrentUserProfile);
 
                 var historyTemp = new UserTemperature
                 {
-                    Temperature = userProfile.Temperature,
-                    TemperatureDate = userProfile.TemperatureDate,
-                    UserId = userProfile.UserId
+                    Temperature = CurrentUserProfile.Temperature,
+                    TemperatureDate = CurrentUserProfile.TemperatureDate,
+                    UserId = CurrentUserProfile.UserId
                 };
 
                 await _dbService.InsertUserTemperatureAsync(historyTemp);

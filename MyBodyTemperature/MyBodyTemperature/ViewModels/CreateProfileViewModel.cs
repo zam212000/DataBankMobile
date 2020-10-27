@@ -134,9 +134,9 @@ namespace MyBodyTemperature.ViewModels
                     {
                         Temperature = userProfile.Temperature,
                         TemperatureDate = userProfile.TemperatureDate,
-                        UserId = _userId
+                        UserId = userProfile.UserId
                     };
-                  await _dbService.InsertUserTemperatureAsync(historyTemp);
+                  var tempResult = await _dbService.InsertUserTemperatureAsync(historyTemp);
                 }
 
                 await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
