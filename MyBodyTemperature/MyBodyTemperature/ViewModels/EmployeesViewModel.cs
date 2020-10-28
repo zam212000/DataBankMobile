@@ -131,7 +131,14 @@ namespace MyBodyTemperature.ViewModels
                         TemperatureDate = dateString
                     };
 
-                    item.ImageProperty = ImageSource.FromStream(() => new MemoryStream(item.ImageContent));
+                    if (item.ImageContent != null)
+                    {
+                        item.ImageProperty = ImageSource.FromStream(() => new MemoryStream(item.ImageContent));
+                    }
+                    else
+                    {
+                        item.ImageProperty = ImageSource.FromFile("EmptyUser.png");
+                    }
                 }
 
                 OriginalItems = UserProfiles;

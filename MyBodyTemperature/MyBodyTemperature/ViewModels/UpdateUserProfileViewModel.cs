@@ -25,7 +25,6 @@ namespace MyBodyTemperature.ViewModels
         public DelegateCommand CancelCommand { get; }
 
 
-
         private UserProfile _userProfile;
         public UserProfile CurrentUserProfile
         {

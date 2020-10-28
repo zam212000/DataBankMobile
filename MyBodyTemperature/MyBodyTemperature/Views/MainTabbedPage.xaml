@@ -32,7 +32,7 @@
 
     <NavigationPage Title="Visitors" IconImageSource="ic_fitness_centre.png">
         <x:Arguments>
-            <local:VisitorsPage />
+            <local:EmployeesPage />
         </x:Arguments>
     </NavigationPage>
 

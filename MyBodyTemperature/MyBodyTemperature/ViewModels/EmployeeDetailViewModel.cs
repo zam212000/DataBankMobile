@@ -144,8 +144,18 @@ namespace MyBodyTemperature.ViewModels
             else
             {
                 ImageUrl = mediaFile.Path;
+                CurrentUserProfile.AvatarUrl = ImageUrl;
                 ImageContent = GetImageBytes(mediaFile.GetStream());
-                CurrentUserProfile.ImageContent = this.ImageContent;
+                CurrentUserProfile.ImageContent = ImageContent;
+                CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+
+                //Sync to DB and API
+                var result = await _dbService.UpdateItemAsync(CurrentUserProfile);
+
+                //if (result > 0)
+                //{
+                //    await _pageDialogService.DisplayAlertAsync("Successful", "Photo successful changed", "Ok");
+                //}
             }
         }
 
@@ -234,7 +244,15 @@ namespace MyBodyTemperature.ViewModels
                     TemperatureDate = dateString
                 };
 
-                CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+                if (CurrentUserProfile.ImageContent != null)
+                {
+
+                    CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+                }
+                else
+                {
+                    CurrentUserProfile.ImageProperty = ImageSource.FromFile("EmptyUser.png");
+                }
 
                 // await AssignChartEntries();
             }
@@ -292,21 +310,6 @@ namespace MyBodyTemperature.ViewModels
             return items.ToArray();
         }
 
-
-        private async void AssignData()
-        {
-
-            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(1);
-            var items = new List<Microcharts.Entry>();
-
-            foreach (var item in userTempHistory)
-            {
-                var color = item.Temperature > 37.5 ? RedColor : GreenColor;
-                items.Add(new Microcharts.Entry((float)item.Temperature) { Color = color, Label = item.TemperatureDate.ToString("MMMM dd"), ValueLabel = $"{item.Temperature}°C", });
-            }
-
-            EntryData = items.ToArray();
-        }
 
         private static readonly SKColor GreenColor = SKColor.Parse("#006400");
         private static readonly SKColor RedColor = SKColor.Parse("#B22222");

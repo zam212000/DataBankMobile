@@ -146,6 +146,7 @@ namespace MyBodyTemperature.ViewModels
                 }
 
                 await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
+                OnCancelCommandExecuted();
 
             }
             catch (Exception e)
