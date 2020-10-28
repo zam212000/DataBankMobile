@@ -701,11 +701,6 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\andr
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\src\crc64bb223c2be3a01e03\SKGLViewRendererBase_2.java
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\MyBodyTemperature.Android.dll
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\MyBodyTemperature.Android.pdb
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.controlapp.apk
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.controlapp.aab
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.controlapp-Signed.aab
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.controlapp-Signed.apk
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.controlapp-Signed.apk.idsig
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\MyBodyTemperature.dll
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\MyBodyTemperature.pdb
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\MonoAndroid,Version=v10.0.AssemblyAttributes.cs
@@ -724,10 +719,7 @@ C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\XamlC.stam
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\MyBodyTemperature.Android.csproj.CopyComplete
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\MyBodyTemperature.Android.dll
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\MyBodyTemperature.Android.pdb
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.controlapp.apk
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\base.zip
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.controlapp.aab
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.controlapp.apks
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\mipmap-anydpi-v26\icon.xml
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\mipmap-anydpi-v26\icon_round.xml
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\mipmap-hdpi\icon.png
@@ -1425,3 +1417,12 @@ C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\p
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\loginauth.png
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\emptyuser.png
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\cameraicon.png
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.com.apk
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.com.aab
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.com-Signed.aab
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.com-Signed.apk
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\bin\Debug\com.ngenaaccess.com-Signed.apk.idsig
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.com.apk
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.com.aab
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\bin\com.ngenaaccess.com.apks
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\android\src\com\ngenaaccess\com\R.java

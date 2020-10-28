@@ -124,6 +124,18 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
+                if (!double.TryParse(Temperature, out var temp))
+                {
+                    await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
+                    return;
+                }
+
+                if (temp > 45 || temp < 30)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
+                    return;
+                }
+
                 var userProfile = new UserProfile();
                 userProfile.PhoneNumber = CellPhoneNumber;
                 userProfile.FirstNames = FirstName;

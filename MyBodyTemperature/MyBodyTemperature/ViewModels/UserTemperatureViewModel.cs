@@ -52,12 +52,17 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
-                if (!int.TryParse(Temperature, out var temp))
+                if (!double.TryParse(Temperature, out var temp))
                 {
                     await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
                     return;
                 }
 
+                if(temp > 45 || temp < 30)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
+                    return;
+                }
                 CurrentUserProfile.Temperature = double.Parse(Temperature);
                 CurrentUserProfile.TemperatureDate = DateTime.Now;
                 var result = await _dbService.UpdateItemAsync(CurrentUserProfile);

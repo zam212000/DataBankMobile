@@ -34,7 +34,7 @@
                     <Label x:Name="firstname"  Text="{Binding CurrentUserProfile.FirstNames}"  HorizontalTextAlignment="Center" IsEnabled="False"  TextColor="#242E5B" FontFamily="Arial" FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,5,0,5">
                     </Label>
 
-                    <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Today's Temperature" HorizontalTextAlignment="Center" Keyboard="Numeric" MaxLength="2" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,5,0,10">
+                    <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Today's Temperature" HorizontalTextAlignment="Center" Keyboard="Numeric" MaxLength="4" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,5,0,10">
                     </Entry>
 
                     <Button Text="Submit" Command="{Binding AddTemperatureCommand}" BackgroundColor="LightBlue" FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,20,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
@@ -50,7 +50,7 @@
 
                                 </MultiTrigger.Conditions>
 
-                                <Setter Property="TextColor"  Value="White" />
+                                <Setter Property="TextColor"  Value="#242E5B" />
                                 <Setter Property="IsEnabled" Value="True" />
 
                             </MultiTrigger>

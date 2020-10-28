@@ -41,7 +41,7 @@
                 <Entry x:Name="iDNumber"  Text="{Binding IDNumber}" Placeholder="ID Number" Keyboard="Numeric" MaxLength="13" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                     </Entry>
 
-                    <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" MaxLength="2" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                    <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" MaxLength="4" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                     </Entry>
 
                     <Button Text="TAKE A PHOTO" Command="{Binding TakePhotoCommand}" Image="CameraIcon.png" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,20,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
@@ -65,7 +65,7 @@
 
                                 </MultiTrigger.Conditions>
 
-                                <Setter Property="TextColor"  Value="White" />
+                                <Setter Property="TextColor"  Value="#242E5B" />
                                 <Setter Property="IsEnabled" Value="True" />
 
                             </MultiTrigger>
@@ -93,7 +93,7 @@
 
                                 </MultiTrigger.Conditions>
 
-                                <Setter Property="TextColor"  Value="White" />
+                                <Setter Property="TextColor"  Value="#242E5B" />
                                 <Setter Property="IsEnabled" Value="True" />
 
                             </MultiTrigger>

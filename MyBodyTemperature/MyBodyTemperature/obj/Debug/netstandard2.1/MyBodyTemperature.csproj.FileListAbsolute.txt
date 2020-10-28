@@ -58,3 +58,4 @@ C:\LearnGIT\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\S
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\SettingsPage.xaml.g.cs
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\UpdateUserProfilePage.xaml.g.cs
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\UpdateUserProfilePage.xaml.g.cs
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\CreateCompanyProfilePage.xaml.g.cs
