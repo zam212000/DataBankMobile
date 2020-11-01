@@ -12,6 +12,8 @@ using Rg.Plugins.Popup.Contracts;
 using MyBodyTemperature.Services.UserProfile;
 using MyBodyTemperature.Services.AnalyticsService;
 using MyBodyTemperature.Services;
+using MyBodyTemperature.ViewModels.Company;
+using MyBodyTemperature.Views.Company;
 
 namespace MyBodyTemperature
 {
@@ -48,11 +50,13 @@ namespace MyBodyTemperature
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsViewModel>();
             containerRegistry.RegisterForNavigation<UpdateUserProfilePage, UpdateUserProfileViewModel>();
 
+            containerRegistry.RegisterForNavigation<SettingsPage, SettingsViewModel>();
+            containerRegistry.RegisterForNavigation<UpdateUserProfilePage, UpdateUserProfileViewModel>();
 
-
-
-            //containerRegistry.RegisterForNavigation<VisitorsPage, VisitorsViewModel>();
-            //containerRegistry.RegisterForNavigation<VisitorsPage, VisitorsViewModel>();
+            containerRegistry.RegisterForNavigation<CompanyProfileEditPage, CompanyProfileViewModel>();
+            containerRegistry.RegisterForNavigation<CompanyProfilePage, CompanyProfileViewModel>();
+            containerRegistry.RegisterForNavigation<CompanyProfileOTPPage, CompanyProfileOTPViewModel>();
+            containerRegistry.RegisterForNavigation<CompanyProfilePasswordPage, CompanyProfilePasswordViewModel>();
 
 
             //SERVICES

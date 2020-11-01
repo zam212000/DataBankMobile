@@ -50,6 +50,12 @@ namespace MyBodyTemperature.Helpers
             set => PreferencesHelpers.Set(nameof(User), value);
         }
 
+        public static Company CurrentCompany
+        {
+            get => PreferencesHelpers.Get(nameof(Company), default(Company));
+            set => PreferencesHelpers.Set(nameof(Company), value);
+        }
+
         public static void RemoveUserData() => User = null;
     }
 }

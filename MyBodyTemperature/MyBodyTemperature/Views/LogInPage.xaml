@@ -65,9 +65,9 @@
                 </Button>
 
                 <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="16" FontAttributes="Bold" Text="Signup" Margin="0,30,0,5" >
-                    <!--<Label.GestureRecognizers>
+                    <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SignUpCommand}" />
-                    </Label.GestureRecognizers>-->
+                    </Label.GestureRecognizers>
                 </Label>
 
 

@@ -21,7 +21,6 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\M
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.AssemblyInfo.cs
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.dll
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.pdb
-C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.csprojAssemblyReference.cache
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\EmployeeDetailPage.xaml.g.cs
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.csproj.CoreCompileInputs.cache
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\XamlC.stamp
@@ -59,3 +58,8 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\V
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\UpdateUserProfilePage.xaml.g.cs
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\UpdateUserProfilePage.xaml.g.cs
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\CreateCompanyProfilePage.xaml.g.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.csprojAssemblyReference.cache
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\Company\CompanyProfileEditPage.xaml.g.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\Company\CompanyProfilePage.xaml.g.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\Company\CompanyProfileOTPPage.xaml.g.cs
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\Company\CompanyProfilePasswordPage.xaml.g.cs

@@ -105,7 +105,7 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
-                await NavigationService.NavigateAsync("CreateProfilePage");
+                await NavigationService.NavigateAsync("CompanyProfilePage");
             }
             catch (Exception e)
             {

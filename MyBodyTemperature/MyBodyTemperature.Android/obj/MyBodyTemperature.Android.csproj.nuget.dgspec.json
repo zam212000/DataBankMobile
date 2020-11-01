@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj": {}
+    "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj": {}
   },
   "projects": {
-    "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj": {
+    "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj",
+        "projectUniqueName": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj",
         "projectName": "MyBodyTemperature.Android",
-        "projectPath": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj",
-        "packagesPath": "C:\\Users\\lamulakw\\.nuget\\packages\\",
-        "outputPath": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature.Android\\obj\\",
+        "projectPath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\MyBodyTemperature.Android.csproj",
+        "packagesPath": "C:\\Users\\Kwazi\\.nuget\\packages\\",
+        "outputPath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\lamulakw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kwazi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid10.0": {
             "projectReferences": {
-              "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj": {
-                "projectPath": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj"
+              "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj": {
+                "projectPath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj"
               }
             }
           }
@@ -130,21 +130,20 @@
         }
       }
     },
-    "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj": {
+    "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj",
+        "projectUniqueName": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj",
         "projectName": "MyBodyTemperature",
-        "projectPath": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj",
-        "packagesPath": "C:\\Users\\lamulakw\\.nuget\\packages\\",
-        "outputPath": "C:\\LearnGIT\\MyBodyTemperature\\MyBodyTemperature\\obj\\",
+        "projectPath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\MyBodyTemperature.csproj",
+        "packagesPath": "C:\\Users\\Kwazi\\.nuget\\packages\\",
+        "outputPath": "C:\\RunnersProject\\MyBodyTemperature\\MyBodyTemperature\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\lamulakw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kwazi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -261,7 +260,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
