@@ -69,12 +69,14 @@ namespace MyBodyTemperature.ViewModels.Company
                 if (string.IsNullOrEmpty(smsSend))
                 {
                     //TODO - this might be security breach...
-                    await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to send OTP, please ensure phone number provided is correct", "Ok");
+                    await _pageDialogService.DisplayAlertAsync("Create profile", "Failed to send OTP, please ensure phone number provided is correct", "Ok");
                     return;
                 }
 
                 CompanyProfile.Token = smsSend;
                 await _dbService.UpdateCompanyAsync(CompanyProfile);
+
+                await _pageDialogService.DisplayAlertAsync("Create profile", "OTP Sent please check your phone messages", "Ok");
             }
 
             catch
@@ -96,7 +98,7 @@ namespace MyBodyTemperature.ViewModels.Company
                 }
                 else
                 {
-                    await _pageDialogService.DisplayAlertAsync("Incorrect token", "Incorrect token provided.", "Ok");
+                    await _pageDialogService.DisplayAlertAsync("Create profile", "Incorrect OTP number provided.", "Ok");
                 }
             }
 

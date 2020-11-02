@@ -64,6 +64,9 @@ namespace MyBodyTemperature
             containerRegistry.Register<ILoginApiDataService, LoginApiDataService>();
             containerRegistry.Register<IDbService, DbService>();
             containerRegistry.Register<IRemoteDataService, RemoteDataService>();
+            containerRegistry.Register<IValidationService, ValidationService>();
+
+            
 
 
         }

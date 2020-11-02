@@ -84,6 +84,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Services\LocalService\" />
     <Folder Include="Services\MediaService\" />
+    <Folder Include="Services\ValidationService\" />
   </ItemGroup>
 
 </Project>

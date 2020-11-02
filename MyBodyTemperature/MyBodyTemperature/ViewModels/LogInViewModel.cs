@@ -7,17 +7,27 @@ using System.Text;
 using MyBodyTemperature.Models;
 using MyBodyTemperature.Helpers;
 using MyBodyTemperature.Services.RemoteService;
+using MyBodyTemperature.Services;
+using Prism.Services;
+using MyBodyTemperature.Services.EncryptionService;
 
 namespace MyBodyTemperature.ViewModels
 {
     public class LogInViewModel : BaseViewModel
     {
+        private readonly IDbService _dbService;
         private readonly ILoginApiDataService _loginApiDataService;
         private readonly IRemoteDataService _remoteDataService;
-        public LogInViewModel(INavigationService navigationService, ILoginApiDataService loginApiDataService, IRemoteDataService remoteDataService) : base(navigationService)
+        private readonly IPageDialogService _pageDialogService;
+        public LogInViewModel(INavigationService navigationService, ILoginApiDataService loginApiDataService,
+            IRemoteDataService remoteDataService, IDbService dbService, IPageDialogService pageDialogService)
+            : base(navigationService)
         {
             _loginApiDataService = loginApiDataService;
             _remoteDataService = remoteDataService;
+            _pageDialogService = pageDialogService;
+            _dbService = dbService;
+
             LogInCommand = new DelegateCommand(OnSignInCommandExecuted);
             SignUpCommand = new DelegateCommand(OnSignUpCommandExecuted);
             ForgotPasswordCommand = new DelegateCommand(OnForgotPasswordCommandExecuted);
@@ -47,40 +57,35 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
-
-
         private async void OnSignInCommandExecuted()
         {
             try
             {
-
-                var smsSend = await _remoteDataService.SendSmsAsync("", "0743727336");
-
-
-                /*
-                // IsBusy = true;
-                var userProfile = new Models.UserProfile
+                var company = await _dbService.GetCompanyByUsername(UserName);
+                if (company != null)
                 {
-                    EmailAddress = "test@test.com",
-                    Surname = "Test",
-                    FirstNames = "Test Test",
-                    UserName = "Kwazi Lamula",
-                    UserId = 10,
-                };
+                    if (!company.PhoneNumberConfirmed)
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Login", "Company registration is incomplete. Please go to Signup to finalise registration", "Ok");
+                        return;
+                    }
 
-                Settings.User = userProfile;
-
-                await NavigationService.NavigateAsync("/MainTabbedPage");
-
-                //var authUser = await _loginApiDataService.AuthenticateUserAsync(UserName, Password);
-                //if (!authUser)
-                //{
-
-                //}
-
-                */
+                    if (AesEncryptionService.Decrypt(company.Password) == Password)
+                    {
+                        Settings.CurrentCompany = company;
+                        await NavigationService.NavigateAsync("/MainTabbedPage");
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
+                    }
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
+                }
             }
-            catch
+            catch (Exception e)
             {
 
             }

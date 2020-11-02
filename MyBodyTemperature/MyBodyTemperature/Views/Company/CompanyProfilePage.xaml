@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
-             Title="New Company Information"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
+             Title="Add your company profile"
              x:Class="MyBodyTemperature.Views.Company.CompanyProfilePage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -24,7 +25,7 @@
                     </Image>
 
                     <StackLayout Margin="0,0,0,0"  HorizontalOptions="CenterAndExpand">
-                        <Label TextColor="#242E5B" FontSize="Large" FontAttributes="Bold" Text="Add your company profile" LineBreakMode="WordWrap"/>
+                        <Label TextColor="#242E5B" FontSize="Large" FontAttributes="Bold" Text="Provide company information" LineBreakMode="WordWrap"/>
                     </StackLayout>
 
                     <StackLayout Margin="100,40,100,5">

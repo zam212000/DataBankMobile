@@ -46,9 +46,7 @@ namespace MyBodyTemperature
                 {
                     PhotoSize = PhotoSize.Small,
                     DefaultCamera = CameraDevice.Front,
-                    //Directory = "Media\\Pictures",
                     Name = photoName,
-                    //SaveToAlbum = false,
                 });
             }).ConfigureAwait(false);
         }

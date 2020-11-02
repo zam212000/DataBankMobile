@@ -15,11 +15,16 @@ namespace MyBodyTemperature.ViewModels.Company
         private readonly IDbService _dbService;
         private readonly IPageDialogService _pageDialogService;
         private readonly IRemoteDataService _remoteDataService;
-        public CompanyProfileViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService, IRemoteDataService remoteDataService) : base(navigationService)
+        private readonly IValidationService _validationService;
+
+        public CompanyProfileViewModel(INavigationService navigationService, IDbService dbService,
+            IPageDialogService dialogService, IRemoteDataService remoteDataService, IValidationService validationService)
+            : base(navigationService)
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
             _remoteDataService = remoteDataService;
+            _validationService = validationService;
             NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted, () => false);
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
@@ -115,11 +120,30 @@ namespace MyBodyTemperature.ViewModels.Company
         {
             try
             {
+
+                if(! await _validationService.NetworkConnectedAsync())
+                {
+                    await _pageDialogService.DisplayAlertAsync("Network connectivity", "internet connection is required to create a company profile", "Ok");
+                    return;
+                }
+
+                if (PhoneNumber.Length < 10)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Create profile", "A phone number must be 10 digits", "Ok");
+                    return;
+                }
+
+                if (!await _validationService.EmailValidAsync(CompanyEmail))
+                {
+                    await _pageDialogService.DisplayAlertAsync("Create profile", "Email address is not in the correct format", "Ok");
+                    return;
+                }
+
                 Models.Company company;
                 company = await _dbService.GetCompanyByName(CompanyName.Trim());
                 if (company != null && company.PhoneNumberConfirmed)
                 {
-                    await _pageDialogService.DisplayAlertAsync("Already Registered", "The company is already registered. use forgot password to recover your account", "Ok");
+                    await _pageDialogService.DisplayAlertAsync("Create profile", "The company is already registered. You can use forgot password to recover your account", "Ok");
                     return;
                 }
                 else if (company != null && !company.PhoneNumberConfirmed)
@@ -129,7 +153,7 @@ namespace MyBodyTemperature.ViewModels.Company
                     company.ImageContent = ImageContent;
                     company.CompanyEmail = CompanyEmail;
                     company.PhoneNumber = PhoneNumber;
-                    await _dbService.UpdateCompanyAsync(company); 
+                    await _dbService.UpdateCompanyAsync(company);
                 }
                 else
                 {
@@ -146,9 +170,8 @@ namespace MyBodyTemperature.ViewModels.Company
                 if (company != null && company.CompanyID > 0)
                 {
                     var smsSend = await _remoteDataService.SendSmsAsync("", company.PhoneNumber);
-                    if(string.IsNullOrEmpty(smsSend))
+                    if (string.IsNullOrEmpty(smsSend))
                     {
-                        //TODO - this might be a security breach...
                         await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to send OTP, please ensure phone number provided is correct", "Ok");
                         return;
                     }
@@ -163,7 +186,7 @@ namespace MyBodyTemperature.ViewModels.Company
                 }
                 else
                 {
-                    await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to add the company. please retry or contact administrator", "Ok");
+                    await _pageDialogService.DisplayAlertAsync("Create profile", "Failed to add the company. please retry or contact administrator", "Ok");
                 }
 
             }

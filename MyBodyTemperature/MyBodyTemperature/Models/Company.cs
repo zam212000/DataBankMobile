@@ -20,6 +20,7 @@ namespace MyBodyTemperature.Models
         public bool EmailConfirmed { get; set; }
         public bool PhoneNumberConfirmed { get; set; }
         public string Token { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
         public bool IsRegistered { get; set; }
         public int VerificationMethod { get; set; } = 1;

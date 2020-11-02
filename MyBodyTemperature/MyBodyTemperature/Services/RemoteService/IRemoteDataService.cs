@@ -9,5 +9,6 @@ namespace MyBodyTemperature.Services.RemoteService
     {
         Task<bool> AuthenticateUserAsync();
         Task<string> SendSmsAsync(string message, string cellNumber);
+        Task<bool> SendAnySmsAsync(string message, string cellNumber);
     }
 }

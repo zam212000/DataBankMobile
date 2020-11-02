@@ -106,7 +106,19 @@ namespace MyBodyTemperature.Services
         }
         public async Task<Company> GetCompanyByName(string name)
         {
-            return await database.Table<Company>().FirstOrDefaultAsync(i => i.CompanyName == name);
+            return await database.Table<Company>().FirstOrDefaultAsync(i => i.CompanyName.ToLower() == name.ToLower());
         }
+
+        public async Task<Company> GetCompanyByUsername(string username)
+        {
+            return await database.Table<Company>().FirstOrDefaultAsync(i => i.Username.ToLower() == username.ToLower());
+        }
+
+        public async Task<bool> CompanyUserNameExists(string username)
+        {
+            return (await database.Table<Company>().FirstOrDefaultAsync(i => i.Username.ToLower() == username.ToLower()) != null);
+        }
+
+
     }
 }

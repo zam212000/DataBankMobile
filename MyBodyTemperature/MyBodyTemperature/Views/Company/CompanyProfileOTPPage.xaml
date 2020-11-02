@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MyBodyTemperature.Helpers"
+                         Title="OTP Information"
              x:Class="MyBodyTemperature.Views.Company.CompanyProfileOTPPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Frame Margin="20" BorderColor="LightSkyBlue">
 
@@ -16,7 +24,7 @@
                 </Image>
 
                 <StackLayout Margin="0,0,0,0"  HorizontalOptions="CenterAndExpand">
-                    <Label TextColor="#242E5B" FontSize="Large" FontAttributes="Bold" Text="Add your company profile" LineBreakMode="WordWrap"/>
+                    <Label TextColor="#242E5B" FontSize="Large" FontAttributes="Bold" Text="Provide OTP Information sent to your phone number" LineBreakMode="WordWrap"/>
                 </StackLayout>
 
                 <StackLayout Margin="100,40,100,5">
@@ -42,22 +50,7 @@
                         </Button.Triggers>
                     </Button>
 
-                    <Button Text="RESEND OTP" Command="{Binding ResendTokenCommand}" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,10,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
-                        <Button.Triggers>
-                            <MultiTrigger TargetType="Button">
-                                <MultiTrigger.Conditions>
-                                    <BindingCondition Binding="{Binding Source={x:Reference otpNumber},
-                                   Path=Text.Length,
-                              Converter={StaticResource dataHasBeenEntered}}"
-                              Value="true" />
-
-                                </MultiTrigger.Conditions>
-
-                                <Setter Property="TextColor"  Value="#242E5B" />
-                                <Setter Property="IsEnabled" Value="True" />
-
-                            </MultiTrigger>
-                        </Button.Triggers>
+                    <Button Text="RESEND OTP" Command="{Binding ResendTokenCommand}" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,10,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="#242E5B">
                     </Button>
                     <Button Text="CANCEL"  Command="{Binding CancelCommand}" BackgroundColor="LightBlue"  FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,10,0,5" FontFamily="Arial" WidthRequest="250" FontAttributes="Bold" TextColor="#242E5B">
                     </Button>

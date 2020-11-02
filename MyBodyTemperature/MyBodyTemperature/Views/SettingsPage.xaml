@@ -26,7 +26,7 @@
                     <ff:CachedImage
                HeightRequest="300"
                     HorizontalOptions="StartAndExpand"
-                    Source="{Binding CurrentUserProfile.ImageProperty,  Mode=OneWay}"
+                    Source="{Binding CompanyProfile.ImageProperty,  Mode=OneWay}"
                     VerticalOptions="Center">
                         <ff:CachedImage.Transformations>
                             <ffTransformations:RoundedTransformation />

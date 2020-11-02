@@ -123,5 +123,56 @@ namespace MyBodyTemperature.Services.RemoteService
             return string.Empty;
         }
 
+        public async Task<bool> SendAnySmsAsync(string message, string cellNumber)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(AccountDetailsStore.Instance.Token))
+                {
+                    var authenticatedToken = await AuthenticateUserAsync();
+                    if (!authenticatedToken)
+                    {
+                        return false;
+                    }
+                }
+
+                Uri uri = new Uri(baseSmsUri, "/v1/bulkmessages");
+
+                Client.DefaultRequestHeaders.Clear();
+                Client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", AccountDetailsStore.Instance.Token));
+
+                var msgs = new
+                {
+                    Messages = new[]
+                  {
+                       new
+                           {
+                             content = message,
+                             destination = cellNumber
+                           }
+                }
+                };
+
+                var content = new StringContent(JsonConvert.SerializeObject(msgs), Encoding.UTF8, "application/json");
+                var response = await Client.PostAsync(uri, content);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                AnalyticsService.TrackError(ex, new Dictionary<string, string>
+                {
+                    { "Method", "RemoteDataService.SendSmsAsync()" }
+                });
+
+            }
+
+            return false;
+        }
+
     }
 }

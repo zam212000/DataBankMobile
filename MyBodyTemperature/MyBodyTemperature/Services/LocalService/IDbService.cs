@@ -21,8 +21,11 @@ namespace MyBodyTemperature.Services
 
         Task<Company> GetCompanyByID(int id);
         Task<Company> GetCompanyByName(string name);
+        Task<Company> GetCompanyByUsername(string username);
         Task<int> AddNewCompanyAsync(Company item);
         Task<int> UpdateCompanyAsync(Company item);
         Task<int> DeleteCompanyAsync(Company item);
+
+        Task<bool> CompanyUserNameExists(string username);
     }
 }
