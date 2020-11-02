@@ -143,14 +143,12 @@ namespace MyBodyTemperature.ViewModels.Company
                     await _dbService.AddNewCompanyAsync(company);
                 }
 
-               // var _companyId = await _dbService.AddNewCompanyAsync(company);
-
                 if (company != null && company.CompanyID > 0)
                 {
                     var smsSend = await _remoteDataService.SendSmsAsync("", company.PhoneNumber);
                     if(string.IsNullOrEmpty(smsSend))
                     {
-                        //TODO - this might be security breach...
+                        //TODO - this might be a security breach...
                         await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to send OTP, please ensure phone number provided is correct", "Ok");
                         return;
                     }
@@ -167,23 +165,6 @@ namespace MyBodyTemperature.ViewModels.Company
                 {
                     await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to add the company. please retry or contact administrator", "Ok");
                 }
-
-
-
-                // SendSmsAsync
-                //if (_userId > 0)
-                //{
-                //    var historyTemp = new UserTemperature
-                //    {
-                //        Temperature = userProfile.Temperature,
-                //        TemperatureDate = userProfile.TemperatureDate,
-                //        UserId = userProfile.UserId
-                //    };
-                //    var tempResult = await _dbService.InsertUserTemperatureAsync(historyTemp);
-                //}
-
-                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully registered the company", "Ok");
-                //OnCancelCommandExecuted();
 
             }
             catch (Exception e)
