@@ -14,6 +14,7 @@ using MyBodyTemperature.Services.AnalyticsService;
 using MyBodyTemperature.Services;
 using MyBodyTemperature.ViewModels.Company;
 using MyBodyTemperature.Views.Company;
+using MyBodyTemperature.Services.RemoteService;
 
 namespace MyBodyTemperature
 {
@@ -58,11 +59,12 @@ namespace MyBodyTemperature
             containerRegistry.RegisterForNavigation<CompanyProfileOTPPage, CompanyProfileOTPViewModel>();
             containerRegistry.RegisterForNavigation<CompanyProfilePasswordPage, CompanyProfilePasswordViewModel>();
 
-
             //SERVICES
             containerRegistry.Register<IAnalyticsService, AppCenterAnalyticsService>();
             containerRegistry.Register<ILoginApiDataService, LoginApiDataService>();
             containerRegistry.Register<IDbService, DbService>();
+            containerRegistry.Register<IRemoteDataService, RemoteDataService>();
+
 
         }
 

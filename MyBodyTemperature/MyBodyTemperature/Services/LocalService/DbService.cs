@@ -98,5 +98,15 @@ namespace MyBodyTemperature.Services
         {
             return await database.DeleteAsync(item);
         }
+
+
+        public async Task<Company> GetCompanyByID(int id)
+        {
+            return await database.Table<Company>().FirstOrDefaultAsync(i => i.CompanyID == id);
+        }
+        public async Task<Company> GetCompanyByName(string name)
+        {
+            return await database.Table<Company>().FirstOrDefaultAsync(i => i.CompanyName == name);
+        }
     }
 }

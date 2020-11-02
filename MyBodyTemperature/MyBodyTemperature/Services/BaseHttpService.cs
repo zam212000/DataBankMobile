@@ -17,15 +17,17 @@ namespace MyBodyTemperature.Services
         protected HttpClient Client { get; private set; }
         protected string Token { get; }
 
-        public BaseHttpService(IAnalyticsService analyticsService)
+        public BaseHttpService()
         {
-            AnalyticsService = analyticsService;
-            Token = AccountDetailsStore.Instance.Token;
+            //Token = AccountDetailsStore.Instance.Token;
             HttpClientHandler handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             Client = new HttpClient(handler);
-            
-            Client.MaxResponseContentBufferSize = 256000;
+
+           // Client = new HttpClient();
+
+
+           // Client.MaxResponseContentBufferSize = 256000;
         }
 
         protected async Task<StatusMessage> GetResponseResultAsync(HttpResponseMessage response)

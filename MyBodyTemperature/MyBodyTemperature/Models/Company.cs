@@ -11,6 +11,7 @@ namespace MyBodyTemperature.Models
         [PrimaryKey]
         [AutoIncrement]
         public int CompanyID { get; set; }
+        public string CompanyRegNumber { get; set; }
         public string CompanyName { get; set; }
         public string CompanyAddresss { get; set; }
         public string CompanyEmail { get; set; }

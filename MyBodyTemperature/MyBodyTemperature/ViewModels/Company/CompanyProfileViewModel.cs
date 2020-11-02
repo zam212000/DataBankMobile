@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using MyBodyTemperature.Models;
 using MyBodyTemperature.Services;
+using MyBodyTemperature.Services.RemoteService;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
@@ -13,10 +14,12 @@ namespace MyBodyTemperature.ViewModels.Company
     {
         private readonly IDbService _dbService;
         private readonly IPageDialogService _pageDialogService;
-        public CompanyProfileViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService) : base(navigationService)
+        private readonly IRemoteDataService _remoteDataService;
+        public CompanyProfileViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService, IRemoteDataService remoteDataService) : base(navigationService)
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
+            _remoteDataService = remoteDataService;
             NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted, () => false);
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
@@ -26,7 +29,7 @@ namespace MyBodyTemperature.ViewModels.Company
         public DelegateCommand CancelCommand { get; }
         public DelegateCommand TakePhotoCommand { get; }
 
-        private string _companyName= string.Empty;
+        private string _companyName = string.Empty;
         public string CompanyName
         {
             get => _companyName;
@@ -112,16 +115,62 @@ namespace MyBodyTemperature.ViewModels.Company
         {
             try
             {
-                var company = new  Models.Company();
-                company.CompanyName = CompanyName;
-                company.CompanyAddresss = CompanyAddresss;
-                company.AvatarUrl = ImageUrl;
-                company.ImageContent = ImageContent;
-                company.CompanyEmail = CompanyEmail;
-                company.PhoneNumber = PhoneNumber;
+                Models.Company company;
+                company = await _dbService.GetCompanyByName(CompanyName.Trim());
+                if (company != null && company.PhoneNumberConfirmed)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Already Registered", "The company is already registered. use forgot password to recover your account", "Ok");
+                    return;
+                }
+                else if (company != null && !company.PhoneNumberConfirmed)
+                {
+                    company.CompanyAddresss = CompanyAddresss;
+                    company.AvatarUrl = ImageUrl;
+                    company.ImageContent = ImageContent;
+                    company.CompanyEmail = CompanyEmail;
+                    company.PhoneNumber = PhoneNumber;
+                    await _dbService.UpdateCompanyAsync(company); 
+                }
+                else
+                {
+                    company = new Models.Company();
+                    company.CompanyName = CompanyName;
+                    company.CompanyAddresss = CompanyAddresss;
+                    company.AvatarUrl = ImageUrl;
+                    company.ImageContent = ImageContent;
+                    company.CompanyEmail = CompanyEmail;
+                    company.PhoneNumber = PhoneNumber;
+                    await _dbService.AddNewCompanyAsync(company);
+                }
 
-                var _companyId = await _dbService.AddNewCompanyAsync(company);
+               // var _companyId = await _dbService.AddNewCompanyAsync(company);
 
+                if (company != null && company.CompanyID > 0)
+                {
+                    var smsSend = await _remoteDataService.SendSmsAsync("", company.PhoneNumber);
+                    if(string.IsNullOrEmpty(smsSend))
+                    {
+                        //TODO - this might be security breach...
+                        await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to send OTP, please ensure phone number provided is correct", "Ok");
+                        return;
+                    }
+
+                    company.Token = smsSend;
+                    await _dbService.UpdateCompanyAsync(company);
+
+                    var param = new NavigationParameters();
+                    param.Add("CompanyProfile", company);
+                    await NavigationService.NavigateAsync("CompanyProfileOTPPage", param);
+
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Unsuccessful", "Failed to add the company. please retry or contact administrator", "Ok");
+                }
+
+
+
+                // SendSmsAsync
                 //if (_userId > 0)
                 //{
                 //    var historyTemp = new UserTemperature

@@ -16,7 +16,7 @@ namespace MyBodyTemperature.Services.UserProfile
     {
         readonly Uri baseUri = new Uri(Constants.BaseURL);
 
-        public LoginApiDataService(IAnalyticsService analyticsService) : base(analyticsService)
+        public LoginApiDataService(IAnalyticsService analyticsService) 
         {
         }
 

@@ -9,9 +9,11 @@ namespace MyBodyTemperature.Services
 
         //DEV
         public static string BaseURL = "http://172.20.0.57/webapi/";
+        public static string BaseSmsURL = "https://rest.smsportal.com/";
 
         //Production
-        //public static string BaseURL = "https://api.goodearth1.org.za/";
+        //public static string BaseURL = "https://api.ngenaaccess.org.za/";
+
 
 
 

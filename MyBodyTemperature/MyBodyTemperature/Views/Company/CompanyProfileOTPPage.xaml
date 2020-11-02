@@ -21,10 +21,28 @@
 
                 <StackLayout Margin="100,40,100,5">
 
-                    <Entry x:Name="otpNumber"  Text="{Binding PhoneNumber}" Placeholder="Enter OTP Number" Keyboard="Numeric" MaxLength="10" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                    <Entry x:Name="otpNumber"  Text="{Binding OTPNumber}" Placeholder="Enter OTP Number" Keyboard="Numeric" MaxLength="6" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                     </Entry>
 
                     <Button Text="NEXT" Command="{Binding NextProfileCommand}" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,10,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                        <Button.Triggers>
+                            <MultiTrigger TargetType="Button">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Source={x:Reference otpNumber},
+                                   Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                              Value="true" />
+
+                                </MultiTrigger.Conditions>
+
+                                <Setter Property="TextColor"  Value="#242E5B" />
+                                <Setter Property="IsEnabled" Value="True" />
+
+                            </MultiTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+                    <Button Text="RESEND OTP" Command="{Binding ResendTokenCommand}" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,10,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
                         <Button.Triggers>
                             <MultiTrigger TargetType="Button">
                                 <MultiTrigger.Conditions>

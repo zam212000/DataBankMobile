@@ -6,15 +6,18 @@ using System.Collections.Generic;
 using System.Text;
 using MyBodyTemperature.Models;
 using MyBodyTemperature.Helpers;
+using MyBodyTemperature.Services.RemoteService;
 
 namespace MyBodyTemperature.ViewModels
 {
     public class LogInViewModel : BaseViewModel
     {
         private readonly ILoginApiDataService _loginApiDataService;
-        public LogInViewModel(INavigationService navigationService, ILoginApiDataService loginApiDataService) : base(navigationService)
+        private readonly IRemoteDataService _remoteDataService;
+        public LogInViewModel(INavigationService navigationService, ILoginApiDataService loginApiDataService, IRemoteDataService remoteDataService) : base(navigationService)
         {
             _loginApiDataService = loginApiDataService;
+            _remoteDataService = remoteDataService;
             LogInCommand = new DelegateCommand(OnSignInCommandExecuted);
             SignUpCommand = new DelegateCommand(OnSignUpCommandExecuted);
             ForgotPasswordCommand = new DelegateCommand(OnForgotPasswordCommandExecuted);
@@ -50,6 +53,11 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
+
+                var smsSend = await _remoteDataService.SendSmsAsync("", "0743727336");
+
+
+                /*
                 // IsBusy = true;
                 var userProfile = new Models.UserProfile
                 {
@@ -69,6 +77,8 @@ namespace MyBodyTemperature.ViewModels
                 //{
 
                 //}
+
+                */
             }
             catch
             {
