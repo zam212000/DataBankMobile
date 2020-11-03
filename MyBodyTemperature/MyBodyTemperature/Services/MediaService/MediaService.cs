@@ -23,7 +23,7 @@ namespace MyBodyTemperature
             remove => _permissionsDeniedEventManager.RemoveEventHandler(value);
         }
 
-        public static async Task<MediaFile?> GetMediaFileFromCamera(string photoName)
+        public static async Task<MediaFile> GetMediaFileFromCamera(string photoName)
         {
             await CrossMedia.Current.Initialize().ConfigureAwait(false);
 
@@ -47,6 +47,24 @@ namespace MyBodyTemperature
                     PhotoSize = PhotoSize.Small,
                     DefaultCamera = CameraDevice.Front,
                     Name = photoName,
+                });
+            }).ConfigureAwait(false);
+        }
+
+        public static async Task<MediaFile> GetMediaFileFromGallery()
+        {
+            await CrossMedia.Current.Initialize().ConfigureAwait(false);
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                return null;
+            }
+
+            return await MainThread.InvokeOnMainThreadAsync(() =>
+            {
+                return CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                {
+                    PhotoSize = PhotoSize.Small
                 });
             }).ConfigureAwait(false);
         }

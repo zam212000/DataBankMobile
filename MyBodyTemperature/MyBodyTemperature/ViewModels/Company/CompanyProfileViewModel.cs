@@ -6,6 +6,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using System;
+using System.IO;
 using Xamarin.Forms;
 
 namespace MyBodyTemperature.ViewModels.Company
@@ -28,6 +29,7 @@ namespace MyBodyTemperature.ViewModels.Company
             NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted, () => false);
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
+            ImageProperty = ImageSource.FromFile("companyIcon.png");
         }
 
         public DelegateCommand NextProfileCommand { get; }
@@ -93,7 +95,14 @@ namespace MyBodyTemperature.ViewModels.Company
             }
         }
 
-        public ImageSource ImageProperty { get; set; }
+        private ImageSource _imageProperty;
+
+        public ImageSource ImageProperty
+        {
+            get { return _imageProperty; }
+            set { SetProperty(ref _imageProperty, value); }
+        }
+
 
 
         private async void OnCancelCommandExecuted()
@@ -103,16 +112,17 @@ namespace MyBodyTemperature.ViewModels.Company
 
         private async void OnPhotoTakenCommandExecuted()
         {
-            var mediaFile = await MediaService.GetMediaFileFromCamera(CompanyName).ConfigureAwait(false);
+            var mediaFile = await MediaService.GetMediaFileFromGallery().ConfigureAwait(false);
 
             if (mediaFile is null)
             {
-                await _pageDialogService.DisplayAlertAsync("Photo failed", "Failed to take the photo", "Ok");
+                await _pageDialogService.DisplayAlertAsync("Pick Photo failed", "Failed to pick the company photo", "Ok");
             }
             else
             {
                 ImageUrl = mediaFile.Path;
                 ImageContent = GetImageBytes(mediaFile.GetStream());
+                ImageProperty = ImageSource.FromStream(() => new MemoryStream(ImageContent));
             }
         }
 
@@ -120,7 +130,6 @@ namespace MyBodyTemperature.ViewModels.Company
         {
             try
             {
-
                 if(! await _validationService.NetworkConnectedAsync())
                 {
                     await _pageDialogService.DisplayAlertAsync("Network connectivity", "internet connection is required to create a company profile", "Ok");
