@@ -1414,14 +1414,6 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\cameraicon.png
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\companyicon.png
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\companyicon.png
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\002f607e-95dd-4293-af20-e35bd0158e7b.txt
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\29cea5d3-53e9-4a63-a9bd-aa40480585b5.txt
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\2d54aecd-d881-48bb-adfd-edb423858deb.cfg
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\300c0e98-1d31-48e1-9c9d-0d41c7281291.txt
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\53b0f156-8058-47dc-8f3d-50252907a9af.txt
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\978950a8-411b-49e7-935d-a19c4c475362.txt
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\bd70b563-8d21-4ff1-a37a-da94b23c7424.txt
-C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\e4cf5268-d574-463f-b71d-6951f4e90306.txt
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\ngenalogo.png
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\0c2da7cb-7c5a-443d-a7e3-93c0249b9c08.txt
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\351ccbb2-9035-4316-98ad-2e2aee8358a8.txt
@@ -1431,3 +1423,5 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\andr
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\94caefe6-aff6-4fc4-83f4-284e4f8a0254.cfg
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\abdf854e-e9a1-4ce8-988d-aa9a2200fa88.txt
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\androidx\proguard\e58a9f66-6a08-4110-bfa9-925969594af5.txt
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\ngenalogo.png
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\covidofficialsa.png

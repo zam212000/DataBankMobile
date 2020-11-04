@@ -11,12 +11,12 @@
     <TabbedPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </TabbedPage.Padding>
-    <TabbedPage.ToolbarItems>
+    <!--<TabbedPage.ToolbarItems>
 
         <ToolbarItem  Icon="search.png" />
         <ToolbarItem Command="{Binding ItemAddedCommand}" Icon="AddNewIcon.png">
         </ToolbarItem>
-    </TabbedPage.ToolbarItems>
+    </TabbedPage.ToolbarItems>-->
 
 
     <NavigationPage Title="Home" IconImageSource="ic_home.png">

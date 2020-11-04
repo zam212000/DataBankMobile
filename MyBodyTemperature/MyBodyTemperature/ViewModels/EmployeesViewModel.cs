@@ -33,6 +33,16 @@ namespace MyBodyTemperature.ViewModels
 
         public DelegateCommand NextProfileCommand { get; }
 
+        private Models.Company _companyProfile;
+        public Models.Company CompanyProfile
+        {
+            get => _companyProfile;
+            set
+            {
+                SetProperty(ref _companyProfile, value);
+            }
+        }
+
         private string _emailAddress = string.Empty;
         public string EmailAddress
         {
@@ -90,6 +100,17 @@ namespace MyBodyTemperature.ViewModels
             try
             {
                 SelectedItem = null;
+                CompanyProfile = Settings.CurrentCompany;
+                if (CompanyProfile.ImageContent != null)
+                {
+
+                    CompanyProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CompanyProfile.ImageContent));
+                }
+                else
+                {
+                    CompanyProfile.ImageProperty = ImageSource.FromFile("companyIcon.png");
+                }
+
 
                 await LoadAllItems();
             }
