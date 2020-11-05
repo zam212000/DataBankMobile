@@ -69,7 +69,16 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
-        
+        private string _employeeNumber = string.Empty;
+        public string EmployeeNumber
+        {
+            get => _employeeNumber;
+            set
+            {
+                SetProperty(ref _employeeNumber, value);
+            }
+        }
+
 
         private string _imageUrl = string.Empty;
         public string ImageUrl
@@ -146,6 +155,7 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.Temperature = double.Parse(Temperature);
                 userProfile.TemperatureDate = DateTime.Now;
                 userProfile.IDNumber = IDNumber;
+                userProfile.EmployeeNumber = EmployeeNumber;
 
                 var _userId = await _dbService.InsertItemAsync(userProfile);
                 if(_userId > 0)

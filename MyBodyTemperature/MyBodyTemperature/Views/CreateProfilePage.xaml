@@ -41,6 +41,9 @@
                 <Entry x:Name="iDNumber"  Text="{Binding IDNumber}" Placeholder="ID Number" Keyboard="Numeric" MaxLength="13" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                     </Entry>
 
+                    <Entry x:Name="employeeNumber"  Text="{Binding EmployeeNumber}" Placeholder="Employee No" Keyboard="Numeric" MaxLength="20" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                    </Entry>
+
                     <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Temperature" HorizontalTextAlignment="Center" MaxLength="4" Keyboard="Numeric" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                     </Entry>
 

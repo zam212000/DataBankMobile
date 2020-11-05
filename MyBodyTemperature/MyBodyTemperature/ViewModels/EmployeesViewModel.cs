@@ -92,7 +92,7 @@ namespace MyBodyTemperature.ViewModels
             Settings.CurrentUserId = userProfile.UserId;
             var param = new NavigationParameters();
             param.Add("UserProfileParam", userProfile);
-            await NavigationService.NavigateAsync("EmployeeDetailPage", param, true, true);
+            await NavigationService.NavigateAsync("EmployeeDetailPage", param);
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)

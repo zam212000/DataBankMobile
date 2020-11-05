@@ -100,7 +100,7 @@
 
                     CachingStrategy="RecycleElement"
                     HasUnevenRows="False"
-                    RowHeight="75"
+                    RowHeight="85"
                     SelectionMode="None"
                     SeparatorColor="Gray"
                         SeparatorVisibility="None">
