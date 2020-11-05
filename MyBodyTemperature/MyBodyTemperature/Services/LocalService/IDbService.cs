@@ -8,7 +8,7 @@ namespace MyBodyTemperature.Services
 {
     public interface IDbService
     {
-        Task<List<Models.UserProfile>> GetItemsAsync();
+        Task<List<Models.UserProfile>> GetItemsAsync(int companyID);
         Task<Models.UserProfile> GetItemAsync(int id);
         Task<int> InsertItemAsync(Models.UserProfile item);
         Task<int> UpdateItemAsync(Models.UserProfile item);

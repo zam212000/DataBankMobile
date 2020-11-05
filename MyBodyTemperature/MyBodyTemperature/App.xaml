@@ -7,10 +7,10 @@
         <ResourceDictionary>
 
 
-            <!--<Style TargetType="NavigationPage">
+            <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="#ffffff"/>
                 <Setter Property="BarTextColor" Value="#0D7ABE"/>
-            </Style>-->
+            </Style>
 
             <!-- COLORS -->
             <Color x:Key="AccentColor">#BC4C1B</Color>

@@ -6,5 +6,6 @@ namespace MyBodyTemperature.ViewModels.Company
 {
     public class CompanyProfileEditViewModel
     {
+
     }
 }

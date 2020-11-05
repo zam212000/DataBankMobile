@@ -17,7 +17,7 @@ namespace MyBodyTemperature.ViewModels.Company
         private readonly IDbService _dbService;
         private readonly IPageDialogService _pageDialogService;
         private readonly IRemoteDataService _remoteDataService;
-        public CompanyProfilePasswordViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService , IRemoteDataService remoteDataService) : base(navigationService)
+        public CompanyProfilePasswordViewModel(INavigationService navigationService, IDbService dbService, IPageDialogService dialogService, IRemoteDataService remoteDataService) : base(navigationService)
         {
             _dbService = dbService;
             _pageDialogService = dialogService;
@@ -79,6 +79,7 @@ namespace MyBodyTemperature.ViewModels.Company
         {
             try
             {
+                IsBusy = true;
                 if (Username.Length < 5)
                 {
                     await _pageDialogService.DisplayAlertAsync("Create profile", "A minimum of 6 characters is required for username", "Ok");
@@ -114,7 +115,7 @@ namespace MyBodyTemperature.ViewModels.Company
                 var msg = $"Ngena Access App: Your Company has been successfully created. Your Company account is {companyAccount}. Your Username is {Username} and Password is {ConfirmPassword}";
                 //SEND MESSAGE
                 await _remoteDataService.SendAnySmsAsync(msg, CompanyProfile.PhoneNumber);
-                await _pageDialogService.DisplayAlertAsync("Create profile", msg , "Ok");
+                await _pageDialogService.DisplayAlertAsync("Create profile", msg, "Ok");
 
                 await NavigationService.NavigateAsync("LogInPage");
             }
@@ -122,6 +123,11 @@ namespace MyBodyTemperature.ViewModels.Company
             catch
             {
                 //TODO
+            }
+
+            finally
+            {
+                IsBusy = false;
             }
         }
 

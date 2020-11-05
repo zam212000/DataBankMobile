@@ -61,6 +61,7 @@ namespace MyBodyTemperature.ViewModels
         {
             try
             {
+                IsBusy = true;
                 var company = await _dbService.GetCompanyByUsername(UserName);
                 if (company != null)
                 {
@@ -84,6 +85,10 @@ namespace MyBodyTemperature.ViewModels
                 {
                     await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
                 }
+
+                //var company = await _dbService.GetCompanyByID(1);
+                //Settings.CurrentCompany = company;
+                //await NavigationService.NavigateAsync("/MainTabbedPage");
             }
             catch (Exception e)
             {
@@ -92,7 +97,7 @@ namespace MyBodyTemperature.ViewModels
 
             finally
             {
-                //   IsBusy = false;
+                IsBusy = false;
             }
 
         }

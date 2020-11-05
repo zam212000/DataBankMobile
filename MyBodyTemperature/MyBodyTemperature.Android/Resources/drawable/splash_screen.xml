@@ -3,6 +3,6 @@
   <item android:drawable="@color/launcher_background"/>
   <item>
     <bitmap android:gravity="center"
-            android:src="@drawable/covidIcon" />
+            android:src="@drawable/nganamaiviewlogo" />
   </item>
 </layer-list>

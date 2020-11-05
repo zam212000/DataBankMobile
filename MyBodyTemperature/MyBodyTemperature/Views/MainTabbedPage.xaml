@@ -3,45 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyBodyTemperature.Views"
                         xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            android:TabbedPage.BarItemColor="Black"
-            android:TabbedPage.BarSelectedItemColor="Red"
-            Title="Amazon Co."
+            NavigationPage.HasNavigationBar="False"
             x:Class="MyBodyTemperature.Views.MainTabbedPage">
 
     <TabbedPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </TabbedPage.Padding>
-    <!--<TabbedPage.ToolbarItems>
-
-        <ToolbarItem  Icon="search.png" />
-        <ToolbarItem Command="{Binding ItemAddedCommand}" Icon="AddNewIcon.png">
-        </ToolbarItem>
-    </TabbedPage.ToolbarItems>-->
 
 
-    <NavigationPage Title="Home" IconImageSource="ic_home.png">
+    <NavigationPage Title="Help" IconImageSource="helpbar.png">
         <x:Arguments>
-            <local:EmployeesPage />
+            <local:HelpPage />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Messages" IconImageSource="ic_beach.png">
+    <NavigationPage Title="Messages" IconImageSource="messages.png">
         <x:Arguments>
             <local:MessagesPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Visitors" IconImageSource="ic_fitness_centre.png">
+    <NavigationPage Title="Visitors" IconImageSource="employeesbar.png">
         <x:Arguments>
-            <local:EmployeesPage />
+            <local:VisitorsPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Employees" IconImageSource="illustratrion_bot.png">
+    <NavigationPage Title="Employees" IconImageSource="employeesbar.png">
         <x:Arguments>
             <local:EmployeesPage />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Settings" IconImageSource="illustratrion_bot.png">
+    <NavigationPage Title="Settings" IconImageSource="settings.png">
         <x:Arguments>
             <local:SettingsPage />
         </x:Arguments>

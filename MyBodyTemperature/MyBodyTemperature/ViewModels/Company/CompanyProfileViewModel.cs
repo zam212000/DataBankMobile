@@ -130,7 +130,8 @@ namespace MyBodyTemperature.ViewModels.Company
         {
             try
             {
-                if(! await _validationService.NetworkConnectedAsync())
+                IsBusy = true;
+                if (! await _validationService.NetworkConnectedAsync())
                 {
                     await _pageDialogService.DisplayAlertAsync("Network connectivity", "internet connection is required to create a company profile", "Ok");
                     return;
@@ -199,14 +200,15 @@ namespace MyBodyTemperature.ViewModels.Company
                 }
 
             }
-            catch (Exception e)
+            catch 
             {
+                await _pageDialogService.DisplayAlertAsync("Create profile", "Failed to add the company. please retry or contact administrator", "Ok");
                 //LOG ERROR
             }
 
             finally
             {
-                // IsBusy = false;
+                IsBusy = false;
             }
 
         }

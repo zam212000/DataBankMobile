@@ -41,8 +41,8 @@
                 <Entry x:Name="password" Text="{Binding Password}" Placeholder="password" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" IsPassword="True" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,5,0,10" >
                 </Entry>
 
-                <Button Text="LOGIN" Command="{Binding LogInCommand}" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontSize="Large" FontFamily="Arial" FontAttributes="Bold" TextColor="#242E5B">
-                    <!--<Button.Triggers>
+                <Button Text="LOGIN" Command="{Binding LogInCommand}" BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontSize="Large" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                    <Button.Triggers>
                         <MultiTrigger TargetType="Button">
                             <MultiTrigger.Conditions>
                                 <BindingCondition Binding="{Binding Source={x:Reference username},
@@ -57,11 +57,11 @@
 
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextColor"  Value="#000000" />
+                            <Setter Property="TextColor"  Value="White" />
                             <Setter Property="IsEnabled" Value="True" />
 
                         </MultiTrigger>
-                    </Button.Triggers>-->
+                    </Button.Triggers>
                 </Button>
 
                 <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="16" FontAttributes="Bold" Text="Signup" Margin="0,30,0,5" >

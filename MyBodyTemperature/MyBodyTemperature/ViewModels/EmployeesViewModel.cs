@@ -53,12 +53,12 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
-        private ImageSource _imageProperty;
+        private ImageSource _companyImageProperty;
 
-        public ImageSource ImageProperty
+        public ImageSource CompanyImageProperty
         {
-            get { return _imageProperty; }
-            set { SetProperty(ref _imageProperty, value); }
+            get { return _companyImageProperty; }
+            set { SetProperty(ref _companyImageProperty, value); }
         }
 
         private UserProfile _selectedItem;
@@ -101,14 +101,16 @@ namespace MyBodyTemperature.ViewModels
             {
                 SelectedItem = null;
                 CompanyProfile = Settings.CurrentCompany;
+
                 if (CompanyProfile.ImageContent != null)
                 {
 
-                    CompanyProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CompanyProfile.ImageContent));
+                    CompanyImageProperty = ImageSource.FromStream(() => new MemoryStream(CompanyProfile.ImageContent));
                 }
+
                 else
                 {
-                    CompanyProfile.ImageProperty = ImageSource.FromFile("companyIcon.png");
+                    CompanyImageProperty = ImageSource.FromFile("companyIcon.png");
                 }
 
 
@@ -122,7 +124,7 @@ namespace MyBodyTemperature.ViewModels
 
         private async Task LoadAllItems()
         {
-            var res = await _dbService.GetItemsAsync();
+            var res = await _dbService.GetItemsAsync(CompanyProfile.CompanyID);
 
             if (!Equals(res, null))
             {

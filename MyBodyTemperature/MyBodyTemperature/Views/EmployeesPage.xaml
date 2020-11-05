@@ -1,84 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:b="http://prismlibrary.com" xmlns:template="clr-namespace:MyBodyTemperature.Views.Templates" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:b="http://prismlibrary.com"
+             xmlns:template="clr-namespace:MyBodyTemperature.Views.Templates"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="MyBodyTemperature.Views.EmployeesPage">
 
-    <!--<NavigationPage.TitleView>
-        <Grid RowSpacing="0"  Padding="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <Frame Padding="0" Grid.Column="1" 
-                   CornerRadius     ="10"
-                   IsClippedToBounds="true">
-                <Entry Grid.Column="1" Text="{Binding SearchKeyword, Mode=TwoWay}" BackgroundColor="White" FontSize="16" TextColor="#000000" Placeholder="Search..." >
-                    <Entry.Behaviors>
-                        <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding TextChangedCommand}"/>
-                    </Entry.Behaviors>
-                </Entry>
-            </Frame>
-        </Grid>
-    </NavigationPage.TitleView>-->
     <ContentPage.Content>
 
+        <Grid Margin="10,5,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
 
-            <Grid Margin="10,5,10,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="180" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*" />
-                    <ColumnDefinition Width="80*" />
-                    <ColumnDefinition Width="10*" />
-                </Grid.ColumnDefinitions>
+            <Frame Margin="5" Grid.Row="0" BorderColor="LightSkyBlue" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <Frame Margin="5" Grid.Row="0" BorderColor="LightSkyBlue" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal">
 
-                    <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal">
-
-                        <StackLayout Grid.Column="0" 
+                    <StackLayout Grid.Column="0" 
                             HorizontalOptions="Center"
                             Orientation="Vertical"
                             VerticalOptions="Center">
-                                        <ff:CachedImage
-                           HeightRequest="150"
+                        <ff:CachedImage
+                           HeightRequest="120"
                                 HorizontalOptions="StartAndExpand"
-                                Source="{Binding CompanyProfile.ImageProperty,  Mode=TwoWay}"
+                                Source="{Binding CompanyImageProperty,  Mode=TwoWay}"
                                 VerticalOptions="Center">
-                                            <ff:CachedImage.Transformations>
-                                                <ffTransformations:RoundedTransformation />
-                                            </ff:CachedImage.Transformations>
-                                        </ff:CachedImage>
-                                        <Label HorizontalOptions="CenterAndExpand" TextColor="#384898" FontSize="Medium" FontAttributes="Bold" Text="{Binding CompanyProfile.CompanyName}">
-                                        </Label>
-                        </StackLayout>
-
-                        <!--<StackLayout Grid.Row="0" Grid.Column="1" Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
-                        </StackLayout>-->
-
-                        <StackLayout HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2" Margin="10" Spacing="10">
-                            <Image HorizontalOptions="CenterAndExpand">
-                                <Image.Source>
-                                    <OnPlatform x:TypeArguments="ImageSource">
-                                        <On Platform="iOS, Android" Value="covidofficialSA.png" />
-                                    </OnPlatform>
-                                </Image.Source>
-                            </Image>
-                        </StackLayout>
+                            <ff:CachedImage.Transformations>
+                                <ffTransformations:RoundedTransformation />
+                            </ff:CachedImage.Transformations>
+                        </ff:CachedImage>
+                        <Label HorizontalOptions="CenterAndExpand" TextColor="#384898" FontSize="Medium" FontAttributes="Bold" Text="{Binding CompanyProfile.CompanyName}">
+                        </Label>
                     </StackLayout>
-                </Frame>
 
-                <StackLayout Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" >
-
+                    <StackLayout HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2" Margin="10" Spacing="10">
+                        <Image HorizontalOptions="CenterAndExpand">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="ImageSource">
+                                    <On Platform="iOS, Android" Value="covidofficialSA.png" />
+                                </OnPlatform>
+                            </Image.Source>
+                        </Image>
+                    </StackLayout>
                 </StackLayout>
 
-                <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Margin="10,5,5,0">
-                    <!--LISTVIEW CONTENT-->
-                    <ListView ItemsSource="{Binding Path=UserProfiles}"
+            </Frame>
+
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
+                <BoxView
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        Color="LightGray" />
+
+                <StackLayout Margin="50,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                    <SearchBar Placeholder="Search..." Text="{Binding SearchKeyword, Mode=TwoWay}" HorizontalOptions="FillAndExpand" >
+                        <SearchBar.Behaviors>
+                            <b:EventToCommandBehavior EventName="TextChanged"
+                                          Command="{Binding TextChangedCommand}"/>
+                        </SearchBar.Behaviors>
+                    </SearchBar>
+
+                    <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
+                        <Image  Source="addemployee.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer  Command ="{Binding ItemAddedCommand}">
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Margin="10,0,0,0" TextColor="#242E5B" Text="Add Employee" FontSize="Small">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ItemAddedCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+                <Label Margin="30,0,0,0" Text="Employees" FontSize="Large" TextColor="#384898" FontAttributes="Bold" />
+                
+                <BoxView
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        Color="LightGray" />
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Margin="10,0,5,0">
+                <!--LISTVIEW CONTENT-->
+                <ListView ItemsSource="{Binding Path=UserProfiles}"
 
                     CachingStrategy="RecycleElement"
                     HasUnevenRows="False"
@@ -87,25 +105,23 @@
                     SeparatorColor="Gray"
                         SeparatorVisibility="None">
 
-                        <ListView.Behaviors>
-                            <b:EventToCommandBehavior Command="{Binding ItemSelectedCommand}" 
+                    <ListView.Behaviors>
+                        <b:EventToCommandBehavior Command="{Binding ItemSelectedCommand}" 
                                     EventName="ItemTapped" EventArgsParameterPath="Item" />
-                        </ListView.Behaviors>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <template:PersonnelTemplate />
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <template:PersonnelTemplate />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-                </StackLayout>
-
-
-            </Grid>
+            </StackLayout>
 
 
+        </Grid>
 
         <!--</Grid>-->
 

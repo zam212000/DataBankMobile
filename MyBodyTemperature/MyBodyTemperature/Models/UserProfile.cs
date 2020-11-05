@@ -19,6 +19,7 @@ namespace MyBodyTemperature.Models
         public string PhoneNumber { get; set; }
         public string IDNumber { get; set; }
         public string FullName { get; set; }
+        public int CompanyID { get; set; }
         public string AvatarUrl { get; set; }
         [Ignore]
         public ImageSource ImageProperty { get; set; }

@@ -82,39 +82,6 @@ namespace MyBodyTemperature.ViewModels
             await NavigationService.NavigateAsync("TodoItemPage", p);
         }
 
-        public async override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            try
-            {
-                SelectedItem = null;
-
-                var res = await _dbService.GetItemsAsync();
-
-                if (!Equals(res, null))
-                {
-                    UserProfiles = new ObservableCollection<UserProfile>(res);
-                    //var imageContent = UserProfiles.FirstOrDefault().ImageContent;
-
-                    // ImageProperty = ImageSource.FromStream(() => new MemoryStream(imageContent));
-
-                    //var byteContent = BytesToStream(imageContent);
-                    //Image = ImageSource.FromStream(() =>
-                    //    {
-                    //        var result = byteContent;
-                    //        return result;
-                    //    });
-
-                    foreach (var item in UserProfiles)
-                    {
-                        item.ImageProperty = ImageSource.FromStream(() => new MemoryStream(item.ImageContent));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // await _dialogService.DisplayAlertAsync("Error", ex.Message, "OK");
-            }
-        }
 
         private async void AddNewItem()
         {

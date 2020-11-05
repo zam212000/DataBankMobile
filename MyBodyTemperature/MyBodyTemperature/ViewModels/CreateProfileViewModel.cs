@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using MyBodyTemperature.Helpers;
 using MyBodyTemperature.Models;
 using MyBodyTemperature.Services;
 using Prism.Commands;
@@ -141,6 +142,7 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.FirstNames = FirstName;
                 userProfile.ImageContent = ImageContent;
                 userProfile.AvatarUrl = ImageUrl;
+                userProfile.CompanyID = Settings.CurrentCompany.CompanyID;
                 userProfile.Temperature = double.Parse(Temperature);
                 userProfile.TemperatureDate = DateTime.Now;
                 userProfile.IDNumber = IDNumber;

@@ -75,7 +75,7 @@
                     Orientation="Horizontal"
                     VerticalOptions="Center">
                     <BoxView
-                        HeightRequest="0.3"
+                        HeightRequest="0.5"
                         HorizontalOptions="FillAndExpand"
                         Color="LightGray" />
                 </StackLayout>

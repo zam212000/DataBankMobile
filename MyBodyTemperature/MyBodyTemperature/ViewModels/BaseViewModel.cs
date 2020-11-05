@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Acr.UserDialogs;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -24,6 +25,33 @@ namespace MyBodyTemperature.ViewModels
             NavigationService = navigationService;
         }
 
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                SetProperty(ref _isBusy, value, () => RaisePropertyChanged(nameof(IsNotBusy)));
+                OnIsBusyChanged();
+            }
+        }
+
+        public bool IsNotBusy
+        {
+            get { return !IsBusy; }
+        }
+
+        protected void OnIsBusyChanged()
+        {
+            if (IsBusy)
+            {
+                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Gradient);
+            }
+            else
+            {
+                UserDialogs.Instance.HideLoading();
+            }
+        }
         public virtual void Initialize(INavigationParameters parameters)
         {
 

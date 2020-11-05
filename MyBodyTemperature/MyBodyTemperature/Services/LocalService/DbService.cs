@@ -39,9 +39,9 @@ namespace MyBodyTemperature.Services
             }
         }
 
-        public Task<List<Models.UserProfile>> GetItemsAsync()
+        public Task<List<Models.UserProfile>> GetItemsAsync(int companyID)
         {
-            return database.Table<Models.UserProfile>().ToListAsync();
+            return database.Table<Models.UserProfile>().Where(y => y.CompanyID ==companyID).OrderByDescending(x => x.TemperatureDate).ToListAsync();
         }
 
         public Task<Models.UserProfile> GetItemAsync(int id)
