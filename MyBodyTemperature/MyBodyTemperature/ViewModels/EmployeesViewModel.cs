@@ -160,7 +160,7 @@ namespace MyBodyTemperature.ViewModels
                     }
                     else
                     {
-                        item.ImageProperty = ImageSource.FromFile("employeesempty.png");
+                        item.ImageProperty = ImageSource.FromFile("defaultpic.png");
                     }
                 }
 

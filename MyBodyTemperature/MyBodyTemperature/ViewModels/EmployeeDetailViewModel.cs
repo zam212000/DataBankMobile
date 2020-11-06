@@ -251,7 +251,7 @@ namespace MyBodyTemperature.ViewModels
                 }
                 else
                 {
-                    CurrentUserProfile.ImageProperty = ImageSource.FromFile("employeesempty.png");
+                    CurrentUserProfile.ImageProperty = ImageSource.FromFile("defaultpic.png");
                 }
 
                 // await AssignChartEntries();

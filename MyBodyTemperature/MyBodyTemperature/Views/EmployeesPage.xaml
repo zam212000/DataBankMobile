@@ -55,7 +55,7 @@
 
             </Frame>
 
-            <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
+            <StackLayout Margin="0" Grid.Row="1" Grid.ColumnSpan="3">
                 <BoxView
                         HeightRequest="1"
                         HorizontalOptions="FillAndExpand"
@@ -71,7 +71,7 @@
                     </SearchBar>
 
                     <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
-                        <Image  Source="addemployee.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" >
+                        <Image  Source="addemployeeb.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer  Command ="{Binding ItemAddedCommand}">
                                 </TapGestureRecognizer>
@@ -94,13 +94,13 @@
 
             </StackLayout>
 
-            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Margin="10,0,5,0">
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Margin="10,-10,5,0">
                 <!--LISTVIEW CONTENT-->
                 <ListView ItemsSource="{Binding Path=UserProfiles}"
 
                     CachingStrategy="RecycleElement"
                     HasUnevenRows="False"
-                    RowHeight="85"
+                    RowHeight="88"
                     SelectionMode="None"
                     SeparatorColor="Gray"
                         SeparatorVisibility="None">

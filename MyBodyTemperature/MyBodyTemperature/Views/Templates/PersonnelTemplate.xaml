@@ -4,7 +4,7 @@
              x:Class="MyBodyTemperature.Views.Templates.PersonnelTemplate">
     <ContentView.Content>
         <StackLayout Orientation="Horizontal">
-            <StackLayout
+            <StackLayout Margin="0,-20,0,0"
                 HorizontalOptions="Center"
                 Orientation="Vertical"
                 VerticalOptions="Center">
@@ -15,7 +15,7 @@
                     VerticalOptions="Center"
                     WidthRequest="55">
                     <ff:CachedImage.Transformations>
-                        <ffTransformations:RoundedTransformation Radius="240" BorderHexColor="#242E5B" BorderSize="5" />
+                        <ffTransformations:RoundedTransformation Radius="240" />
                     </ff:CachedImage.Transformations>
                     <ff:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />

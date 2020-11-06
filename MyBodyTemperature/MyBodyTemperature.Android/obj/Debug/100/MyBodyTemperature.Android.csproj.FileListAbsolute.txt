@@ -1458,3 +1458,5 @@ C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\stamp\_Gen
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\stamp\_GeneratePackageManagerJava.stamp
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\stamp\_ResolveLibraryProjectImports.stamp
 C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\cameratransparent.png
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\defaultpic.png
+C:\LearnGIT\MyBodyTemperature\MyBodyTemperature.Android\obj\Debug\100\res\drawable\addemployeeb.png
