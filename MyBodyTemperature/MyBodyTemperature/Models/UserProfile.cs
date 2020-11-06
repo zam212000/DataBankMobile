@@ -29,5 +29,6 @@ namespace MyBodyTemperature.Models
         public CovidMetadata CovidMetadata { get; set; }
         public double Temperature { get; set; }
         public DateTime TemperatureDate { get; set; }
+        public bool AccessGranted { get; set; }
     }
 }

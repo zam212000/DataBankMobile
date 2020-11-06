@@ -15,7 +15,7 @@
                     VerticalOptions="Center"
                     WidthRequest="55">
                     <ff:CachedImage.Transformations>
-                        <ffTransformations:RoundedTransformation Radius="240" />
+                        <ffTransformations:RoundedTransformation Radius="240" BorderHexColor="#242E5B" BorderSize="5" />
                     </ff:CachedImage.Transformations>
                     <ff:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />

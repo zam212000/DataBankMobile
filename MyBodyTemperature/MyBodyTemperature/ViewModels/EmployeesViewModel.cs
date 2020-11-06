@@ -160,7 +160,7 @@ namespace MyBodyTemperature.ViewModels
                     }
                     else
                     {
-                        item.ImageProperty = ImageSource.FromFile("EmptyUser.png");
+                        item.ImageProperty = ImageSource.FromFile("employeesempty.png");
                     }
                 }
 
@@ -174,8 +174,14 @@ namespace MyBodyTemperature.ViewModels
             {
                 if (SearchKeyword?.Length > 0)
                 {
+                    var items = OriginalItems.Where(x =>
+                            x.FullName.ToLower().Contains(SearchKeyword.ToLower()) ||
+                             x.PhoneNumber.ToLower().Contains(SearchKeyword.ToLower()) ||
+                              x.IDNumber.ToLower().Contains(SearchKeyword.ToLower()) ||
+                              x.Temperature.ToString().Contains(SearchKeyword.ToLower())
+                            );
 
-                    var items = OriginalItems.Where(x => x.FullName.ToLower().Contains(SearchKeyword.ToLower()));
+
                     UserProfiles = new ObservableCollection<UserProfile>(items);
                 }
 

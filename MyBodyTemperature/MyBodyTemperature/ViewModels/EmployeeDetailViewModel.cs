@@ -163,17 +163,17 @@ namespace MyBodyTemperature.ViewModels
         {
             var param = new NavigationParameters();
             param.Add("UserProfileParam", CurrentUserProfile);
-            await NavigationService.NavigateAsync("UserTemperaturePage", param, true, true);
+            await NavigationService.NavigateAsync("UserTemperaturePage", param);
         }
 
         private async void OnUpdateUserCommandExecuted()
         {
             var param = new NavigationParameters();
             param.Add("UserProfileParam", CurrentUserProfile);
-            await NavigationService.NavigateAsync("UpdateUserProfilePage", param, true, true);
+            await NavigationService.NavigateAsync("UpdateUserProfilePage", param);
         }
 
-        
+
         private async void OnRemoveUserCommandExecuted()
         {
             var confirm = await _pageDialogService.DisplayAlertAsync("Delete User", "Are you sure you want to permanently delete this user", "Yes", "Cancel");
@@ -251,7 +251,7 @@ namespace MyBodyTemperature.ViewModels
                 }
                 else
                 {
-                    CurrentUserProfile.ImageProperty = ImageSource.FromFile("EmptyUser.png");
+                    CurrentUserProfile.ImageProperty = ImageSource.FromFile("employeesempty.png");
                 }
 
                 // await AssignChartEntries();

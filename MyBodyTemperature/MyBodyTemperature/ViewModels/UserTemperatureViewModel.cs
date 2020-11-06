@@ -31,6 +31,17 @@ namespace MyBodyTemperature.ViewModels
             set
             {
                 SetProperty(ref _temperature, value);
+                double.TryParse(value, out var temp);
+                if (temp > 37.5)
+                {
+                    AccessGranted = false;
+                    AccessGrantedEnabled = true;
+                }
+                else
+                {
+                    AccessGrantedEnabled = false;
+                    AccessGranted = true;
+                }
             }
         }
 
@@ -41,6 +52,27 @@ namespace MyBodyTemperature.ViewModels
             set
             {
                 SetProperty(ref _userProfile, value);
+            }
+        }
+
+
+        private bool _accessGranted = true;
+        public bool AccessGranted
+        {
+            get => _accessGranted;
+            set
+            {
+                SetProperty(ref _accessGranted, value);
+            }
+        }
+
+        private bool _accessGrantedEnabled = false;
+        public bool AccessGrantedEnabled
+        {
+            get => _accessGrantedEnabled;
+            set
+            {
+                SetProperty(ref _accessGrantedEnabled, value);
             }
         }
 
@@ -58,13 +90,15 @@ namespace MyBodyTemperature.ViewModels
                     return;
                 }
 
-                if(temp > 45 || temp < 30)
+                if (temp > 45 || temp < 30)
                 {
                     await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
                     return;
                 }
                 CurrentUserProfile.Temperature = double.Parse(Temperature);
                 CurrentUserProfile.TemperatureDate = DateTime.Now;
+                CurrentUserProfile.AccessGranted = AccessGranted;
+
                 var result = await _dbService.UpdateItemAsync(CurrentUserProfile);
 
                 var historyTemp = new UserTemperature

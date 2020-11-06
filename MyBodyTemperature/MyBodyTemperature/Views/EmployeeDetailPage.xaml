@@ -73,7 +73,7 @@
                                         </TapGestureRecognizer>
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Label Margin="10,0,0,0" TextColor="#242E5B" Text="Add Temperature" FontSize="Small">
+                                <Label Margin="10,0,0,0" TextColor="#242E5B" Text="Add Temperature" FontAttributes="Bold" FontSize="Medium">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding AddTemperatureCommand}" />
                                     </Label.GestureRecognizers>
@@ -106,7 +106,7 @@
 
                 <StackLayout Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" >
                     <Label FontSize="Large" FontAttributes="Bold" Text="History Temperature Data"></Label>
-                    <Label FontSize="Large" FontAttributes="Bold" Text="Two Weeks Data - October 2020"></Label>
+                    <Label FontSize="Large" FontAttributes="Bold" Text="Two Weeks Data - November 2020"></Label>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Spacing="10">

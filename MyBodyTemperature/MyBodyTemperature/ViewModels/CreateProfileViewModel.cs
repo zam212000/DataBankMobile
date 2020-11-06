@@ -21,15 +21,18 @@ namespace MyBodyTemperature.ViewModels
             _dbService = dbService;
             _pageDialogService = dialogService;
             NextProfileCommand = new DelegateCommand(OnNextProfileCommandExecuted, () => false);
-            TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted,() => false);
+            TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
+            SwitchSelectedCommand = new DelegateCommand<string>(OnSwitchItemSelected);
         }
 
         public DelegateCommand NextProfileCommand { get; }
         public DelegateCommand CancelCommand { get; }
         public DelegateCommand TakePhotoCommand { get; }
 
-        
+        public DelegateCommand<string> SwitchSelectedCommand { get; private set; }
+
+
         private string _firstName = string.Empty;
         public string FirstName
         {
@@ -47,6 +50,17 @@ namespace MyBodyTemperature.ViewModels
             set
             {
                 SetProperty(ref _temperature, value);
+                double.TryParse(value, out var temp);
+                if (temp > 37.5)
+                {
+                    AccessGranted = false;
+                    AccessGrantedEnabled = true;
+                }
+                else
+                {
+                    AccessGrantedEnabled = false;
+                    AccessGranted = true;
+                }
             }
         }
 
@@ -76,6 +90,26 @@ namespace MyBodyTemperature.ViewModels
             set
             {
                 SetProperty(ref _employeeNumber, value);
+            }
+        }
+
+        private bool _accessGranted = true;
+        public bool AccessGranted
+        {
+            get => _accessGranted;
+            set
+            {
+                SetProperty(ref _accessGranted, value);
+            }
+        }
+
+        private bool _accessGrantedEnabled = false;
+        public bool AccessGrantedEnabled
+        {
+            get => _accessGrantedEnabled;
+            set
+            {
+                SetProperty(ref _accessGrantedEnabled, value);
             }
         }
 
@@ -113,6 +147,11 @@ namespace MyBodyTemperature.ViewModels
         private async void OnCancelCommandExecuted()
         {
             await NavigationService.GoBackAsync();
+        }
+
+        private async void OnSwitchItemSelected(string value)
+        {
+
         }
 
         private async void OnPhotoTakenCommandExecuted()
@@ -156,9 +195,10 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.TemperatureDate = DateTime.Now;
                 userProfile.IDNumber = IDNumber;
                 userProfile.EmployeeNumber = EmployeeNumber;
+                userProfile.AccessGranted = AccessGranted;
 
                 var _userId = await _dbService.InsertItemAsync(userProfile);
-                if(_userId > 0)
+                if (_userId > 0)
                 {
                     var historyTemp = new UserTemperature
                     {
@@ -166,7 +206,7 @@ namespace MyBodyTemperature.ViewModels
                         TemperatureDate = userProfile.TemperatureDate,
                         UserId = userProfile.UserId
                     };
-                  var tempResult = await _dbService.InsertUserTemperatureAsync(historyTemp);
+                    var tempResult = await _dbService.InsertUserTemperatureAsync(historyTemp);
                 }
 
                 await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");

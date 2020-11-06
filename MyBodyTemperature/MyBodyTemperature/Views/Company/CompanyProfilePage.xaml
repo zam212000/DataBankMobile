@@ -38,7 +38,7 @@
                         </Entry>
 
 
-                        <Button Text="PICK A PHOTO" Command="{Binding TakePhotoCommand}" Image="CameraIcon.png" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,20,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                        <Button Text="PICK A PHOTO" Command="{Binding TakePhotoCommand}" Image="CameraIcon.png" BackgroundColor="#242E5B"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,20,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
                             <Button.Triggers>
                                 <MultiTrigger TargetType="Button">
                                     <MultiTrigger.Conditions>
@@ -59,14 +59,14 @@
 
                                     </MultiTrigger.Conditions>
 
-                                    <Setter Property="TextColor"  Value="#242E5B" />
+                                    <Setter Property="TextColor"  Value="White" />
                                     <Setter Property="IsEnabled" Value="True" />
 
                                 </MultiTrigger>
                             </Button.Triggers>
                         </Button>
 
-                        <Button Text="NEXT>>" Command="{Binding NextProfileCommand}" BackgroundColor="LightBlue"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,10,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                        <Button Text="NEXT>>" Command="{Binding NextProfileCommand}" BackgroundColor="#242E5B"  FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,10,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
                             <Button.Triggers>
                                 <MultiTrigger TargetType="Button">
                                     <MultiTrigger.Conditions>
@@ -87,13 +87,13 @@
 
                                     </MultiTrigger.Conditions>
 
-                                    <Setter Property="TextColor"  Value="#242E5B" />
+                                    <Setter Property="TextColor"  Value="White" />
                                     <Setter Property="IsEnabled" Value="True" />
 
                                 </MultiTrigger>
                             </Button.Triggers>
                         </Button>
-                        <Button Text="CANCEL"  Command="{Binding CancelCommand}" BackgroundColor="LightBlue"  FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,10,0,5" FontFamily="Arial" WidthRequest="250" FontAttributes="Bold" TextColor="#242E5B">
+                        <Button Text="CANCEL"  Command="{Binding CancelCommand}" BackgroundColor="#242E5B"  FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,10,0,5" FontFamily="Arial" WidthRequest="250" FontAttributes="Bold" TextColor="White">
                         </Button>
 
                     </StackLayout>
