@@ -30,6 +30,7 @@ namespace MyBodyTemperature.Services
                     database.CreateTableAsync<Models.UserProfile>().Wait();
                     database.CreateTableAsync<UserTemperature>().Wait();
                     database.CreateTableAsync<Company>().Wait();
+                    database.CreateTableAsync<Event>().Wait();
                     initialized = true;
                 }
             }
@@ -41,7 +42,7 @@ namespace MyBodyTemperature.Services
 
         public Task<List<Models.UserProfile>> GetItemsAsync(int companyID)
         {
-            return database.Table<Models.UserProfile>().Where(y => y.CompanyID ==companyID).OrderByDescending(x => x.TemperatureDate).ToListAsync();
+            return database.Table<Models.UserProfile>().Where(y => y.CompanyID == companyID).OrderByDescending(x => x.TemperatureDate).ToListAsync();
         }
 
         public Task<Models.UserProfile> GetItemAsync(int id)
@@ -99,7 +100,6 @@ namespace MyBodyTemperature.Services
             return await database.DeleteAsync(item);
         }
 
-
         public async Task<Company> GetCompanyByID(int id)
         {
             return await database.Table<Company>().FirstOrDefaultAsync(i => i.CompanyID == id);
@@ -117,6 +117,23 @@ namespace MyBodyTemperature.Services
         public async Task<bool> CompanyUserNameExists(string username)
         {
             return (await database.Table<Company>().FirstOrDefaultAsync(i => i.Username.ToLower() == username.ToLower()) != null);
+        }
+
+        public async Task<List<Event>> GetEventsAsync(int companyID)
+        {
+            return await database.Table<Event>().Where(y => y.CompanyID == companyID).OrderByDescending(x => x.StartDate).ToListAsync();
+        }
+        public async Task<int> AddNewEventAsync(Event item)
+        {
+            return await database.InsertAsync(item);
+        }
+        public async Task<int> UpdateEventAsync(Event item)
+        {
+            return await database.UpdateAsync(item);
+        }
+        public async Task<int> DeleteEventAsync(Event item)
+        {
+            return await database.DeleteAsync(item);
         }
 
 

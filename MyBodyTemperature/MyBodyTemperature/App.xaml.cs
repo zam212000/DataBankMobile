@@ -28,7 +28,7 @@ namespace MyBodyTemperature
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
+            Device.SetFlags(new string[] { "Expander_Experimental" });
             await NavigationService.NavigateAsync("NavigationPage/LogInPage");
         }
 

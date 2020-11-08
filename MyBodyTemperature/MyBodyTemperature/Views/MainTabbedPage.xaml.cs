@@ -15,7 +15,7 @@ namespace MyBodyTemperature.Views
             InitializeComponent();
 
             SearchBarTextChanged += HandleSearchBarTextChanged;
-            CurrentPage = Children[3];
+            CurrentPage = Children[4];
             //  (this.Parent as TabbedPage).CurrentPage = (this.Parent as TabbedPage).Children[4];
         }
 

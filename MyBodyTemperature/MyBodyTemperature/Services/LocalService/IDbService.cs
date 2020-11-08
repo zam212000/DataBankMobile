@@ -27,5 +27,10 @@ namespace MyBodyTemperature.Services
         Task<int> DeleteCompanyAsync(Company item);
 
         Task<bool> CompanyUserNameExists(string username);
+
+        Task<List<Event>> GetEventsAsync(int companyID);
+        Task<int> AddNewEventAsync(Event item);
+        Task<int> UpdateEventAsync(Event item);
+        Task<int> DeleteEventAsync(Event item);
     }
 }
