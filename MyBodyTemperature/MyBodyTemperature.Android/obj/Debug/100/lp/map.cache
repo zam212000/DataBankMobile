@@ -41,6 +41,7 @@ Xamarin.AndroidX.Lifecycle.LiveData.Core
 Xamarin.AndroidX.Lifecycle.LiveData
 Xamarin.AndroidX.Lifecycle.Runtime
 Xamarin.AndroidX.Lifecycle.ViewModel
+Xamarin.AndroidX.Lifecycle.ViewModelSavedState
 Xamarin.AndroidX.Loader
 Xamarin.AndroidX.LocalBroadcastManager
 Xamarin.AndroidX.Media
@@ -56,6 +57,7 @@ Xamarin.AndroidX.VectorDrawable
 Xamarin.AndroidX.VersionedParcelable
 Xamarin.AndroidX.ViewPager
 Xamarin.Essentials
+Xamarin.Forms.PancakeView
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Google.Android.Material
@@ -72,6 +74,7 @@ androidx.lifecycle.lifecycle-viewmodel
 androidx.arch.core.core-runtime
 androidx.lifecycle.lifecycle-livedata-core
 androidx.loader.loader
+androidx.lifecycle.lifecycle-viewmodel-savedstate
 androidx.activity.activity
 androidx.fragment.fragment
 androidx.transition.transition

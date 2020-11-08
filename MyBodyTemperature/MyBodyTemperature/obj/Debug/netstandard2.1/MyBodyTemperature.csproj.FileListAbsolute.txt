@@ -28,7 +28,7 @@ C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\V
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\Views\VisitorsPage.xaml.g.cs
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.AssemblyInfoInputs.cache
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.AssemblyInfo.cs
-C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.csproj.CoreCompileInputs.cache
-C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\XamlC.stamp
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.dll
 C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.pdb
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\MyBodyTemperature.csproj.CoreCompileInputs.cache
+C:\RunnersProject\MyBodyTemperature\MyBodyTemperature\obj\Debug\netstandard2.1\XamlC.stamp
