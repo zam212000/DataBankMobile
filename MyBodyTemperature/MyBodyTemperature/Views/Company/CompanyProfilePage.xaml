@@ -61,11 +61,7 @@
                                    Path=Text.Length,
                               Converter={StaticResource dataHasBeenEntered}}"
                               Value="true" />
-
-                                        <BindingCondition Binding="{Binding Source={x:Reference companysector},
-                                   Path=Text.Length,
-                              Converter={StaticResource dataHasBeenEntered}}"
-                              Value="true" />
+ 
                                     </MultiTrigger.Conditions>
 
                                     <Setter Property="TextColor"  Value="White" />

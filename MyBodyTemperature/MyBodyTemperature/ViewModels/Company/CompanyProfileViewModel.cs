@@ -32,7 +32,7 @@ namespace MyBodyTemperature.ViewModels.Company
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
             ImageProperty = ImageSource.FromFile("companyIcon.png");
-            //DefaultSectorCollection();
+            DefaultSectorCollection();
         }
 
         public DelegateCommand NextProfileCommand { get; }
@@ -116,26 +116,16 @@ namespace MyBodyTemperature.ViewModels.Company
             set { SetProperty(ref _imageProperty, value); }
         }
 
-        public ObservableCollection<string> SectorList = new ObservableCollection<string>()
+        public ObservableCollection<string> _sectorList;
+        public ObservableCollection<string> SectorList
+        {
+            get => _sectorList;
+            set
             {
-                "Government Department",
-                "Hotel",
-                "Restaurant",
-                "Nightclub",
-                "Car Dealership",
-                "Private Company",
-                "Other",
-            };
-
-        //public ObservableCollection<string> SectorList
-        //{
-        //    get => _sectorList;
-        //    set
-        //    {
-        //        _sectorList = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
+                _sectorList = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
         private async void OnCancelCommandExecuted()
