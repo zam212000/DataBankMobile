@@ -37,9 +37,6 @@
                         <Entry x:Name="companyaddress" Text="{Binding CompanyAddresss}" Placeholder="Company Addresss" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                         </Entry>
 
-                        <!--<Entry x:Name="companysector"  Text="{Binding Sector}" Placeholder="Company Sector" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
-                        </Entry>-->
-
                         <Picker Title="Select Sector"  ItemsSource="{Binding SectorList}"  HorizontalTextAlignment="Center"  WidthRequest="200" SelectedItem="{Binding Sector}"/>
                         
 

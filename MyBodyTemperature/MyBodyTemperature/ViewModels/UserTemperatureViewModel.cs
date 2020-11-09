@@ -95,6 +95,7 @@ namespace MyBodyTemperature.ViewModels
                     await _pageDialogService.DisplayAlertAsync("Invalid Temperature", "Invalid Temperature entered", "Ok");
                     return;
                 }
+
                 CurrentUserProfile.Temperature = double.Parse(Temperature);
                 CurrentUserProfile.TemperatureDate = DateTime.Now;
                 CurrentUserProfile.AccessGranted = AccessGranted;
@@ -110,7 +111,7 @@ namespace MyBodyTemperature.ViewModels
 
                 await _dbService.InsertUserTemperatureAsync(historyTemp);
 
-                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added user temperature", "Ok");
+                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added employee temperature", "Ok");
 
                 OnCancelCommandExecuted();
 

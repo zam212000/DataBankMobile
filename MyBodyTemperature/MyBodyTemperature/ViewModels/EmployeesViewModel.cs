@@ -28,10 +28,13 @@ namespace MyBodyTemperature.ViewModels
         {
             ItemAddedCommand = new DelegateCommand(AddNewItem);
             TextChangedCommand = new DelegateCommand(TextChanged);
+            SwitchSelectedCommand = new DelegateCommand<string>(OnSwitchItemSelected);
             _dbService = dbService;
         }
 
         public DelegateCommand NextProfileCommand { get; }
+        public DelegateCommand<string> SwitchSelectedCommand { get; private set; }
+
 
         private Models.Company _companyProfile;
         public Models.Company CompanyProfile
@@ -86,6 +89,35 @@ namespace MyBodyTemperature.ViewModels
             set { SetProperty(ref _searchKeyword, value); }
         }
 
+        private bool _isolationOnly = false;
+        public bool IsolationOnly
+        {
+            get => _isolationOnly;
+            set
+            {
+                SetProperty(ref _isolationOnly, value);
+            }
+        }
+
+        private async void OnSwitchItemSelected(string value)
+        {
+
+            if (IsolationOnly)
+            {
+                var items = OriginalItems.Where(x => x.StatusID == 2);
+
+                UserProfiles = new ObservableCollection<UserProfile>(items);
+            }
+            else
+            {
+                IsBusy = true;
+
+                await LoadAllItems();
+
+                IsBusy = false;
+            }
+
+        }
 
         private async void OnItemSelectedCommand(UserProfile userProfile)
         {
@@ -133,6 +165,16 @@ namespace MyBodyTemperature.ViewModels
                 foreach (var item in UserProfiles)
                 {
                     item.FullName = $"{item.FirstNames} {item.Surname}";
+
+                    item.DisplayCombinedFields = $"{item.PhoneNumber}";
+                    if (!string.IsNullOrEmpty(item.IDNumber))
+                        item.DisplayCombinedFields += $", {item.IDNumber}";
+                    if (!string.IsNullOrEmpty(item.EmployeeNumber))
+                        item.DisplayCombinedFields += $", {item.EmployeeNumber}";
+
+                    item.DisplayIsolationOrGranted = (item.StatusID == 1 || item.StatusID == 0) ? "Granted" : "Isolation";
+                    item.DisplayIsolationImage = (item.StatusID == 1 || item.StatusID == 0) ? "tick.png" : "isolation.png";
+
                     string dateString = string.Empty;
                     if (item.TemperatureDate.Day == DateTime.Now.Day)
                     {
@@ -175,10 +217,10 @@ namespace MyBodyTemperature.ViewModels
                 if (SearchKeyword?.Length > 0)
                 {
                     var items = OriginalItems.Where(x =>
-                            x.FullName.ToLower().Contains(SearchKeyword.ToLower()) ||
-                             x.PhoneNumber.ToLower().Contains(SearchKeyword.ToLower()) ||
-                              x.IDNumber.ToLower().Contains(SearchKeyword.ToLower()) ||
-                              x.Temperature.ToString().Contains(SearchKeyword.ToLower())
+                            x.FullName.ToLower().Contains(SearchKeyword.ToLower())
+                            //x.PhoneNumber.ToLower().Contains(SearchKeyword.ToLower()) ||
+                            // x.IDNumber.ToLower().Contains(SearchKeyword.ToLower()) ||
+                            // x.Temperature.ToString().Contains(SearchKeyword.ToLower())
                             );
 
 

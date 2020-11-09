@@ -10,6 +10,7 @@ namespace MyBodyTemperature.Services
     {
         Task<List<Models.UserProfile>> GetItemsAsync(int companyID);
         Task<Models.UserProfile> GetItemAsync(int id);
+        Task<Models.UserProfile> GetItemByUniqueDescriptionAsync(string phoneNumber, string idNumber, string employeeNumber);
         Task<int> InsertItemAsync(Models.UserProfile item);
         Task<int> UpdateItemAsync(Models.UserProfile item);
         Task<int> DeleteItemAsync(Models.UserProfile item);

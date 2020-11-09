@@ -103,6 +103,13 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private ImageSource _imageProperty;
+        public ImageSource ImageProperty
+        {
+            get { return _imageProperty; }
+            set { SetProperty(ref _imageProperty, value); }
+        }
+
         private UserProfile _userProfile;
         public UserProfile CurrentUserProfile
         {
@@ -147,7 +154,8 @@ namespace MyBodyTemperature.ViewModels
                 CurrentUserProfile.AvatarUrl = ImageUrl;
                 ImageContent = GetImageBytes(mediaFile.GetStream());
                 CurrentUserProfile.ImageContent = ImageContent;
-                CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+                ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+                //CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
 
                 //Sync to DB and API
                 var result = await _dbService.UpdateItemAsync(CurrentUserProfile);
@@ -161,6 +169,15 @@ namespace MyBodyTemperature.ViewModels
 
         private async void OnAddTemperatureCommandExecuted()
         {
+            if (CurrentUserProfile.StatusID == 2)
+            {
+                var confirm = await _pageDialogService.DisplayAlertAsync("Isolated Employee", "Your are trying to add temperature for an employee who is isolation. Do you want to proceed", "Yes", "Cancel");
+                if (!confirm)
+                {
+                    return;
+                }
+            }
+
             var param = new NavigationParameters();
             param.Add("UserProfileParam", CurrentUserProfile);
             await NavigationService.NavigateAsync("UserTemperaturePage", param);
@@ -176,7 +193,7 @@ namespace MyBodyTemperature.ViewModels
 
         private async void OnRemoveUserCommandExecuted()
         {
-            var confirm = await _pageDialogService.DisplayAlertAsync("Delete User", "Are you sure you want to permanently delete this user", "Yes", "Cancel");
+            var confirm = await _pageDialogService.DisplayAlertAsync("Delete Employee", "Are you sure you want to permanently delete this employee", "Yes", "Cancel");
             if (confirm)
             {
                 await _dbService.DeleteItemAsync(CurrentUserProfile);
@@ -201,7 +218,7 @@ namespace MyBodyTemperature.ViewModels
 
                 //TODO - Update user temp
 
-                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
+                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully updated employee details", "Ok");
 
             }
             catch (Exception e)
@@ -247,11 +264,11 @@ namespace MyBodyTemperature.ViewModels
                 if (CurrentUserProfile.ImageContent != null)
                 {
 
-                    CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
+                    ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
                 }
                 else
                 {
-                    CurrentUserProfile.ImageProperty = ImageSource.FromFile("defaultpic.png");
+                    ImageProperty = ImageSource.FromFile("defaultpic.png");
                 }
 
                 // await AssignChartEntries();

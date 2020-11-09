@@ -45,10 +45,19 @@ namespace MyBodyTemperature.Services
             return database.Table<Models.UserProfile>().Where(y => y.CompanyID == companyID).OrderByDescending(x => x.TemperatureDate).ToListAsync();
         }
 
-        public Task<Models.UserProfile> GetItemAsync(int id)
+        public async Task<Models.UserProfile> GetItemAsync(int id)
         {
-            return database.Table<Models.UserProfile>().Where(i => i.UserId == id).FirstOrDefaultAsync();
+            return await database.Table<Models.UserProfile>().Where(i => i.UserId == id).FirstOrDefaultAsync();
         }
+
+        public Task<Models.UserProfile> GetItemByUniqueDescriptionAsync(string phoneNumber, string idNumber, string employeeNumber)
+        {
+            return database.Table<Models.UserProfile>().Where(i => 
+                        i.PhoneNumber == phoneNumber ||
+                        i.IDNumber == idNumber ||
+                        i.EmployeeNumber == employeeNumber).FirstOrDefaultAsync();
+        }
+
 
         public async Task<int> InsertItemAsync(Models.UserProfile item)
         {

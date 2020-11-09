@@ -32,7 +32,7 @@ namespace MyBodyTemperature.Views {
         private global::Xamarin.Forms.Entry temperature;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Switch chkUseCurrentLocation;
+        private global::Xamarin.Forms.Switch chkAllowed;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
@@ -42,7 +42,7 @@ namespace MyBodyTemperature.Views {
             iDNumber = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "iDNumber");
             employeeNumber = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "employeeNumber");
             temperature = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "temperature");
-            chkUseCurrentLocation = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Switch>(this, "chkUseCurrentLocation");
+            chkAllowed = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Switch>(this, "chkAllowed");
         }
     }
 }

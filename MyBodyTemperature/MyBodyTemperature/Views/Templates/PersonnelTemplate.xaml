@@ -35,12 +35,13 @@
                     <Label x:Name="TxtFullName"
                         Margin="0,0,0,0"
                         FontSize="17"
+                        FontAttributes="Bold"
                         HorizontalOptions="Start"
                         Text="{Binding FullName}"
                         TextColor="#000000"
                         XAlign="Start" />
-                    <Label
-                        FontSize="12"
+                    <Label Margin="0,0,10,0"
+                        FontSize="14"
                         HorizontalOptions="EndAndExpand"
                         Text="{Binding CovidMetadata.TemperatureDate}"
                         TextColor="Gray"
@@ -54,11 +55,26 @@
                     <Label
                         FontSize="15"
                         HorizontalOptions="Start"
-                        Text="{Binding PhoneNumber}"
+                        Text="{Binding DisplayCombinedFields}"
                         TextColor="Gray"
                         XAlign="Start" />
 
-                    <Button WidthRequest="100" FontSize="15" HeightRequest="38" HorizontalOptions="EndAndExpand" CornerRadius="50" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CovidMetadata.Temperature}">
+                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                        <Image
+                        HeightRequest="15"
+                        HorizontalOptions="EndAndExpand"    
+                        Source="{Binding DisplayIsolationImage}" />
+
+                        <Label Margin="0,10,0,0"
+                        FontSize="15"
+                 
+                        Text="{Binding DisplayIsolationOrGranted}"
+                        TextColor="Gray"
+                        XAlign="Center" >
+
+                        </Label>
+  
+                    <Button WidthRequest="100" Margin="10,0,0,0" FontSize="15" HeightRequest="38"  CornerRadius="50" FontAttributes="Bold" TextColor="#242E5B" Text="{Binding CovidMetadata.Temperature}">
                         <Button.Triggers>
                             <DataTrigger TargetType="Button" Binding="{Binding CovidMetadata.HighFever}" Value="Yes">
                                 <Setter Property="BackgroundColor" Value="#B22222" />
@@ -68,6 +84,7 @@
                             </DataTrigger>
                         </Button.Triggers>
                     </Button>
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout
                     Margin="0,0,10,0"

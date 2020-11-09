@@ -14,7 +14,7 @@ namespace MyBodyTemperature.Views
         {
             InitializeComponent();
 
-            this.SelectedItem = this.Children[4];
+            this.SelectedItem = this.Children[3];
             //CurrentPage = Children[4];
 
         }

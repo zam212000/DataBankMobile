@@ -20,7 +20,6 @@
         <local:VisitorsPage  IconImageSource="employeesbar.png" Title="Visitors"/>
         <local:EmployeesPage  IconImageSource="employeesbar.png" Title="Employees"/>
         <local:SettingsPage  IconImageSource="settings.png" Title="Settings"/>
-
     </TabbedPage.Children>
     
 

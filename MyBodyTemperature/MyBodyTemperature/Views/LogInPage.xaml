@@ -41,7 +41,7 @@
                 <Entry x:Name="password" Text="{Binding Password}" Placeholder="password" HorizontalTextAlignment="Center" PlaceholderColor="#ccc" TextColor="#242E5B" IsPassword="True" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,5,0,10" >
                 </Entry>
 
-                <Button Text="LOGIN" Command="{Binding LogInCommand}" BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontSize="Large" FontFamily="Arial" FontAttributes="Bold" TextColor="LightGray">
+                <Button Text="LOGIN" Command="{Binding LogInCommand}" IsEnabled="False" BackgroundColor="#242E5B" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" FontSize="Large" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
                     <Button.Triggers>
                         <MultiTrigger TargetType="Button">
                             <MultiTrigger.Conditions>
@@ -64,14 +64,14 @@
                     </Button.Triggers>
                 </Button>
 
-                <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="16" FontAttributes="Bold" Text="Signup" Margin="0,30,0,5" >
+                <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="Medium" FontAttributes="Bold"  Text="Signup" Margin="0,30,0,5" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SignUpCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
 
 
-                <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="16" FontAttributes="Bold" Text="Forgot Password?" Margin="0,5,0,5" >
+                <Label HorizontalOptions="CenterAndExpand" TextColor="#242E5B" FontSize="Medium" FontAttributes="Bold" Text="Forgot Password?" Margin="0,5,0,5" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
                     </Label.GestureRecognizers>

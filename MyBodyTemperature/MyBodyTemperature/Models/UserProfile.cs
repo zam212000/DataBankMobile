@@ -26,9 +26,17 @@ namespace MyBodyTemperature.Models
         public ImageSource ImageProperty { get; set; }
         public byte[] ImageContent { get; set; }
         [Ignore]
+        public string DisplayCombinedFields { get; set; }
+        [Ignore]
+        public string DisplayIsolationOrGranted { get; set; }
+        [Ignore]
+        public string DisplayIsolationImage { get; set; }
+        [Ignore]
         public CovidMetadata CovidMetadata { get; set; }
         public double Temperature { get; set; }
         public DateTime TemperatureDate { get; set; }
         public bool AccessGranted { get; set; }
+        public int StatusID { get; set; }
+         
     }
 }

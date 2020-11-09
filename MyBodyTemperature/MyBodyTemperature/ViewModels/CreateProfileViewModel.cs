@@ -7,8 +7,11 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace MyBodyTemperature.ViewModels
 {
@@ -24,6 +27,8 @@ namespace MyBodyTemperature.ViewModels
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
             SwitchSelectedCommand = new DelegateCommand<string>(OnSwitchItemSelected);
+            ImageProperty = ImageSource.FromFile("defaultpic.png");
+            DefaultEmployeeStatusCollection();
         }
 
         public DelegateCommand NextProfileCommand { get; }
@@ -55,12 +60,36 @@ namespace MyBodyTemperature.ViewModels
                 {
                     AccessGranted = false;
                     AccessGrantedEnabled = true;
+                    StatusEmployee = EmployeeStatusList.LastOrDefault();
                 }
                 else
                 {
                     AccessGrantedEnabled = false;
                     AccessGranted = true;
+                    StatusEmployee = EmployeeStatusList.FirstOrDefault();
                 }
+            }
+        }
+
+        public ObservableCollection<EmployeeStatus> _employeeStatusList;
+        public ObservableCollection<EmployeeStatus> EmployeeStatusList
+        {
+            get => _employeeStatusList;
+            set
+            {
+                _employeeStatusList = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private EmployeeStatus _employeeStatus;
+        public EmployeeStatus StatusEmployee
+        {
+            get => _employeeStatus;
+            set
+            {
+                SetProperty(ref _employeeStatus, value);
             }
         }
 
@@ -144,6 +173,13 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private ImageSource _imageProperty;
+        public ImageSource ImageProperty
+        {
+            get { return _imageProperty; }
+            set { SetProperty(ref _imageProperty, value); }
+        }
+
         private async void OnCancelCommandExecuted()
         {
             await NavigationService.GoBackAsync();
@@ -166,6 +202,7 @@ namespace MyBodyTemperature.ViewModels
             {
                 ImageUrl = mediaFile.Path;
                 ImageContent = GetImageBytes(mediaFile.GetStream());
+                ImageProperty = ImageSource.FromStream(() => new MemoryStream(ImageContent));
             }
         }
 
@@ -185,6 +222,20 @@ namespace MyBodyTemperature.ViewModels
                     return;
                 }
 
+                var existingEmployee = await _dbService.GetItemByUniqueDescriptionAsync(CellPhoneNumber, IDNumber, EmployeeNumber);
+                if (existingEmployee != null)
+                {
+                    var confirm = await _pageDialogService.DisplayAlertAsync("Employee Exists", "An employee with the same profile already exists. Do you want to update instead", "Yes", "Cancel");
+                    if (!confirm)
+                    {
+                        var param = new NavigationParameters();
+                        param.Add("UserProfileParam", existingEmployee);
+                        await NavigationService.NavigateAsync("UpdateUserProfilePage", param);
+
+                    }
+                    return;
+                }
+
                 var userProfile = new UserProfile();
                 userProfile.PhoneNumber = CellPhoneNumber;
                 userProfile.FirstNames = FirstName;
@@ -196,6 +247,7 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.IDNumber = IDNumber;
                 userProfile.EmployeeNumber = EmployeeNumber;
                 userProfile.AccessGranted = AccessGranted;
+                userProfile.StatusID = StatusEmployee.ID;
 
                 var _userId = await _dbService.InsertItemAsync(userProfile);
                 if (_userId > 0)
@@ -209,7 +261,7 @@ namespace MyBodyTemperature.ViewModels
                     var tempResult = await _dbService.InsertUserTemperatureAsync(historyTemp);
                 }
 
-                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added the user", "Ok");
+                await _pageDialogService.DisplayAlertAsync("Success", "Succcessfully added new employee", "Ok");
                 OnCancelCommandExecuted();
 
             }
@@ -222,6 +274,17 @@ namespace MyBodyTemperature.ViewModels
             {
                 // IsBusy = false;
             }
+
+        }
+
+
+        public void DefaultEmployeeStatusCollection()
+        {
+            EmployeeStatusList = new ObservableCollection<EmployeeStatus>()
+            {
+               new EmployeeStatus{ ID = 1,   Description= "Access Granted" },
+               new EmployeeStatus{ ID = 2,   Description= "Isolation" }
+            };
 
         }
 
