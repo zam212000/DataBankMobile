@@ -1,17 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage  xmlns:controls="clr-namespace:MyBodyTemperature.Controls"
+                              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyBodyTemperature.Views"
-                        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom"
+                        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:behaviors="clr-namespace:MyBodyTemperature.Behaviors"
+                              android:TabbedPage.ToolbarPlacement="Bottom"
             NavigationPage.HasNavigationBar="False"
             x:Class="MyBodyTemperature.Views.MainTabbedPage">
 
-    <TabbedPage.Padding>
+    <!--<TabbedPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
-    </TabbedPage.Padding>
+    </TabbedPage.Padding>-->
+    <TabbedPage.Behaviors>
+        <behaviors:TabbedPageNavigationBehavior />
+    </TabbedPage.Behaviors>
+    <TabbedPage.Children>
+        <local:HelpPage  IconImageSource="helpbar.png" Title="Help"/>
+        <local:MessagesPage  IconImageSource="messages.png" Title="Messages"/>
+        <local:VisitorsPage  IconImageSource="employeesbar.png" Title="Visitors"/>
+        <local:EmployeesPage  IconImageSource="employeesbar.png" Title="Employees"/>
+        <local:SettingsPage  IconImageSource="settings.png" Title="Settings"/>
 
+    </TabbedPage.Children>
+    
 
-    <NavigationPage Title="Help" IconImageSource="helpbar.png">
+    <!--<NavigationPage Title="Help" IconImageSource="helpbar.png">
         <x:Arguments>
             <local:HelpPage />
         </x:Arguments>
@@ -37,6 +50,6 @@
         <x:Arguments>
             <local:SettingsPage />
         </x:Arguments>
-    </NavigationPage>
+    </NavigationPage>-->
 
 </TabbedPage>

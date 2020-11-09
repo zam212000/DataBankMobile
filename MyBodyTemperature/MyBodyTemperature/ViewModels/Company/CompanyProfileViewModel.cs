@@ -2,10 +2,12 @@
 using MyBodyTemperature.Models;
 using MyBodyTemperature.Services;
 using MyBodyTemperature.Services.RemoteService;
+using Newtonsoft.Json.Serialization;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using Xamarin.Forms;
 
@@ -30,6 +32,7 @@ namespace MyBodyTemperature.ViewModels.Company
             TakePhotoCommand = new DelegateCommand(OnPhotoTakenCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
             ImageProperty = ImageSource.FromFile("companyIcon.png");
+            //DefaultSectorCollection();
         }
 
         public DelegateCommand NextProfileCommand { get; }
@@ -75,6 +78,16 @@ namespace MyBodyTemperature.ViewModels.Company
             }
         }
 
+        private string _sector = string.Empty;
+        public string Sector
+        {
+            get => _sector;
+            set
+            {
+                SetProperty(ref _sector, value);
+            }
+        }
+
         private string _imageUrl = string.Empty;
         public string ImageUrl
         {
@@ -103,6 +116,26 @@ namespace MyBodyTemperature.ViewModels.Company
             set { SetProperty(ref _imageProperty, value); }
         }
 
+        public ObservableCollection<string> SectorList = new ObservableCollection<string>()
+            {
+                "Government Department",
+                "Hotel",
+                "Restaurant",
+                "Nightclub",
+                "Car Dealership",
+                "Private Company",
+                "Other",
+            };
+
+        //public ObservableCollection<string> SectorList
+        //{
+        //    get => _sectorList;
+        //    set
+        //    {
+        //        _sectorList = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
 
 
         private async void OnCancelCommandExecuted()
@@ -131,7 +164,7 @@ namespace MyBodyTemperature.ViewModels.Company
             try
             {
                 IsBusy = true;
-                if (! await _validationService.NetworkConnectedAsync())
+                if (!await _validationService.NetworkConnectedAsync())
                 {
                     await _pageDialogService.DisplayAlertAsync("Network connectivity", "internet connection is required to create a company profile", "Ok");
                     return;
@@ -163,6 +196,7 @@ namespace MyBodyTemperature.ViewModels.Company
                     company.ImageContent = ImageContent;
                     company.CompanyEmail = CompanyEmail;
                     company.PhoneNumber = PhoneNumber;
+                    company.Sector = Sector;
                     await _dbService.UpdateCompanyAsync(company);
                 }
                 else
@@ -174,6 +208,7 @@ namespace MyBodyTemperature.ViewModels.Company
                     company.ImageContent = ImageContent;
                     company.CompanyEmail = CompanyEmail;
                     company.PhoneNumber = PhoneNumber;
+                    company.Sector = Sector;
                     await _dbService.AddNewCompanyAsync(company);
                 }
 
@@ -200,7 +235,7 @@ namespace MyBodyTemperature.ViewModels.Company
                 }
 
             }
-            catch 
+            catch
             {
                 await _pageDialogService.DisplayAlertAsync("Create profile", "Failed to add the company. please retry or contact administrator", "Ok");
                 //LOG ERROR
@@ -210,6 +245,21 @@ namespace MyBodyTemperature.ViewModels.Company
             {
                 IsBusy = false;
             }
+
+        }
+
+        public void DefaultSectorCollection()
+        {
+            SectorList = new ObservableCollection<string>()
+            {
+                "Government Department",
+                "Hotel",
+                "Restaurant",
+                "Nightclub",
+                "Car Dealership",
+                "Private Company",
+                "Other",
+            };
 
         }
 

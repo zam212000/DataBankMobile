@@ -24,7 +24,7 @@ namespace MyBodyTemperature.Models
         public string Password { get; set; }
         public bool IsRegistered { get; set; }
         public int VerificationMethod { get; set; } = 1;
-
+        public string Sector { get; set; }
         public byte[] ImageContent { get; set; }
         [Ignore]
         public ImageSource ImageProperty { get; set; }

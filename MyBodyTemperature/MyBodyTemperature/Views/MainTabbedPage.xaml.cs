@@ -8,29 +8,15 @@ using MyBodyTemperature.Controls;
 namespace MyBodyTemperature.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainTabbedPage : TabbedPage, ISearchPage
+    public partial class MainTabbedPage : TabbedPage
     {
         public MainTabbedPage()
         {
             InitializeComponent();
 
-            SearchBarTextChanged += HandleSearchBarTextChanged;
-            CurrentPage = Children[4];
-            //  (this.Parent as TabbedPage).CurrentPage = (this.Parent as TabbedPage).Children[4];
-        }
+            this.SelectedItem = this.Children[4];
+            //CurrentPage = Children[4];
 
-        private void HandleSearchBarTextChanged(object sender, string e)
-        {
-            throw new NotImplementedException();
-        }
-
-        public event EventHandler<string> SearchBarTextChanged;
-
-        //void ISearchPage.OnSearchBarTextChanged((string text) => SearchBarTextChanged?.Invoke(this, text);
-
-        public void OnSearchBarTextChanged(in string text)
-        {
-          //  throw new NotImplementedException();
         }
     }
 }
