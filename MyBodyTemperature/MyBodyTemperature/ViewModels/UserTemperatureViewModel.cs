@@ -5,6 +5,8 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace MyBodyTemperature.ViewModels
@@ -19,6 +21,7 @@ namespace MyBodyTemperature.ViewModels
             _pageDialogService = dialogService;
             AddTemperatureCommand = new DelegateCommand(OnTemperatureCommandExecuted, () => false);
             CancelCommand = new DelegateCommand(OnCancelCommandExecuted);
+            DefaultEmployeeStatusCollection();
         }
 
         public DelegateCommand AddTemperatureCommand { get; }
@@ -36,11 +39,13 @@ namespace MyBodyTemperature.ViewModels
                 {
                     AccessGranted = false;
                     AccessGrantedEnabled = true;
+                    StatusEmployee = EmployeeStatusList.LastOrDefault();
                 }
                 else
                 {
                     AccessGrantedEnabled = false;
                     AccessGranted = true;
+                    StatusEmployee = EmployeeStatusList.FirstOrDefault();
                 }
             }
         }
@@ -76,6 +81,28 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        public ObservableCollection<EmployeeStatus> _employeeStatusList;
+        public ObservableCollection<EmployeeStatus> EmployeeStatusList
+        {
+            get => _employeeStatusList;
+            set
+            {
+                _employeeStatusList = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private EmployeeStatus _employeeStatus;
+        public EmployeeStatus StatusEmployee
+        {
+            get => _employeeStatus;
+            set
+            {
+                SetProperty(ref _employeeStatus, value);
+            }
+        }
+
         private async void OnCancelCommandExecuted()
         {
             await NavigationService.GoBackAsync();
@@ -98,7 +125,9 @@ namespace MyBodyTemperature.ViewModels
 
                 CurrentUserProfile.Temperature = double.Parse(Temperature);
                 CurrentUserProfile.TemperatureDate = DateTime.Now;
-                CurrentUserProfile.AccessGranted = AccessGranted;
+
+                CurrentUserProfile.StatusID = StatusEmployee.ID;
+                CurrentUserProfile.AccessGranted = StatusEmployee.ID == 1;
 
                 var result = await _dbService.UpdateItemAsync(CurrentUserProfile);
 
@@ -135,6 +164,16 @@ namespace MyBodyTemperature.ViewModels
                 CurrentUserProfile = parameters["UserProfileParam"] as UserProfile;
 
             }
+        }
+
+        public void DefaultEmployeeStatusCollection()
+        {
+            EmployeeStatusList = new ObservableCollection<EmployeeStatus>()
+            {
+               new EmployeeStatus{ ID = 1,   Description= "Access Granted" },
+               new EmployeeStatus{ ID = 2,   Description= "Isolation" }
+            };
+
         }
 
     }

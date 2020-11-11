@@ -246,7 +246,7 @@ namespace MyBodyTemperature.ViewModels
                 userProfile.TemperatureDate = DateTime.Now;
                 userProfile.IDNumber = IDNumber;
                 userProfile.EmployeeNumber = EmployeeNumber;
-                userProfile.AccessGranted = AccessGranted;
+                userProfile.AccessGranted = StatusEmployee.ID == 1;
                 userProfile.StatusID = StatusEmployee.ID;
 
                 var _userId = await _dbService.InsertItemAsync(userProfile);

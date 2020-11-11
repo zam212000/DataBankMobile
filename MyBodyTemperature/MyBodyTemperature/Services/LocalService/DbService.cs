@@ -52,7 +52,7 @@ namespace MyBodyTemperature.Services
 
         public Task<Models.UserProfile> GetItemByUniqueDescriptionAsync(string phoneNumber, string idNumber, string employeeNumber)
         {
-            return database.Table<Models.UserProfile>().Where(i => 
+            return database.Table<Models.UserProfile>().Where(i =>
                         i.PhoneNumber == phoneNumber ||
                         i.IDNumber == idNumber ||
                         i.EmployeeNumber == employeeNumber).FirstOrDefaultAsync();
@@ -91,9 +91,26 @@ namespace MyBodyTemperature.Services
             return database.DeleteAsync(item);
         }
 
-        public Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId)
+        public async Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId, DateTime? startDate = null, DateTime? endDate = null)
         {
-            return database.Table<UserTemperature>().Where(i => i.UserId == userId).ToListAsync();
+            if (endDate == null)
+            {
+                return await database.Table<UserTemperature>().Where(i =>
+                   i.UserId == userId
+                   ).OrderBy(x => x.TemperatureDate).Take(7).ToListAsync();
+            }
+
+            else
+            {
+
+                var result = await database.Table<UserTemperature>().Where(i =>
+                       i.UserId == userId &&
+                       i.TemperatureDate >= startDate &&
+                       i.TemperatureDate <= endDate
+                       ).OrderByDescending(x => x.Id).Take(7).ToListAsync();
+
+                return result;
+            }
         }
 
         public async Task<int> AddNewCompanyAsync(Company item)

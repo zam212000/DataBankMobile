@@ -18,7 +18,7 @@ namespace MyBodyTemperature.Services
         Task<int> InsertUserTemperatureAsync(UserTemperature item);
         Task<int> UpdateUserTemperatureAsync(UserTemperature item);
         Task<int> DeleteUserTemperatureAsync(UserTemperature item);
-        Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId);
+        Task<List<UserTemperature>> GetUserTemperatureItemsAsync(int userId, DateTime? startDate = null, DateTime? endDate = null);
 
         Task<Company> GetCompanyByID(int id);
         Task<Company> GetCompanyByName(string name);

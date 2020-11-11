@@ -16,6 +16,7 @@ using SkiaSharp.Views.Forms;
 using SkiaSharp;
 using Xamarin.Forms;
 using MyBodyTemperature.Helpers;
+using Microcharts.Forms;
 
 namespace MyBodyTemperature.ViewModels
 {
@@ -31,6 +32,11 @@ namespace MyBodyTemperature.ViewModels
             AddTemperatureCommand = new DelegateCommand(OnAddTemperatureCommandExecuted);
             RemoveUserCommand = new DelegateCommand(OnRemoveUserCommandExecuted);
             UpdateUserCommand = new DelegateCommand(OnUpdateUserCommandExecuted);
+
+            OnFocusStartDateCommand = new DelegateCommand<DatePicker>(FocusStartDatePicker);
+            OnFocusEndDateCommand = new DelegateCommand<DatePicker>(FocusEndDatePicker);
+            OnSelectEndDateCommand = new DelegateCommand<ChartView>(OnEndDateCommandExecuted);
+
         }
 
         public event EventHandler IsActiveChanged;
@@ -40,6 +46,10 @@ namespace MyBodyTemperature.ViewModels
         public DelegateCommand UpdateUserCommand { get; }
 
         public DelegateCommand TakePhotoCommand { get; }
+
+        public DelegateCommand<DatePicker> OnFocusStartDateCommand { get; private set; }
+        public DelegateCommand<DatePicker> OnFocusEndDateCommand { get; private set; }
+        public DelegateCommand<ChartView> OnSelectEndDateCommand { get; }
 
         public Chart ChartBar => new BarChart() { Entries = EntryDataCollection, BackgroundColor = SKColors.White };
 
@@ -53,6 +63,36 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private DateTime _startDate = DateTime.Now;
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set
+            {
+                SetProperty(ref _startDate, value);
+            }
+        }
+
+        private DateTime _endtDate = DateTime.Now;
+        public DateTime EndDate
+        {
+            get => _endtDate;
+            set
+            {
+                SetProperty(ref _endtDate, value);
+            }
+        }
+
+        private DateTime _priorendtDate = DateTime.Now;
+        public DateTime PriorEndDate
+        {
+            get => _priorendtDate;
+            set
+            {
+                SetProperty(ref _priorendtDate, value);
+            }
+        }
+
         private string _temperature = string.Empty;
         public string Temperature
         {
@@ -63,6 +103,27 @@ namespace MyBodyTemperature.ViewModels
             }
         }
 
+        private string _temperatureDate = string.Empty;
+        public string TemperatureDate
+        {
+            get => _temperatureDate;
+            set
+            {
+                SetProperty(ref _temperatureDate, value);
+            }
+        }
+
+        private string _highFever = string.Empty;
+        public string HighFever
+        {
+            get => _highFever;
+            set
+            {
+                SetProperty(ref _highFever, value);
+            }
+        }
+
+
         private string _cellPhoneNumber = string.Empty;
         public string CellPhoneNumber
         {
@@ -70,6 +131,26 @@ namespace MyBodyTemperature.ViewModels
             set
             {
                 SetProperty(ref _cellPhoneNumber, value);
+            }
+        }
+
+        private bool _includeDate = false;
+        public bool IncludeDateFilter
+        {
+            get => _includeDate;
+            set
+            {
+                SetProperty(ref _includeDate, value);
+            }
+        }
+
+        private bool _initialized = false;
+        public bool Initialized
+        {
+            get => _initialized;
+            set
+            {
+                SetProperty(ref _initialized, value);
             }
         }
 
@@ -139,6 +220,39 @@ namespace MyBodyTemperature.ViewModels
             set { SetProperty(ref _entryDataCollection, value); }
         }
 
+        public CovidMetadata CovidMetadata { get; set; }
+
+        private void FocusStartDatePicker(DatePicker obj)
+        {
+            Initialized = false;
+            obj.Focus();
+        }
+
+        private void FocusEndDatePicker(DatePicker obj)
+        {
+            Initialized = false;
+            obj.Focus();
+        }
+
+        private async void OnEndDateCommandExecuted(ChartView chartObj)
+        {
+            if (Initialized)
+                return;
+
+            if (EndDate < StartDate)
+            {
+                await _pageDialogService.DisplayAlertAsync("Invalid Date Range", "end date cannot be before start date ", "Ok");
+                Initialized = true;
+                EndDate = PriorEndDate;
+                return;
+            }
+            PriorEndDate = EndDate;
+            IncludeDateFilter = true;
+            var chartsData = await GetChartEntriesData();
+            chartObj.Chart = new BarChart() { Entries = chartsData, BackgroundColor = SKColors.White };
+            IncludeDateFilter = false;
+
+        }
 
         private async void OnPhotoTakenCommandExecuted()
         {
@@ -155,15 +269,8 @@ namespace MyBodyTemperature.ViewModels
                 ImageContent = GetImageBytes(mediaFile.GetStream());
                 CurrentUserProfile.ImageContent = ImageContent;
                 ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
-                //CurrentUserProfile.ImageProperty = ImageSource.FromStream(() => new MemoryStream(CurrentUserProfile.ImageContent));
 
-                //Sync to DB and API
                 var result = await _dbService.UpdateItemAsync(CurrentUserProfile);
-
-                //if (result > 0)
-                //{
-                //    await _pageDialogService.DisplayAlertAsync("Successful", "Photo successful changed", "Ok");
-                //}
             }
         }
 
@@ -235,6 +342,7 @@ namespace MyBodyTemperature.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            Initialized = true;
             if (parameters != null && parameters.ContainsKey("UserProfileParam"))
             {
                 CurrentUserProfile = parameters["UserProfileParam"] as UserProfile;
@@ -254,12 +362,11 @@ namespace MyBodyTemperature.ViewModels
                     dateString = CurrentUserProfile.TemperatureDate.ToString("yyyy/MM/dd");
                 }
 
-                CurrentUserProfile.CovidMetadata = new CovidMetadata
-                {
-                    HighFever = CurrentUserProfile.Temperature > 37.5 ? "Yes" : "No",
-                    Temperature = $"{CurrentUserProfile.Temperature }°C",
-                    TemperatureDate = dateString
-                };
+
+                HighFever = CurrentUserProfile.Temperature > 37.5 ? "Yes" : "No";
+                Temperature = $"{CurrentUserProfile.Temperature }°C";
+                TemperatureDate = dateString;
+
 
                 if (CurrentUserProfile.ImageContent != null)
                 {
@@ -270,8 +377,6 @@ namespace MyBodyTemperature.ViewModels
                 {
                     ImageProperty = ImageSource.FromFile("defaultpic.png");
                 }
-
-                // await AssignChartEntries();
             }
         }
 
@@ -283,11 +388,18 @@ namespace MyBodyTemperature.ViewModels
 
         public async Task<Microcharts.Entry[]> GetChartEntriesData()
         {
-            //CurrentUserProfile.UserId
-            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(Settings.CurrentUserId);
+
+            if (!IncludeDateFilter)
+            {
+                StartDate = DateTime.Now.AddDays(-7);
+                EndDate = DateTime.Now;
+            }
+
+            var userTempHistory = await _dbService.GetUserTemperatureItemsAsync(Settings.CurrentUserId, StartDate, EndDate);
+
             var items = new List<Microcharts.Entry>();
 
-            foreach (var item in userTempHistory)
+            foreach (var item in userTempHistory.OrderBy(x => x.Id))
             {
                 var color = item.Temperature > 37.5 ? RedColor : GreenColor;
                 items.Add(new Microcharts.Entry((float)item.Temperature) { Color = color, Label = item.TemperatureDate.ToString("MMMM dd"), ValueLabel = $"{item.Temperature}°C", });
@@ -316,12 +428,12 @@ namespace MyBodyTemperature.ViewModels
                         dateString = CurrentUserProfile.TemperatureDate.ToString("yyyy/MM/dd");
                     }
 
-                    CurrentUserProfile.CovidMetadata = new CovidMetadata
-                    {
-                        HighFever = CurrentUserProfile.Temperature > 37.5 ? "Yes" : "No",
-                        Temperature = $"{CurrentUserProfile.Temperature }°C",
-                        TemperatureDate = dateString
-                    };
+                    //CurrentUserProfile.CovidMetadata = new CovidMetadata
+                    //{
+                    HighFever = CurrentUserProfile.Temperature > 37.5 ? "Yes" : "No";
+                    Temperature = $"{CurrentUserProfile.Temperature }°C";
+                    TemperatureDate = dateString;
+                    //};
                 }
             }
             return items.ToArray();

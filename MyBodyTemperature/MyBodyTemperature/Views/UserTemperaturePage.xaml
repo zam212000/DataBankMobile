@@ -40,7 +40,7 @@
                     <Entry x:Name="temperature"  Text="{Binding Temperature}" Placeholder="Today's Temperature" HorizontalTextAlignment="Center" Keyboard="Numeric" MaxLength="4" PlaceholderColor="#ccc" TextColor="#242E5B" FontFamily="Arial" FontSize="Large" HorizontalOptions="FillAndExpand" Margin="0,5,0,10">
                     </Entry>
 
-                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <!--<StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                         <Label Text="Access Granted"   VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#242E5B" />
                         <Switch x:Name="chkUseCurrentLocation"  Margin="20,0,0,0" IsEnabled="{Binding AccessGrantedEnabled, Mode= TwoWay}"  OnColor="Green" IsToggled="{Binding AccessGranted, Mode=TwoWay}">
                             <Switch.Behaviors>
@@ -48,7 +48,9 @@
                                       Command="{Binding SwitchSelectedCommand}"/>
                             </Switch.Behaviors>
                         </Switch>
-                    </StackLayout>
+                    </StackLayout>-->
+
+                    <Picker Title="Select Status"  ItemsSource="{Binding EmployeeStatusList}"  HorizontalTextAlignment="Center"  WidthRequest="200" ItemDisplayBinding="{Binding Description}" SelectedItem="{Binding StatusEmployee}"/>
 
 
                     <Button Text="Submit" Command="{Binding AddTemperatureCommand}" BackgroundColor="#242E5B" FontSize="Large" IsEnabled="False" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,20,0,5" FontFamily="Arial" FontAttributes="Bold" TextColor="White">
