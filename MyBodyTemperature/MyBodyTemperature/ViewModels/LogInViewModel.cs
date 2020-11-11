@@ -62,33 +62,33 @@ namespace MyBodyTemperature.ViewModels
             try
             {
                 IsBusy = true;
-                //var company = await _dbService.GetCompanyByUsername(UserName);
-                //if (company != null)
-                //{
-                //    if (!company.PhoneNumberConfirmed)
-                //    {
-                //        await _pageDialogService.DisplayAlertAsync("Login", "Company registration is incomplete. Please go to Signup to finalise registration", "Ok");
-                //        return;
-                //    }
+                var company = await _dbService.GetCompanyByUsername(UserName);
+                if (company != null)
+                {
+                    if (!company.PhoneNumberConfirmed)
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Login", "Company registration is incomplete. Please go to Signup to finalise registration", "Ok");
+                        return;
+                    }
 
-                //    if (AesEncryptionService.Decrypt(company.Password) == Password)
-                //    {
-                //        Settings.CurrentCompany = company;
-                //        await NavigationService.NavigateAsync("/MainTabbedPage");
-                //    }
-                //    else
-                //    {
-                //        await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
-                //    }
-                //}
-                //else
-                //{
-                //    await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
-                //}
+                    if (AesEncryptionService.Decrypt(company.Password) == Password)
+                    {
+                        Settings.CurrentCompany = company;
+                        await NavigationService.NavigateAsync("/MainTabbedPage");
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
+                    }
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Login", "Username or password incorrect", "Ok");
+                }
 
-                var company = await _dbService.GetCompanyByID(1);
-                Settings.CurrentCompany = company;
-                await NavigationService.NavigateAsync("/MainTabbedPage");
+                //var company = await _dbService.GetCompanyByID(1);
+                //Settings.CurrentCompany = company;
+                //await NavigationService.NavigateAsync("/MainTabbedPage");
             }
             catch (Exception e)
             {
